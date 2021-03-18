@@ -3,7 +3,6 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -175,9 +174,25 @@ const Header = (props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            RetroShare
-          </Typography>
+
+          <IconButton
+            
+            src="../public/discoVinilo.png"
+            color="inherit"
+            component={Link}
+            to="/"
+            
+          >
+            <img
+            alt={'pokeball'}
+            width={'50'}
+            
+            src={
+              'https://www.pikpng.com/pngl/b/59-590145_pokeball-8-bit-pixel-art-pokemon-clipart.png'
+            }
+            
+          /> RetroShare
+          </IconButton>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

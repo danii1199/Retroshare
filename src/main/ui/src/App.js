@@ -6,8 +6,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import UserDataComponent from "./components/UserDataComponent";
 import GameDataComponent from "./components/GameDataComponent";
 import GameConsoleDataComponent from "./components/GameConsoleDataComponent";
-
 import SingUp from "./components/SingUp";
+import ProductAPI from "./lib/ProductsAPI";
+
 function App() {
   return (
     <Router>
@@ -22,7 +23,8 @@ function App() {
             exact
             component={GameConsoleDataComponent}
           ></Route>
-          <Route path="/" exact></Route>
+          <Route path="/" exact component={ProductAPI}>
+          </Route>
         </Switch>
       </Container>
     </Router>
