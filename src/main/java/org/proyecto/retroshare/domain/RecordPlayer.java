@@ -3,6 +3,8 @@ package org.proyecto.retroshare.domain;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @PrimaryKeyJoinColumn(name = "productId")
 public class RecordPlayer extends Product {
@@ -12,6 +14,8 @@ public class RecordPlayer extends Product {
 	private String brand;
 	private Integer year;
 	private Float price;
+
+	@JsonIgnoreProperties(value = { "recordplayers", "hibernateLazyInitializer" }, allowSetters = true)
 
 	public RecordPlayer(String description, String name, String model, String brand, Integer year, Float price) {
 		super(description);

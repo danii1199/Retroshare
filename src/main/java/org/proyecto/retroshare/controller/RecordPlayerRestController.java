@@ -64,8 +64,9 @@ public class RecordPlayerRestController {
 	}
 
 	// Actualizar un tocadisco
-	@PostMapping(value = "rp-update/{id}")
-	public ResponseEntity<RecordPlayer> update(@PathVariable Long id, @RequestBody RecordPlayer recordPlayer) {
+	@PostMapping(value = "rp-update/{id}/{idProductStatus}")
+	public ResponseEntity<RecordPlayer> update(@PathVariable Long id, @RequestBody RecordPlayer recordPlayer,
+			@PathVariable Long idProductStatus) {
 
 		RecordPlayer recordPlayerUpdate = recordplayerRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("No existe el tocadisco" + id));
@@ -76,6 +77,11 @@ public class RecordPlayerRestController {
 		recordPlayerUpdate.setBrand(recordPlayer.getBrand());
 		recordPlayerUpdate.setYear(recordPlayer.getYear());
 		recordPlayerUpdate.setPrice(recordPlayer.getPrice());
+		
+		ProductStatus productStatus = productStatusRepository.findById(idProductStatus)
+				.orElseThrow(() -> new ResourceNotFoundException("No existe el estado" + idProductStatus));
+		recordPlayerUpdate.setProductStatus(productStatus);
+		productStatus.getProducts().add(recordPlayerUpdate);
 
 		RecordPlayer obj = recordplayerRepository.save(recordPlayerUpdate);
 		return new ResponseEntity<RecordPlayer>(obj, HttpStatus.OK);

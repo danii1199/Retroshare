@@ -66,8 +66,9 @@ public class GameConsoleRestController {
 	}
 
 	// Actualizar una consola
-	@PostMapping(value = "gc-update/{id}")
-	public ResponseEntity<GameConsole> update(@PathVariable Long id, @RequestBody GameConsole gameConsole) {
+	@PostMapping(value = "gc-update/{id}/{idProductStatus}")
+	public ResponseEntity<GameConsole> update(@PathVariable Long id, @RequestBody GameConsole gameConsole,
+			@PathVariable Long idProductStatus) {
 
 		GameConsole gameConsoleUpdate = gameconsoleRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("No existe la consola " + id));
@@ -76,6 +77,11 @@ public class GameConsoleRestController {
 		gameConsoleUpdate.setName(gameConsole.getName());
 		gameConsoleUpdate.setPrice(gameConsole.getPrice());
 		gameConsoleUpdate.setYear(gameConsole.getYear());
+		
+		ProductStatus productStatus = productStatusRepository.findById(idProductStatus)
+				.orElseThrow(() -> new ResourceNotFoundException("No existe el estado" + idProductStatus));
+		gameConsoleUpdate.setProductStatus(productStatus);
+		productStatus.getProducts().add(gameConsoleUpdate);
 
 		GameConsole obj = gameconsoleRepository.save(gameConsoleUpdate);
 		return new ResponseEntity<GameConsole>(obj, HttpStatus.OK);
