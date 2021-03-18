@@ -1,19 +1,8 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
+import VideoGameAPI from "../lib/VideoGameAPI";
 
 const GameComponent = () => {
-  const [game, setGame] = React.useState([]);
-
-  React.useEffect(() => {
-    obtenerDatos();
-  }, []);
-
-  const obtenerDatos = async () => {
-    const data = await fetch("http://localhost:8080/retroshare/g-all");
-    const games = await data.json();
-    setGame(games);
-  };
-
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "name", headerName: "Name", width: 130 },
@@ -31,7 +20,12 @@ const GameComponent = () => {
 
   return (
     <div style={{ height: 400, width: "100%" }}>
-      <DataGrid rows={game} columns={columns} pageSize={5} checkboxSelection />
+      <DataGrid
+        rows={VideoGameAPI()}
+        columns={columns}
+        pageSize={5}
+        checkboxSelection
+      />
     </div>
   );
 };

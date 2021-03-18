@@ -1,19 +1,8 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
+import VinylAPI from "../lib/VinylAPI";
 
 const VinylComponent = () => {
-  const [vinyl, setVinyl] = React.useState([]);
-
-  React.useEffect(() => {
-    obtenerDatos();
-  }, []);
-
-  const obtenerDatos = async () => {
-    const data = await fetch("http://localhost:8080/retroshare/v-all");
-    const vinyls = await data.json();
-    setVinyl(vinyls);
-  };
-
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "name", headerName: "Name", width: 130 },
@@ -27,7 +16,12 @@ const VinylComponent = () => {
 
   return (
     <div style={{ height: 400, width: "100%" }}>
-      <DataGrid rows={vinyl} columns={columns} pageSize={5} checkboxSelection />
+      <DataGrid
+        rows={VinylAPI()}
+        columns={columns}
+        pageSize={5}
+        checkboxSelection
+      />
     </div>
   );
 };

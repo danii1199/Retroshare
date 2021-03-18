@@ -1,19 +1,7 @@
-import { useEffect, useState } from "react";
+import UserAPI from "../lib/UserAPI";
 import { DataGrid } from "@material-ui/data-grid";
 
 const UserComponent = () => {
-  const [user, setUser] = useState([]);
-
-  useEffect(() => {
-    obtenerDatos();
-  }, []);
-
-  const obtenerDatos = async () => {
-    const data = await fetch("http://localhost:8080/retroshare/all");
-    const users = await data.json();
-    setUser(users);
-  };
-
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "userName", headerName: "User name", width: 130 },
@@ -42,7 +30,12 @@ const UserComponent = () => {
 
   return (
     <div style={{ height: 400, width: "100%" }}>
-      <DataGrid rows={user} columns={columns} pageSize={5} checkboxSelection />
+      <DataGrid
+        rows={UserAPI()}
+        columns={columns}
+        pageSize={5}
+        checkboxSelection
+      />
     </div>
   );
 };

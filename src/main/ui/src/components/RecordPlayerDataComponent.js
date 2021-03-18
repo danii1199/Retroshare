@@ -1,19 +1,8 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
+import RecordPlayerAPI from "../lib/RecordPlayerAPI";
 
 const RecordPlayerComponent = () => {
-  const [recordPlayer, setRecordPlayer] = React.useState([]);
-
-  React.useEffect(() => {
-    obtenerDatos();
-  }, []);
-
-  const obtenerDatos = async () => {
-    const data = await fetch("http://localhost:8080/retroshare/v-all");
-    const recordPlayers = await data.json();
-    setRecordPlayer(recordPlayers);
-  };
-
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "name", headerName: "Name", width: 130 },
@@ -28,7 +17,7 @@ const RecordPlayerComponent = () => {
   return (
     <div style={{ height: 400, width: "100%" }}>
       <DataGrid
-        rows={recordPlayer}
+        rows={RecordPlayerAPI()}
         columns={columns}
         pageSize={5}
         checkboxSelection
