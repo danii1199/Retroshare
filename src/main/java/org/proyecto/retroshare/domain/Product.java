@@ -24,7 +24,9 @@ public class Product {
 	@JoinColumn(name = "user_id")
 	@ManyToOne(cascade = CascadeType.PERSIST, optional = true)
 	private User user;
-
+	
+	@JsonIgnoreProperties(value = { "products", "hibernateLazyInitializer" }, allowSetters = true)
+	@JoinColumn(name = "productStatus_id")
 	@ManyToOne(cascade = CascadeType.PERSIST, optional = true)
 	private ProductStatus productStatus;
 

@@ -9,7 +9,10 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class ProductStatus {
@@ -18,7 +21,8 @@ public class ProductStatus {
 	private Long id;
 	@Column(unique = true)
 	private String status;
-
+	
+	
 	@OneToMany(mappedBy = "productStatus", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Product> products;
 

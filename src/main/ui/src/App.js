@@ -7,7 +7,7 @@ import UserDataComponent from "./components/UserDataComponent";
 import GameDataComponent from "./components/GameDataComponent";
 import GameConsoleDataComponent from "./components/GameConsoleDataComponent";
 import SingUp from "./components/SingUp";
-import ProductAPI from "./lib/ProductsAPI";
+import Products from "./components/Products/Products";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
             exact
             component={GameConsoleDataComponent}
           ></Route>
-          <Route path="/" exact component={ProductAPI}>
+          <Route path="/" exact component={Products}>
           </Route>
         </Switch>
       </Container>

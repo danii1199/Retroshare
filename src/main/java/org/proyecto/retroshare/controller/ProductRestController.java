@@ -1,5 +1,7 @@
 package org.proyecto.retroshare.controller;
 
+import java.util.List;
+
 import org.proyecto.retroshare.domain.Product;
 import org.proyecto.retroshare.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +20,13 @@ public class ProductRestController {
 
 	@Autowired
 	private ProductRepository productRepository;
-
+	
+	//VER TODOS LOS PRODUCTOS
+	@GetMapping(value = "/pr-all")
+	public List<Product> findAll() {
+		return productRepository.findAll();
+	}
+	
 	// BORRAR UN JUEGO
 	@GetMapping(value = "/p-delete/{id}")
 	public ResponseEntity<Product> delete(@PathVariable Long id) {

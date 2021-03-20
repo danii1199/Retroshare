@@ -8,12 +8,12 @@ import {
     Button,
   } from "@material-ui/core";
   import { ShoppingCart } from "@material-ui/icons";
-  import "./style.css";
+  import "./styleCard.css";
   
-  const CustomCard = ({
+  const CardProduct = ({
     basket,
     product,
-    addProduct,
+    addProduct = () => {},
     updateProduct,
     RemoveItemFromBasket,
   }) => {
@@ -25,7 +25,7 @@ import {
             alt="Contemplative Reptile"
             height="260"
             className="card-image"
-            image={product.media.source}
+            //image={product.media.source}
             title="Contemplative Reptile"
           />
           <CardContent className="content">
@@ -55,12 +55,12 @@ import {
           {!basket && (
             <>
               <Typography
-                className="price"
+                field="price"
                 gutterBottom
                 variant="h5"
                 component="h2"
               >
-                {product.price.formatted_with_symbol}
+                {product.price} €
               </Typography>
               <Button
                 size="large"
@@ -115,4 +115,4 @@ import {
     );
   };
   
-  export default CustomCard;
+  export default CardProduct;
