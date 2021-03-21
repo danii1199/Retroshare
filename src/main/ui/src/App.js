@@ -7,6 +7,7 @@ import UserDataComponent from "./components/UserDataComponent";
 import GameDataComponent from "./components/GameDataComponent";
 import GameConsoleDataComponent from "./components/GameConsoleDataComponent";
 import SingUp from "./components/SingUp";
+import GameFormuComponent from "./components/GameFormuComponent";
 import Products from "./components/Products/Products";
 
 function App() {
@@ -22,6 +23,11 @@ function App() {
             path="/gameconsole"
             exact
             component={GameConsoleDataComponent}
+          ></Route>
+		 <Route
+            path="/c-game"
+            exact
+            component={GameFormuComponent}
           ></Route>
           <Route path="/" exact component={Products}>
           </Route>
