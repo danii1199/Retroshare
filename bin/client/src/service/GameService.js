@@ -5,4 +5,7 @@ export class GameService{
     getAll(){
         return axios.get(this.baseUrl + "g-all").then(res=> res.data);
     }
+createGame(game){
+		return axios.post(this.baseUrl+"g-save",game); 
+	}
 }

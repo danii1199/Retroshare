@@ -219,6 +219,9 @@ const Header = (props) => {
           <Button color="inherit" component={Link} to="/gameconsole">
             Game Console
           </Button>
+		  <Button color="inherit" component={Link} to="/c-game">
+            C-game
+          </Button>
 
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
