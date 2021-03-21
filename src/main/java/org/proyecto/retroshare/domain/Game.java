@@ -1,5 +1,7 @@
 package org.proyecto.retroshare.domain;
 
+import java.sql.Blob;
+
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -13,19 +15,23 @@ public class Game extends Product {
 	private String gender;
 	private String developer;
 	private Float price;
+	
 
 	@JsonIgnoreProperties(value = { "games", "hibernateLazyInitializer" }, allowSetters = true)
 	
-	public Game(String description, String name, String gender, String developer, Float price) {
-		super(description);
+	
+
+	public Game() {
+		super();
+	}
+
+	public Game(String description,Blob imagen, String name, String gender, String developer, Float price) {
+		super(description,imagen);
 		this.name = name;
 		this.gender = gender;
 		this.developer = developer;
 		this.price = price;
-	}
-
-	public Game() {
-		super();
+		
 	}
 
 	public String getName() {

@@ -1,5 +1,7 @@
 package org.proyecto.retroshare.domain;
 
+import java.sql.Blob;
+
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -17,8 +19,8 @@ public class RecordPlayer extends Product {
 
 	@JsonIgnoreProperties(value = { "recordplayers", "hibernateLazyInitializer" }, allowSetters = true)
 
-	public RecordPlayer(String description, String name, String model, String brand, Integer year, Float price) {
-		super(description);
+	public RecordPlayer(String description,Blob imagen, String name, String model, String brand, Integer year, Float price) {
+		super(description,imagen);
 		this.name = name;
 		this.model = model;
 		this.brand = brand;

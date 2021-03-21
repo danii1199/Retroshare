@@ -24,11 +24,12 @@ function App() {
             exact
             component={GameConsoleDataComponent}
           ></Route>
-		 <Route
+          <Route
             path="/c-game"
             exact
             component={GameFormuComponent}
           ></Route>
+		 
           <Route path="/" exact component={Products}>
           </Route>
         </Switch>
