@@ -34,8 +34,11 @@ public class User {
 	private Integer zipCode;
 	private String city;
 	private String country;
+	@Column(unique = true)
 	private Integer phoneNumber;
+	@Column(unique = true)
 	private String email;
+	@Column(unique = true)
 	private String avatar;
 	@JsonFormat(pattern = "dd-MM-YYYY", shape = Shape.STRING)
 	private Date date;

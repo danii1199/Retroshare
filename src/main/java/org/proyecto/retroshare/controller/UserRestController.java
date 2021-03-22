@@ -1,5 +1,9 @@
 package org.proyecto.retroshare.controller;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.proyecto.retroshare.domain.Role;
@@ -17,7 +21,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @CrossOrigin("*")
 @RestController
@@ -45,28 +51,33 @@ public class UserRestController {
 
 	// GUARDAR NUEVO USUARIO
 	@PostMapping(value = "/save/{idRole}")
-	public ResponseEntity<User> save(@RequestBody User user, @PathVariable Long idRole) {
+	public ResponseEntity<User> save(@RequestPart User user, @PathVariable Long idRole,
+			@RequestPart("file") MultipartFile file) throws IOException {
 
+		/* PASSWORD ENCRIPTADA */
 		String pwd = user.getPassword();
 		String pwdEncript = new BCryptPasswordEncoder().encode(pwd);
 		user.setPassword(pwdEncript);
+		/* FOTO USUARIO */
+		if (!file.isEmpty()) {
+			String ruta = "C:\\Users\\Dani\\Desktop\\TFG\\TFGRepositorio\\projectRetroShare\\src\\main\\resources\\static\\img\\users";
+			Long contador = userRepository.count() + 1;
+			try {
+				byte[] bytes = file.getBytes();
+				Path rutaAbsoluta = Paths.get(ruta + "//" + contador + "-" + user.getClass().getSimpleName() + "-"
+						+ file.getOriginalFilename());
+				Files.write(rutaAbsoluta, bytes);
 
-		/*
-		 * if(!avatar.isEmpty()) { String ruta="C://Temp"; try { byte[]
-		 * bytes=avatar.getBytes(); Path rutaAbsoluta =
-		 * Paths.get(ruta+"//"+avatar.getOriginalFilename()); Files.write(rutaAbsoluta,
-		 * bytes); user.setAvatar(avatar.getOriginalFilename());
-		 * 
-		 * 
-		 * } catch (Exception e) { // TODO: handle exception } }
-		 */
+				user.setAvatar(contador + "-" + user.getClass().getSimpleName() + "-" + file.getOriginalFilename());
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
 
-		// Role role = roleRepository.getOne(idRole);
 		Role role = roleRepository.findById(idRole)
 				.orElseThrow(() -> new ResourceNotFoundException("No existe el rol" + idRole));
 		user.setRole(role);
 		role.getUsers().add(user);
-
 		User obj = userRepository.save(user);
 
 		return new ResponseEntity<User>(obj, HttpStatus.OK);
