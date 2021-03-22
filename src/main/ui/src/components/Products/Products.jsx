@@ -1,7 +1,6 @@
 import { Grid, Container } from "@material-ui/core";
 import Product from "../Product/Product";
 //import Spinner from "../Spinner/Spinner";
-import Banner from "../Banner/Banner";
 import ProductAPI from "../../lib/ProductsAPI";
 import "./style.css";
 

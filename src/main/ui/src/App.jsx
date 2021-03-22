@@ -10,8 +10,13 @@ import SingIn from "./components/SingIn";
 import SingUp from "./components/SingUp";
 import GameFormuComponent from "./components/GameFormuComponent";
 import Products from "./components/Products/Products";
+import VinylDataComponent from "./components/VinylDataComponent";
+import RecordPlayerDataComponent from "./components/RecordPlayerDataComponent";
 
-function App() {
+
+
+const App = () => {
+
   return (
     <Router>
       <Container>
@@ -26,12 +31,16 @@ function App() {
             exact
             component={GameConsoleDataComponent}
           ></Route>
+          <Route path="/rplayer" exact component={RecordPlayerDataComponent}></Route>
+          <Route path="/vinyl" exact component={VinylDataComponent}></Route>
+
           <Route path="/c-game" exact component={GameFormuComponent}></Route>
           <Route path="/" exact component={Products}></Route>
+          <Route path="/basket" exact></Route>
         </Switch>
       </Container>
     </Router>
   );
-}
+};
 
 export default App;

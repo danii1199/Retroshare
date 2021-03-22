@@ -194,23 +194,23 @@ const Header = (props) => {
               inputProps={{ "aria-label": "search" }}
             />
           </div>
-
+          
           <Button color="inherit" component={Link} to="/users">
             Usuarios
           </Button>
           <Button color="inherit" component={Link} to="/videogames">
             Video-Games
           </Button>
-          <Button color="inherit" component={Link} to="/music">
-            Music
-          </Button>
           <Button color="inherit" component={Link} to="/gameconsole">
             Game Console
           </Button>
-          <Button color="inherit" component={Link} to="/c-game">
-            C-game
+          <Button color="inherit" component={Link} to="/rplayer">
+            Record Player
           </Button>
-
+          <Button color="inherit" component={Link} to="/vinyl">
+            Vinyl
+          </Button>
+          
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">

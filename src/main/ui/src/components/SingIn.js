@@ -52,6 +52,16 @@ export default function SignIn() {
   const classes = useStyles();
   const { register, handleSubmit } = useForm();
 
+  const onSubmit = (data) => {
+    fetch("http://localhost:8080/retroshare/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -65,7 +75,7 @@ export default function SignIn() {
         <form
           className={classes.form}
           noValidate
-          onSubmit={handleSubmit((data) => alert(JSON.stringify(data)))}
+          onSubmit={handleSubmit(onSubmit)}
         >
           <TextField
             variant="outlined"

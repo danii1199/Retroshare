@@ -8,7 +8,12 @@ const GameConsoleComponent = () => {
     { field: "name", headerName: "Name", width: 130 },
     { field: "year", headerName: "Year", width: 150 },
     { field: "price", headerName: "Price", width: 150 },
-    { field: "productStatus", headerName: "Product Status", width: 150 },
+    {
+      field: "productStatus",
+      headerName: "Product Status",
+      width: 150,
+      valueFormatter: (gameConsole) => gameConsole.row?.productStatus?.status,
+    },
     {
       field: "firstName",
       headerName: "Owner user",
