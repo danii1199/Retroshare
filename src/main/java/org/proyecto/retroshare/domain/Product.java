@@ -1,6 +1,5 @@
 package org.proyecto.retroshare.domain;
 
-import java.sql.Blob;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -21,7 +20,7 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String description;
-	private Blob imagen;
+	private String imagen;
 
 	@JsonIgnoreProperties(value = { "products", "hibernateLazyInitializer" }, allowSetters = true)
 	@JoinColumn(name = "user_id")
@@ -35,7 +34,7 @@ public class Product {
 
 
 
-	public Product(String description, Blob imagen) {
+	public Product(String description, String imagen) {
 		super();
 		this.description = description;
 		this.imagen = imagen;
@@ -45,11 +44,11 @@ public class Product {
 		super();
 	}
 
-	public Blob getImagen() {  
+	public String getImagen() {  
 		return imagen;
 	}
 
-	public void setImagen(Blob imagen) {
+	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
 

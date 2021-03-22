@@ -19,7 +19,7 @@ public class Vinyl extends Product {
 
 	@JsonIgnoreProperties(value = { "vinyls", "hibernateLazyInitializer" }, allowSetters = true)
 
-	public Vinyl(String description,Blob imagen, String name, String artists, String songs, Integer year, Float price) {
+	public Vinyl(String description,String imagen, String name, String artists, String songs, Integer year, Float price) {
 		super(description,imagen);
 		this.name = name;
 		this.artists = artists;

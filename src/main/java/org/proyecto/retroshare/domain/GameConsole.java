@@ -17,15 +17,17 @@ public class GameConsole extends Product {
 
 	@JsonIgnoreProperties(value = { "gameconsoles", "hibernateLazyInitializer" }, allowSetters = true)
 
-	public GameConsole(String description,Blob imagen, String name, Integer year, Float price) {
-		super(description,imagen);
-		this.name = name;
-		this.year = year;
-		this.price = price;
-	}
+
 
 	public GameConsole() {
 		super();
+	}
+
+	public GameConsole(String description, String imagen, String name, Integer year, Float price) {
+		super(description, imagen);
+		this.name = name;
+		this.year = year;
+		this.price = price;
 	}
 
 	public String getName() {

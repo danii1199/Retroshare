@@ -15,6 +15,7 @@ import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -81,6 +82,13 @@ public class UserRestController {
 		User obj = userRepository.save(user);
 
 		return new ResponseEntity<User>(obj, HttpStatus.OK);
+	}
+	
+	
+	@GetMapping("/login")
+	public String login(Model model) {
+		model.addAttribute("usuario",new User());
+		return "http://localhost:3000/singup#";
 	}
 
 	// Actualizar un ususario

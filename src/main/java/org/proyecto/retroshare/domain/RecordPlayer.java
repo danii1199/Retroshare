@@ -19,7 +19,7 @@ public class RecordPlayer extends Product {
 
 	@JsonIgnoreProperties(value = { "recordplayers", "hibernateLazyInitializer" }, allowSetters = true)
 
-	public RecordPlayer(String description,Blob imagen, String name, String model, String brand, Integer year, Float price) {
+	public RecordPlayer(String description,String imagen, String name, String model, String brand, Integer year, Float price) {
 		super(description,imagen);
 		this.name = name;
 		this.model = model;

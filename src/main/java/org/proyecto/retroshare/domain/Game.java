@@ -25,14 +25,17 @@ public class Game extends Product {
 		super();
 	}
 
-	public Game(String description,Blob imagen, String name, String gender, String developer, Float price) {
-		super(description,imagen);
+
+
+	public Game(String description, String imagen, String name, String gender, String developer, Float price) {
+		super(description, imagen);
 		this.name = name;
 		this.gender = gender;
 		this.developer = developer;
 		this.price = price;
-		
 	}
+
+
 
 	public String getName() {
 		return name;
@@ -65,5 +68,7 @@ public class Game extends Product {
 	public void setPrice(Float price) {
 		this.price = price;
 	}
+
+
 
 }
