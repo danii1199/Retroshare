@@ -9,6 +9,9 @@ import {
   } from "@material-ui/core";
   import { ShoppingCart } from "@material-ui/icons";
   import "./styleCard.css";
+  import EuroSymbolIcon from '@material-ui/icons/EuroSymbol';
+  import Link from "@material-ui/core/Link";
+
   
   const CardProduct = ({
     basket,
@@ -18,24 +21,35 @@ import {
     RemoveItemFromBasket,
   }) => {
     return (
-      <Card className="custom-card">
+      <Card className="custom-card" >
         <CardActionArea>
           <CardMedia
             component="img"
-            alt="Contemplative Reptile"
+            alt={product.image}
             height="260"
             className="card-image"
-            //image={product.media.source}
-            title="Contemplative Reptile"
+            image={product.image}
+            title={product.name}
           />
           <CardContent className="content">
             <Typography
+              align="left"
               className="title"
               gutterBottom
               variant="h5"
               component="h2"
             >
               {product.name}
+            </Typography>
+            <Typography
+              align="right"
+              className="status"
+              gutterBottom
+              variant="h5"
+              component="h2"
+              color="secondary"
+              
+            >{product.productStatus?.status}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -51,7 +65,7 @@ import {
             </Typography>
           </CardActions>
         )}
-        <CardActions className="actions-content">
+        <CardActions className="actions-content" >
           {!basket && (
             <>
               <Typography
@@ -60,7 +74,7 @@ import {
                 variant="h5"
                 component="h2"
               >
-                {product.price} €
+                {product.price} <EuroSymbolIcon />
               </Typography>
               <Button
                 size="large"
@@ -75,12 +89,13 @@ import {
           )}
           {basket && (
             <>
-              <Button
+              <Button 
                 size="small"
                 color="secondary"
                 variant="outlined"
                 onClick={() => {
                   RemoveItemFromBasket(product.id);
+                  
                 }}
               >
                 Remove

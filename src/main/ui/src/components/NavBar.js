@@ -7,14 +7,13 @@ import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -116,8 +115,9 @@ const Header = (props) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose} component={Link} to="/singin">
+        Sing In
+      </MenuItem>
     </Menu>
   );
 
@@ -138,15 +138,15 @@ const Header = (props) => {
             <MailIcon />
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <p>Chat</p>
       </MenuItem>
       <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
+            <ShoppingCartIcon />
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <p>Cart</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -167,31 +167,19 @@ const Header = (props) => {
       <AppBar position="static">
         <Toolbar>
           <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <MenuIcon />
-          </IconButton>
-
-          <IconButton
-            
             src="../public/discoVinilo.png"
             color="inherit"
             component={Link}
             to="/"
-            
           >
             <img
-            alt={'pokeball'}
-            width={'50'}
-            
-            src={
-              'https://www.pikpng.com/pngl/b/59-590145_pokeball-8-bit-pixel-art-pokemon-clipart.png'
-            }
-            
-          /> RetroShare
+              alt={"pokeball"}
+              width={"50"}
+              src={
+                "https://www.pikpng.com/pngl/b/59-590145_pokeball-8-bit-pixel-art-pokemon-clipart.png"
+              }
+            />{" "}
+            RetroShare
           </IconButton>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -219,7 +207,7 @@ const Header = (props) => {
           <Button color="inherit" component={Link} to="/gameconsole">
             Game Console
           </Button>
-		  <Button color="inherit" component={Link} to="/c-game">
+          <Button color="inherit" component={Link} to="/c-game">
             C-game
           </Button>
 
@@ -232,7 +220,7 @@ const Header = (props) => {
             </IconButton>
             <IconButton aria-label="show 5 new notifications" color="inherit">
               <Badge badgeContent={5} color="secondary">
-                <NotificationsIcon />
+                <ShoppingCartIcon />
               </Badge>
             </IconButton>
             <IconButton
@@ -242,7 +230,7 @@ const Header = (props) => {
               aria-haspopup="true"
               color="inherit"
               component={Link}
-              to="/singup"
+              to="/singin"
             >
               <AccountCircle />
             </IconButton>

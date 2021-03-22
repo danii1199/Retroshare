@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import UserDataComponent from "./components/UserDataComponent";
 import GameDataComponent from "./components/GameDataComponent";
 import GameConsoleDataComponent from "./components/GameConsoleDataComponent";
+import SingIn from "./components/SingIn";
 import SingUp from "./components/SingUp";
 import GameFormuComponent from "./components/GameFormuComponent";
 import Products from "./components/Products/Products";
@@ -17,6 +18,7 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path="/users" component={UserDataComponent}></Route>
+          <Route path="/singin" exact component={SingIn}></Route>
           <Route path="/singup" exact component={SingUp}></Route>
           <Route path="/videogames" exact component={GameDataComponent}></Route>
           <Route
@@ -24,14 +26,8 @@ function App() {
             exact
             component={GameConsoleDataComponent}
           ></Route>
-          <Route
-            path="/c-game"
-            exact
-            component={GameFormuComponent}
-          ></Route>
-		 
-          <Route path="/" exact component={Products}>
-          </Route>
+          <Route path="/c-game" exact component={GameFormuComponent}></Route>
+          <Route path="/" exact component={Products}></Route>
         </Switch>
       </Container>
     </Router>

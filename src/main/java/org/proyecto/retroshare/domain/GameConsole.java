@@ -1,6 +1,5 @@
 package org.proyecto.retroshare.domain;
 
-import java.sql.Blob;
 
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -17,8 +16,8 @@ public class GameConsole extends Product {
 
 	@JsonIgnoreProperties(value = { "gameconsoles", "hibernateLazyInitializer" }, allowSetters = true)
 
-	public GameConsole(String description,Blob imagen, String name, Integer year, Float price) {
-		super(description,imagen);
+	public GameConsole(String description, String name, Integer year, Float price) {
+		super();
 		this.name = name;
 		this.year = year;
 		this.price = price;

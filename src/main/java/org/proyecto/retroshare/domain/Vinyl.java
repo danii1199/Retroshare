@@ -1,6 +1,5 @@
 package org.proyecto.retroshare.domain;
 
-import java.sql.Blob;
 
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
@@ -19,8 +18,8 @@ public class Vinyl extends Product {
 
 	@JsonIgnoreProperties(value = { "vinyls", "hibernateLazyInitializer" }, allowSetters = true)
 
-	public Vinyl(String description,Blob imagen, String name, String artists, String songs, Integer year, Float price) {
-		super(description,imagen);
+	public Vinyl(String description, String name, String artists, String songs, Integer year, Float price) {
+		super();
 		this.name = name;
 		this.artists = artists;
 		this.songs = songs;

@@ -12,6 +12,7 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { useForm } from "react-hook-form";
 
 function Copyright() {
   return (
@@ -28,6 +29,7 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
+    color: "#282c34",
     marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
@@ -48,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
+  const { register, handleSubmit } = useForm();
 
   return (
     <Container component="main" maxWidth="xs">
@@ -59,10 +62,15 @@ export default function SignIn() {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form
+          className={classes.form}
+          noValidate
+          onSubmit={handleSubmit((data) => alert(JSON.stringify(data)))}
+        >
           <TextField
             variant="outlined"
             margin="normal"
+            inputRef={register}
             required
             fullWidth
             id="email"
@@ -74,6 +82,7 @@ export default function SignIn() {
           <TextField
             variant="outlined"
             margin="normal"
+            inputRef={register}
             required
             fullWidth
             name="password"
@@ -83,7 +92,14 @@ export default function SignIn() {
             autoComplete="current-password"
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={
+              <Checkbox
+                inputRef={register}
+                name="remember"
+                color="primary"
+                defaultValue={false}
+              />
+            }
             label="Remember me"
           />
           <Button
@@ -102,7 +118,7 @@ export default function SignIn() {
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/singup" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
