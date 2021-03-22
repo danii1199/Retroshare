@@ -8,7 +8,7 @@ const RecordPlayerAPI = () => {
   }, []);
 
   const obtenerDatos = async () => {
-    const data = await fetch("http://localhost:8080/retroshare/v-all");
+    const data = await fetch("http://localhost:8080/retroshare/rp-all");
     const recordPlayers = await data.json();
     setRecordPlayer(recordPlayers);
   };

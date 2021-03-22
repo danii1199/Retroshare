@@ -1,7 +1,5 @@
 package org.proyecto.retroshare.domain;
 
-import java.sql.Blob;
-
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 
@@ -26,9 +24,8 @@ public class Game extends Product {
 	}
 
 
-
-	public Game(String description, String imagen, String name, String gender, String developer, Float price) {
-		super(description, imagen);
+	public Game(String description, String name, String gender, String developer, Float price) {
+		super();
 		this.name = name;
 		this.gender = gender;
 		this.developer = developer;

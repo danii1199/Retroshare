@@ -10,8 +10,18 @@ const VinylComponent = () => {
     { field: "songs", headerName: "Songs", width: 150 },
     { field: "year", headerName: "Year", width: 150 },
     { field: "price", headerName: "Price", width: 150 },
-    { field: "user", headerName: "User", width: 130 },
-    { field: "productStatus", headerName: "Product Status", width: 150 },
+    {
+      field: "productStatus",
+      headerName: "Product Status",
+      width: 150,
+      valueFormatter: (vinyl) => vinyl.row?.productStatus?.status,
+    },
+    {
+      field: "firstName",
+      headerName: "Owner user",
+      width: 130,
+      valueFormatter: (vinyl) => vinyl.row?.user?.userName,
+    },
   ];
 
   return (

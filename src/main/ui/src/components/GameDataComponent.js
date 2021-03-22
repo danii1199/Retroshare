@@ -10,12 +10,18 @@ const GameComponent = () => {
     { field: "developer", headerName: "developer", width: 150 },
     { field: "price", headerName: "Price", width: 150 },
     {
+      field: "productStatus",
+      headerName: "Product Status",
+      width: 150,
+      valueFormatter: (game) => game.row?.productStatus?.status,
+    },
+    {
       field: "firstName",
       headerName: "Owner user",
       width: 130,
       valueFormatter: (game) => game.row?.user?.userName,
     },
-    { field: "productStatus", headerName: "Product Status", width: 150 },
+    
   ];
 
   return (

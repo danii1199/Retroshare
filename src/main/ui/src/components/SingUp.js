@@ -29,11 +29,11 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
+    color: "#282c34",
     marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    
   },
   avatar: {
     margin: theme.spacing(1),
@@ -154,7 +154,7 @@ export default function SignUp() {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link href="#" variant="body2">
+              <Link href="/singin" variant="body2">
                 Already have an account? Sign in
               </Link>
             </Grid>
