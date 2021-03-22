@@ -31,8 +31,8 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests().antMatchers("http://localhost:3000/","/auth/**","/public/**","/css/**","/js/**").permitAll().anyRequest().authenticated()
 		
 		.and()
-			.formLogin().loginPage("http://localhost:3000/singup#").defaultSuccessUrl("http://localhost:3000/",true).failureUrl("/http://localhost:3000/singup#error=true")
-			.loginProcessingUrl("http://localhost:3000/singup#").permitAll()
+			.formLogin().loginPage("http://localhost:3000/singin").defaultSuccessUrl("http://localhost:3000/",true).failureUrl("/http://localhost:3000/singin?error=true")
+			.loginProcessingUrl("http://localhost:3000/singin").permitAll()
 			.and()
 			.logout().logoutUrl("/logout").logoutSuccessUrl("/");
 	}

@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -25,6 +26,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.sun.istack.NotNull;
 
 @CrossOrigin("*")
 @RestController
@@ -52,28 +55,14 @@ public class UserRestController {
 
 	// GUARDAR NUEVO USUARIO
 	@PostMapping(value = "/save/{idRole}")
-	public ResponseEntity<User> save(@RequestPart User user, @PathVariable Long idRole,
-			@RequestPart("file") MultipartFile file) throws IOException {
+	public ResponseEntity<User> save(@RequestPart User user, @PathVariable Long idRole) {
 
 		/* PASSWORD ENCRIPTADA */
 		String pwd = user.getPassword();
 		String pwdEncript = new BCryptPasswordEncoder().encode(pwd);
 		user.setPassword(pwdEncript);
-		/* FOTO USUARIO */
-		if (!file.isEmpty()) {
-			String ruta = "C:\\Users\\Dani\\Desktop\\TFG\\TFGRepositorio\\projectRetroShare\\src\\main\\resources\\static\\img\\users";
-			Long contador = userRepository.count() + 1;
-			try {
-				byte[] bytes = file.getBytes();
-				Path rutaAbsoluta = Paths.get(ruta + "//" + contador + "-" + user.getClass().getSimpleName() + "-"
-						+ file.getOriginalFilename());
-				Files.write(rutaAbsoluta, bytes);
-
-				user.setAvatar(contador + "-" + user.getClass().getSimpleName() + "-" + file.getOriginalFilename());
-			} catch (Exception e) {
-				// TODO: handle exception
-			}
-		}
+		
+		
 
 		Role role = roleRepository.findById(idRole)
 				.orElseThrow(() -> new ResourceNotFoundException("No existe el rol" + idRole));
@@ -93,7 +82,7 @@ public class UserRestController {
 
 	// Actualizar un ususario
 	@PostMapping(value = "update/{id}")
-	public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user) {
+	public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user,@RequestPart(name="file",required = false) MultipartFile file) throws IOException {
 
 		User userUpdate = userRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("No existe el usuario" + id));
@@ -111,6 +100,21 @@ public class UserRestController {
 		userUpdate.setEmail(user.getEmail());
 		userUpdate.setAvatar(user.getAvatar());
 
+		/* FOTO USUARIO */
+		if (!file.isEmpty()) {
+			String ruta = "\\src\\main\\resources\\static\\img\\users";
+			Long contador = userRepository.count() + 1;
+			try {
+				byte[] bytes = file.getBytes();
+				Path rutaAbsoluta = Paths.get(ruta + "//" + contador + "-" + user.getClass().getSimpleName() + "-"
+						+ file.getOriginalFilename());
+				Files.write(rutaAbsoluta, bytes);
+
+				user.setAvatar(contador + "-" + user.getClass().getSimpleName() + "-" + file.getOriginalFilename());
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
 		User obj = userRepository.save(userUpdate);
 		return new ResponseEntity<User>(obj, HttpStatus.OK);
 
