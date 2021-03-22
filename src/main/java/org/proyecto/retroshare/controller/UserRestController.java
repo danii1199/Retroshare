@@ -55,7 +55,7 @@ public class UserRestController {
 
 	// GUARDAR NUEVO USUARIO
 	@PostMapping(value = "/save/{idRole}")
-	public ResponseEntity<User> save(@RequestPart User user, @PathVariable Long idRole) {
+	public ResponseEntity<User> save(@RequestBody User user, @PathVariable Long idRole) {
 
 		/* PASSWORD ENCRIPTADA */
 		String pwd = user.getPassword();
@@ -79,7 +79,7 @@ public class UserRestController {
 		model.addAttribute("usuario",new User());
 		return "http://localhost:3000/singup#";
 	}
-
+	
 	// Actualizar un ususario
 	@PostMapping(value = "update/{id}")
 	public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user,@RequestPart(name="file",required = false) MultipartFile file) throws IOException {
