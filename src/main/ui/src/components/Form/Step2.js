@@ -10,7 +10,7 @@ import { Form } from "./Form";
 
 export const Step2 = () => {
   const history = useHistory();
-  const { data, setValues } = useData();
+  const {  setValues, data } = useData();
   const { control, handleSubmit } = useForm({
     defaultValues: {
       files: data.files,

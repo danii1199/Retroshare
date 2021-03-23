@@ -210,6 +210,9 @@ const Header = (props) => {
           <Button color="inherit" component={Link} to="/vinyl">
             Vinyl
           </Button>
+          <Button color="inherit" component={Link} to="/step1">
+            Step1
+          </Button>
           
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>

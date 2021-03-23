@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import Confetti from "react-confetti";
 import Swal from "sweetalert2";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import { useData } from "./DataContext";
-import { MainContainer } from "./components/MainContainer";
-import { PrimaryButton } from "./components/PrimaryButton";
+import { MainContainer } from "./MainContainer";
+import { PrimaryButton } from "./PrimaryButton";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -60,9 +59,7 @@ export const Result = () => {
     }
   };
 
-  if (success) {
-    return <Confetti />;
-  }
+  
 
   return (
     <>
