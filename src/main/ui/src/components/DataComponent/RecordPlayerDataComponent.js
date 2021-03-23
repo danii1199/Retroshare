@@ -1,6 +1,6 @@
 import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
-import RecordPlayerAPI from "../lib/RecordPlayerAPI";
+import RecordPlayerAPI from "../../lib/RecordPlayerAPI";
 
 const RecordPlayerComponent = () => {
   const columns = [

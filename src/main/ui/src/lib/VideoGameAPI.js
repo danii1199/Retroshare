@@ -1,19 +1,20 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 
-
 const VideoGameAPI = () => {
-    const [game, setGame] = useState([]);
+  const [game, setGame] = useState([]);
 
   useEffect(() => {
     obtenerDatos();
   }, []);
 
   const obtenerDatos = async () => {
-    const data = await fetch("http://localhost:8080/retroshare/g-all");
-    const games = await data.json();
-    setGame(games);
+    axios.get("http://localhost:8080/retroshare/g-all").then((response) => {
+      const { data } = response;
+      setGame(data);
+    });
   };
-    return game;
-}
+  return game;
+};
 
 export default VideoGameAPI;

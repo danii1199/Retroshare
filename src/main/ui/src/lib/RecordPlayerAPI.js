@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 const RecordPlayerAPI = () => {
@@ -8,9 +9,10 @@ const RecordPlayerAPI = () => {
   }, []);
 
   const obtenerDatos = async () => {
-    const data = await fetch("http://localhost:8080/retroshare/rp-all");
-    const recordPlayers = await data.json();
-    setRecordPlayer(recordPlayers);
+    axios.get("http://localhost:8080/retroshare/rp-all").then((response) => {
+      const { data } = response;
+      setRecordPlayer(data);
+    });
   };
 
   return recordPlayer;

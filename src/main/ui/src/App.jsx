@@ -1,22 +1,18 @@
 import "./App.css";
 import NavBar from "./components/NavBar";
 import Container from "@material-ui/core/Container";
-import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import UserDataComponent from "./components/UserDataComponent";
-import GameDataComponent from "./components/GameDataComponent";
-import GameConsoleDataComponent from "./components/GameConsoleDataComponent";
-import SingIn from "./components/SingIn";
-import SingUp from "./components/SingUp";
-import GameFormuComponent from "./components/GameFormuComponent";
+import UserDataComponent from "./components/DataComponent/UserDataComponent";
+import GameDataComponent from "./components/DataComponent/GameDataComponent";
+import GameConsoleDataComponent from "./components/DataComponent/GameConsoleDataComponent";
+import SingIn from "./components/UserAuth/SingIn";
+import SingUp from "./components/UserAuth/SingUp";
+import GameFormuComponent from "./components/DataComponent/GameFormuComponent";
 import Products from "./components/Products/Products";
-import VinylDataComponent from "./components/VinylDataComponent";
-import RecordPlayerDataComponent from "./components/RecordPlayerDataComponent";
-
-
+import VinylDataComponent from "./components/DataComponent/VinylDataComponent";
+import RecordPlayerDataComponent from "./components/DataComponent/RecordPlayerDataComponent";
 
 const App = () => {
-
   return (
     <Router>
       <Container>
@@ -31,7 +27,11 @@ const App = () => {
             exact
             component={GameConsoleDataComponent}
           ></Route>
-          <Route path="/rplayer" exact component={RecordPlayerDataComponent}></Route>
+          <Route
+            path="/rplayer"
+            exact
+            component={RecordPlayerDataComponent}
+          ></Route>
           <Route path="/vinyl" exact component={VinylDataComponent}></Route>
 
           <Route path="/c-game" exact component={GameFormuComponent}></Route>

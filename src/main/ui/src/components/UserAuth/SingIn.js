@@ -1,4 +1,3 @@
-import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -52,7 +51,7 @@ export default function SignIn() {
   const classes = useStyles();
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, e) => {
     fetch("http://localhost:8080/retroshare/login", {
       method: "POST",
       headers: {
@@ -60,6 +59,7 @@ export default function SignIn() {
       },
       body: JSON.stringify(data),
     });
+    e.target.reset();
   };
 
   return (
@@ -80,8 +80,9 @@ export default function SignIn() {
           <TextField
             variant="outlined"
             margin="normal"
-            inputRef={register}
-            required
+            inputRef={register({
+              required: { value: true, message: "required field" },
+            })}
             fullWidth
             id="email"
             label="Email Address"

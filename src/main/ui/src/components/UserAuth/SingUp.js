@@ -3,8 +3,6 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -40,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.secondary.main,
   },
   form: {
+    color: "#282c34",
     width: "100%", // Fix IE 11 issue.
     marginTop: theme.spacing(3),
   },
@@ -50,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignUp() {
   const classes = useStyles();
-  const { register, handleSubmit } = useForm();
+  const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
     fetch("http://localhost:8080/retroshare/save/2", {
@@ -83,19 +82,22 @@ export default function SignUp() {
                 autoComplete="fname"
                 name="firstName"
                 variant="outlined"
-                required
                 fullWidth
                 id="firstName"
                 label="First Name"
                 autoFocus
-                inputRef={register}
+                inputRef={register({
+                  required: { value: true, message: "Valor requerido" },
+                })}
               />
+              <div color="black">{errors?.firstName?.message}</div>
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 variant="outlined"
-                inputRef={register}
-                required
+                inputRef={register({
+                  required: { value: true, message: "Valor requerido" },
+                })}
                 fullWidth
                 id="lastName"
                 label="Last Name"
@@ -107,8 +109,9 @@ export default function SignUp() {
               <TextField
                 variant="outlined"
                 margin="normal"
-                inputRef={register}
-                required
+                inputRef={register({
+                  required: { value: true, message: "Valor requerido" },
+                })}
                 fullWidth
                 id="email"
                 label="Email Address"
@@ -120,26 +123,15 @@ export default function SignUp() {
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
-                inputRef={register}
-                required
+                inputRef={register({
+                  required: { value: true, message: "Valor requerido" },
+                })}
                 fullWidth
                 name="password"
                 label="Password"
                 type="password"
                 id="password"
                 autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    inputRef={register}
-                    value="allowExtraEmails"
-                    color="primary"
-                  />
-                }
-                label="I want to receive inspiration, marketing promotions and updates via email."
               />
             </Grid>
           </Grid>

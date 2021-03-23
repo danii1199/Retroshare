@@ -1,4 +1,4 @@
-import UserAPI from "../lib/UserAPI";
+import UserAPI from "../../lib/UserAPI";
 import { DataGrid } from "@material-ui/data-grid";
 
 const UserComponent = () => {

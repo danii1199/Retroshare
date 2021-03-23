@@ -1,19 +1,20 @@
-import {useEffect, useState}  from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ProductsAPI = () => {
-    const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState([]);
 
   useEffect(() => {
     obtenerDatos();
   }, []);
 
   const obtenerDatos = async () => {
-    const data = await fetch("http://localhost:8080/retroshare/pr-all");
-    const products = await data.json();
-    setProduct(products);
+    axios.get("http://localhost:8080/retroshare/pr-all").then((response) => {
+      const { data } = response;
+      setProduct(data);
+    });
   };
-
   return product;
-}
+};
 
 export default ProductsAPI;
