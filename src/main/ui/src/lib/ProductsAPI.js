@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import RetroshareService from "../Service/RetroshareService";
+
 
 const ProductsAPI = () => {
   const [product, setProduct] = useState([]);
@@ -9,7 +10,7 @@ const ProductsAPI = () => {
   }, []);
 
   const obtenerDatos = async () => {
-    axios.get("http://localhost:8080/retroshare/pr-all").then((response) => {
+    RetroshareService.getProduct().then((response) => {
       const { data } = response;
       setProduct(data);
     });

@@ -1,4 +1,5 @@
-import axios from "axios";
+import RetroshareService from "../Service/RetroshareService"
+
 import { useEffect, useState } from "react";
 
 const VideoGameAPI = () => {
@@ -9,7 +10,7 @@ const VideoGameAPI = () => {
   }, []);
 
   const obtenerDatos = async () => {
-    axios.get("http://localhost:8080/retroshare/g-all").then((response) => {
+    RetroshareService.getGame().then((response) => {
       const { data } = response;
       setGame(data);
     });

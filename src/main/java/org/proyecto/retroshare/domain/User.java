@@ -28,6 +28,7 @@ public class User {
 	private String lastName;
 	@Column(unique = true)
 	private String userName;
+	@Column(name = "password", nullable = false)
 	private String password;
 	private String sex;
 	private String address;

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import RetroshareService from "../Service/RetroshareService";
+
 
 const UserAPI = () => {
   const [user, setUser] = useState([]);
@@ -9,7 +10,7 @@ const UserAPI = () => {
   }, []);
 
   const obtenerDatos = async () => {
-    axios.get("http://localhost:8080/retroshare/all").then((response) => {
+    RetroshareService.getAll().then((response) => {
       const { data } = response;
       setUser(data);
     });

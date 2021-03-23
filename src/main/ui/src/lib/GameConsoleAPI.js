@@ -1,4 +1,4 @@
-import axios from "axios";
+import RetroshareService from "../Service/RetroshareService";
 import { useEffect, useState } from "react";
 
 const GameConsoleAPI = () => {
@@ -9,7 +9,7 @@ const GameConsoleAPI = () => {
   }, []);
 
   const obtenerDatos = async () => {
-    axios.get("http://localhost:8080/retroshare/gc-all").then((response) => {
+    RetroshareService.getGameConsole().then((response) => {
       const { data } = response;
       setGameConsole(data);
     });

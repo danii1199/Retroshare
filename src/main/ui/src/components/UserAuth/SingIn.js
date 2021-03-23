@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useForm } from "react-hook-form";
+import RetroshareService from "../../Service/RetroshareService";
 
 function Copyright() {
   return (
@@ -51,15 +52,8 @@ export default function SignIn() {
   const classes = useStyles();
   const { register, handleSubmit } = useForm();
 
-  const onSubmit = (data, e) => {
-    fetch("http://localhost:8080/retroshare/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    e.target.reset();
+  const onSubmit = (data) => {
+    RetroshareService.login(data);
   };
 
   return (
