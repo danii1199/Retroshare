@@ -200,5 +200,6 @@ public class User {
 	public void setProducts(Collection<Product> products) {
 		this.products = products;
 	}
+	
 
 }
