@@ -73,7 +73,6 @@ public class UserRestController {
 		return new ResponseEntity<User>(obj, HttpStatus.OK);
 	}
 	
-	
 
 	// Actualizar un ususario
 	@PostMapping(value = "update/{id}")
