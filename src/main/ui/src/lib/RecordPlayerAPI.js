@@ -1,4 +1,4 @@
-import axios from "axios";
+import RetroshareService from "../Service/RetroshareService";
 import { useEffect, useState } from "react";
 
 const RecordPlayerAPI = () => {
@@ -9,7 +9,7 @@ const RecordPlayerAPI = () => {
   }, []);
 
   const obtenerDatos = async () => {
-    axios.get("http://localhost:8080/retroshare/rp-all").then((response) => {
+    RetroshareService.getRecordPlayer().then((response) => {
       const { data } = response;
       setRecordPlayer(data);
     });

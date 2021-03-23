@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import RetroshareService from "../Service/RetroshareService"
 
 const VinylAPI = () => {
   const [vinyl, setVinyl] = useState([]);
@@ -9,7 +9,7 @@ const VinylAPI = () => {
   }, []);
 
   const obtenerDatos = async () => {
-    axios.get("http://localhost:8080/retroshare/v-all").then((response) => {
+    RetroshareService.getVinyl().then((response) => {
       const { data } = response;
       setVinyl(data);
     });

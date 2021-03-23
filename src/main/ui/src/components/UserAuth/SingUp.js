@@ -1,4 +1,3 @@
-import React from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,6 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useForm } from "react-hook-form";
+import RetroshareService from "../../Service/RetroshareService";
 
 function Copyright() {
   return (
@@ -52,13 +52,7 @@ export default function SignUp() {
   const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    fetch("http://localhost:8080/retroshare/save/2", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    RetroshareService.create(data);
   };
 
   return (

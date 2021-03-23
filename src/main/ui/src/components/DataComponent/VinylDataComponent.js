@@ -1,4 +1,3 @@
-import * as React from "react";
 import { DataGrid } from "@material-ui/data-grid";
 import VinylAPI from "../../lib/VinylAPI";
 
