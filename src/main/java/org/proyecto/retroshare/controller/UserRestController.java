@@ -147,6 +147,8 @@ public class UserRestController {
 					.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
 			if (authentication.isAuthenticated()) {
 				String email = user.getEmail();
+				User usuario=userRepository.findByEmail(user.getEmail());
+				jsonObject.put("id",usuario.getId());
 				jsonObject.put("name", authentication.getName());
 				jsonObject.put("authorities", authentication.getAuthorities());
 				jsonObject.put("token", tokenProvider.createToken(email, userRepository.findByEmail(email).getRole()));
