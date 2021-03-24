@@ -47,7 +47,7 @@ public class VinylRestController {
 	}
 
 	// GUARDAR NUEVO VINILO
-	@PostMapping(value = "/v-save/{idUser}/{idProductStatus}")
+	@PostMapping(value = "/vinyl/{idUser}/{idProductStatus}")
 	public ResponseEntity<Vinyl> save(@RequestBody Vinyl vinyl, @PathVariable Long idUser,
 			@PathVariable Long idProductStatus) {
 		User user = userRepository.getOne(idUser);

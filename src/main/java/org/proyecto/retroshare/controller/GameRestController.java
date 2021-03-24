@@ -48,7 +48,7 @@ public class GameRestController {
 	}
 
 	// GUARDAR NUEVO JUEGO
-	@PostMapping(value = "/g-save/{idUser}/{idProductStatus}")
+	@PostMapping(value = "/game/{idUser}/{idProductStatus}")
 	public ResponseEntity<Game> save(@RequestBody Game game, @PathVariable Long idUser,
 			@PathVariable Long idProductStatus) {
 
