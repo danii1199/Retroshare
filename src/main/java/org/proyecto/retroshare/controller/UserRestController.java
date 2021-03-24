@@ -151,6 +151,7 @@ public class UserRestController {
 				jsonObject.put("authorities", authentication.getAuthorities());
 				jsonObject.put("token", tokenProvider.createToken(email, userRepository.findByEmail(email).getRole()));
 				return new ResponseEntity<String>(jsonObject.toString(), HttpStatus.OK);
+				
 			}
 		} catch (JSONException e) {
 			try {

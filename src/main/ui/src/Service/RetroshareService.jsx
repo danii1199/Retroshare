@@ -31,15 +31,19 @@ const findByUserName = (userName) => {
 const getVinyl = () => {
   return http.get("/v-all");
 };
+
 const getGame = () => {
   return http.get("/g-all");
 };
+
 const getRecordPlayer = () => {
   return http.get("/rp-all");
 };
+
 const getGameConsole = () => {
   return http.get("/gc-all");
 };
+
 const getProduct = () => {
   return http.get("/pr-all");
 };
@@ -47,6 +51,11 @@ const getProduct = () => {
 const findByProductName = (productName) => {
   return http.get(`/pr-all?name=${productName}`);
 };
+
+const createProduct = (data, tproduct, idUser, idProductStatus) => {
+  return http.post(`/${tproduct}/${idUser}/${idProductStatus}`, data);
+};
+
 
 const services = {
   getAll,
@@ -61,7 +70,8 @@ const services = {
   getGameConsole,
   getRecordPlayer,
   getProduct,
-  findByProductName
+  findByProductName,
+  createProduct
 };
 
 export default services;
