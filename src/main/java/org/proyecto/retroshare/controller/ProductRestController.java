@@ -29,12 +29,12 @@ public class ProductRestController {
 	
 	// BORRAR UN JUEGO
 	@GetMapping(value = "/p-delete/{id}")
-	public ResponseEntity<Product> delete(@PathVariable Long id) {
+	public String delete(@PathVariable Long id) {
 		Product product = productRepository.getOne(id);
 		if (product != null) {
 			productRepository.delete(product);
 		}
 
-		return new ResponseEntity<Product>(product, HttpStatus.OK);
+		return "redirect:pr-all";
 	}
 }

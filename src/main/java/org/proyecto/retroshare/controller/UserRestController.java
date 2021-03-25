@@ -129,13 +129,12 @@ public class UserRestController {
 
 	// BORRAR UN USUARIO
 	@GetMapping(value = "/delete/{id}")
-	public ResponseEntity<User> delete(@PathVariable Long id) {
+	public String delete(@PathVariable Long id) {
 		User user = userRepository.getOne(id);
 		if (user != null) {
 			userRepository.delete(user);
 		}
-
-		return new ResponseEntity<User>(user, HttpStatus.OK);
+		return "redirect:all";
 	}
 	
 	@PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
