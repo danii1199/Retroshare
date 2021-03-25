@@ -7,12 +7,13 @@ import GameDataComponent from "./components/DataComponent/GameDataComponent";
 import GameConsoleDataComponent from "./components/DataComponent/GameConsoleDataComponent";
 import SingIn from "./components/UserAuth/SingIn";
 import SingUp from "./components/UserAuth/SingUp";
-import Step1 from "./components/Form/Step1";
-import Step2 from "./components/Form/Step2";
+import { Step1 } from "./components/ProductForm/Step1";
+import { Step2 } from "./components/ProductForm/Step2";
+import { Step3 } from "./components/ProductForm/Step3";
 import Products from "./components/Products/Products";
 import VinylDataComponent from "./components/DataComponent/VinylDataComponent";
 import RecordPlayerDataComponent from "./components/DataComponent/RecordPlayerDataComponent";
-import { Result } from "./components/Form/Result";
+import { Result } from "./components/ProductForm/Result";
 
 const App = () => {
   return (
@@ -35,15 +36,12 @@ const App = () => {
             component={RecordPlayerDataComponent}
           ></Route>
           <Route path="/vinyl" exact component={VinylDataComponent}></Route>
-
-         
           <Route path="/" exact component={Products}></Route>
           <Route path="/basket" exact></Route>
-        </Switch>
-        <Switch>
-        <Route path="/step1" exact component={Step1}></Route>
-          <Route path="/step2"  component={Step2}></Route>
-          <Route path="/result"  component={Result}></Route>
+          <Route path="/step1" exact component={Step1}></Route>
+          <Route path="/step2" component={Step2}></Route>
+          <Route path="/step3" component={Step3}></Route>
+          <Route path="/result" component={Result}></Route>
         </Switch>
       </Container>
     </Router>

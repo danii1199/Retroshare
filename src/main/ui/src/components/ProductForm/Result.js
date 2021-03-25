@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Swal from "sweetalert2";
 import { makeStyles } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
-import { useData } from "./DataContext";
-import { MainContainer } from "./MainContainer";
-import { PrimaryButton } from "./PrimaryButton";
+import { MainContainer } from "./components/MainContainer";
+import { PrimaryButton } from "./components/PrimaryButton";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -18,6 +17,9 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InsertDriveFile from "@material-ui/icons/InsertDriveFile";
+import { useData } from "./DataContext"
+import RetroshareService from "../../Service/RetroshareService";
+
 
 const useStyles = makeStyles({
   root: {
@@ -45,18 +47,19 @@ export const Result = () => {
     }
 
     entries.forEach((entry) => {
-      formData.append(entry[0], entry[1]);
+      formData.append(entry[0], entry[1]);  
     });
 
-    const res = await fetch("http://localhost:4000/", {
-      method: "POST",
-      body: formData,
-    });
+    const res = RetroshareService.createProduct(data, data.productType,1,data.status)
 
     if (res.status === 200) {
       Swal.fire("Great job!", "You've passed the challenge!", "success");
       setSuccess(true);
     }
+  };
+
+  if (success) {
+    return <h1>Regisrtado</h1>;
   };
 
   
@@ -110,3 +113,4 @@ export const Result = () => {
     </>
   );
 };
+
