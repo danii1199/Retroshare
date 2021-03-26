@@ -36,14 +36,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors();
 		http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-<<<<<<< HEAD
-				.authorizeRequests().antMatchers("/retroshare/login", "/retroshare/all", "/retroshare/pr-all", "/retroshare/pr/**", "/retroshare/save/2", "/retroshare/v-all").permitAll().anyRequest().authenticated();
-=======
-				.authorizeRequests().antMatchers("/retroshare/login", ("/retroshare/save/2"),"/retroshare/pr-all", "/retroshare/v-all","/retroshare/g-all").permitAll()
+				.authorizeRequests().antMatchers("/retroshare/login", "/retroshare/all", "/retroshare/pr-all", "/retroshare/pr/**", "/retroshare/save/2", "/retroshare/v-all", "/retroshare/v-all","/retroshare/g-all").permitAll()
 				.antMatchers("/retroshare/all").hasAnyRole("ADMIN")
 				.antMatchers("/retroshare/delete/**").hasAnyRole("USER")
 				.anyRequest().authenticated();
->>>>>>> d92204b0fa05f8967963d986bf9e854185dcdf89
 		http.apply(new JwtTokenConfigurer(tokenProvider));
 	}
 
