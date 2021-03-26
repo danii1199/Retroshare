@@ -15,6 +15,7 @@ import VinylDataComponent from "./components/DataComponent/VinylDataComponent";
 import RecordPlayerDataComponent from "./components/DataComponent/RecordPlayerDataComponent";
 import { Result } from "./components/ProductForm/Result";
 
+
 const App = () => {
   return (
     <Router>

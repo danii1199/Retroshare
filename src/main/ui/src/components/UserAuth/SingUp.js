@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useForm } from "react-hook-form";
-import RetroshareService from "../../Service/RetroshareService";
+import AuthService from "../../Service/AuthService";
 
 function Copyright() {
   return (
@@ -51,7 +51,7 @@ export default function SignUp() {
   const { register, errors, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    RetroshareService.create(data);
+    AuthService.register(data);
   };
 
   return (
