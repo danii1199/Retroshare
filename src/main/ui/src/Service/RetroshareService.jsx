@@ -43,6 +43,9 @@ const getGameConsole = () => {
 const getProduct = () => {
   return http.get("/pr-all");
 };
+const getOneProduct = (id) => {
+  return http.get(`/pr/${id}`);
+};
 
 const findByProductName = (productName) => {
   return http.get(`/pr-all?name=${productName}`);

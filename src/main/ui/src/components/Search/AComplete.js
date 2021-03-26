@@ -3,6 +3,7 @@ import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import axios from 'axios';  
 import {  fade, makeStyles, withStyles } from "@material-ui/core/styles";
+import { Link } from '@material-ui/core';
 const useStyles = makeStyles((theme) => ({
 
     searchIcon: {
@@ -73,12 +74,24 @@ export class AComplete extends Component {
                 return (  
                     <div className={classes.search} >
                            
-                          <div className={classes.searchIcon}> 
+                        <div className={classes.searchIcon}> 
+                         
                              <Autocomplete 
                                 className="pading"  
                                
                                 options={this.state.ProductData}  
-                                
+                                renderOption={(option) => (
+                                  <React.Fragment>
+                                    <span
+                                      style={{ cursor: "pointer" }}
+                                      onClick={() => {
+                                        window.location.href =`pr/${option.id}`;
+                                      }}
+                                    >
+                                    ·{option.name}
+                                    </span>
+                                  </React.Fragment>
+                                )}
                                 getOptionLabel={option => option.name}     
                                 getOptionId={option =>option.id}                            
                                 style={{ width: 200 }}                                      
@@ -98,7 +111,8 @@ export class AComplete extends Component {
                                     )}  
 
                               /> 
-                          </div>
+                          
+                        </div>
                                 
                            
                     </div>  

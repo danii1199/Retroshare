@@ -1,8 +1,10 @@
 package org.proyecto.retroshare.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.proyecto.retroshare.domain.Product;
+import org.proyecto.retroshare.exception.ProductNotFoundException;
 import org.proyecto.retroshare.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,13 @@ public class ProductRestController {
 	@GetMapping(value = "/pr-all")
 	public List<Product> findAll() {
 		return productRepository.findAll();
+	}
+	@GetMapping(value = "/pr/{id}")
+	public ResponseEntity<Product> getById(@PathVariable("id")  Long id) {
+        Product prd = productRepository.findById(id)
+                                    .orElseThrow(()->new ProductNotFoundException("No Product with ID : "+id));
+        return ResponseEntity.ok().body(prd);
+			     
 	}
 	
 	// BORRAR UN JUEGO
