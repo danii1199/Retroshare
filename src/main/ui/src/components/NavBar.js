@@ -160,20 +160,21 @@ const Header = (props) => {
             Usuarios
           </Button>
           <Button color="inherit" component={Link} to="/videogames">
-            Video-Games
+            Games
           </Button>
           <Button color="inherit" component={Link} to="/gameconsole">
-            Game Console
+            G.Console
           </Button>
           <Button color="inherit" component={Link} to="/rplayer">
-            Record Player
+            R.Player
           </Button>
           <Button color="inherit" component={Link} to="/vinyl">
             Vinyl
           </Button>
           <Button color="inherit" component={Link} to="/step1">
-            Step1
+            New Product
           </Button>
+          
           
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>

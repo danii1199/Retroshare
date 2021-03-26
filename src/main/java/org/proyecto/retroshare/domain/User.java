@@ -49,7 +49,7 @@ public class User {
 
 	@JsonIgnoreProperties(value = "users", allowSetters = true)
 	@JoinColumn(name = "role_id")
-	@ManyToOne(cascade = CascadeType.ALL, optional = true)
+	@ManyToOne(cascade = CascadeType.PERSIST, optional = true)
 	private Role role;
 
 	public User(String firstName, String lastName, String userName, String password, String sex, String address,

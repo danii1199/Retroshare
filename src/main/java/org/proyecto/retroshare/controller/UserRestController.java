@@ -129,13 +129,12 @@ public class UserRestController {
 
 	// BORRAR UN USUARIO
 	@GetMapping(value = "/delete/{id}")
-	public ResponseEntity<User> delete(@PathVariable Long id) {
+	public String delete(@PathVariable Long id) {
 		User user = userRepository.getOne(id);
 		if (user != null) {
 			userRepository.delete(user);
 		}
-
-		return new ResponseEntity<User>(user, HttpStatus.OK);
+		return "redirect:all";
 	}
 	
 	@PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -147,10 +146,13 @@ public class UserRestController {
 					.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
 			if (authentication.isAuthenticated()) {
 				String email = user.getEmail();
+				User usuario=userRepository.findByEmail(user.getEmail());
+				jsonObject.put("id",usuario.getId());
 				jsonObject.put("name", authentication.getName());
 				jsonObject.put("authorities", authentication.getAuthorities());
 				jsonObject.put("token", tokenProvider.createToken(email, userRepository.findByEmail(email).getRole()));
 				return new ResponseEntity<String>(jsonObject.toString(), HttpStatus.OK);
+				
 			}
 		} catch (JSONException e) {
 			try {

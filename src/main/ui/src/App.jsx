@@ -7,13 +7,18 @@ import GameDataComponent from "./components/DataComponent/GameDataComponent";
 import GameConsoleDataComponent from "./components/DataComponent/GameConsoleDataComponent";
 import SingIn from "./components/UserAuth/SingIn";
 import SingUp from "./components/UserAuth/SingUp";
-import Step1 from "./components/Form/Step1";
-import Step2 from "./components/Form/Step2";
+import { Step1 } from "./components/ProductForm/Step1";
+import { Step2 } from "./components/ProductForm/Step2";
+import { Step3 } from "./components/ProductForm/Step3";
 import Products from "./components/Products/Products";
 import VinylDataComponent from "./components/DataComponent/VinylDataComponent";
 import RecordPlayerDataComponent from "./components/DataComponent/RecordPlayerDataComponent";
+<<<<<<< HEAD
 import { Result } from "./components/Form/Result";
 import ProductById from "./components/ProductView/ProductView";
+=======
+import { Result } from "./components/ProductForm/Result";
+>>>>>>> d92204b0fa05f8967963d986bf9e854185dcdf89
 
 const App = () => {
   //const addProduct =async(productId)=>{
@@ -40,16 +45,21 @@ const App = () => {
             component={RecordPlayerDataComponent}
           ></Route>
           <Route path="/vinyl" exact component={VinylDataComponent}></Route>
-
-         
           <Route path="/" exact component={Products}></Route>
           <Route path="/basket" exact></Route>
+<<<<<<< HEAD
         </Switch>
         <Switch>
         <Route path="/step1" exact component={Step1}></Route>
           <Route path="/step2"  component={Step2}></Route>
           <Route path="/result"  component={Result}></Route>
           <Route path="/pr/:id" ><ProductById/></Route>
+=======
+          <Route path="/step1" exact component={Step1}></Route>
+          <Route path="/step2" component={Step2}></Route>
+          <Route path="/step3" component={Step3}></Route>
+          <Route path="/result" component={Result}></Route>
+>>>>>>> d92204b0fa05f8967963d986bf9e854185dcdf89
         </Switch>
       </Container>
     </Router>

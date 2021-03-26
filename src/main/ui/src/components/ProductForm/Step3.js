@@ -1,16 +1,16 @@
-import React from "react";
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useData } from "./DataContext";
-import { MainContainer } from "./MainContainer";
-import { FileInput } from "./FileInput";
-import { PrimaryButton } from "./PrimaryButton";
+import { MainContainer } from "./components/MainContainer";
+import { FileInput } from "./components/FileInput";
+import { PrimaryButton } from "./components/PrimaryButton";
 import Typography from "@material-ui/core/Typography";
-import { Form } from "./Form";
+import { Form } from "./components/Form";
+import { useData } from "./DataContext"
 
-export const Step2 = () => {
+
+export const Step3 = () => {
   const history = useHistory();
-  const {  setValues, data } = useData();
+  const { data, setValues } = useData();
   const { control, handleSubmit } = useForm({
     defaultValues: {
       files: data.files,
@@ -25,7 +25,7 @@ export const Step2 = () => {
   return (
     <MainContainer>
       <Typography component="h2" variant="h5">
-        🦄 Step 2
+        🦄 Step 3
       </Typography>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <FileInput name="files" control={control} />
@@ -33,5 +33,5 @@ export const Step2 = () => {
       </Form>
     </MainContainer>
   );
-}
-export default Step2;
+};
+

@@ -29,7 +29,6 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    color: "#282c34",
     marginTop: theme.spacing(8),
     display: "flex",
     flexDirection: "column",
