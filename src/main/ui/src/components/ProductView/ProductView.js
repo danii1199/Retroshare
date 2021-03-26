@@ -1,6 +1,5 @@
 import { Button, Container, Grid, Typography } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons';
-import { render } from '@testing-library/react';
 import * as React from 'react'
 import './StyleProductView.css'
 

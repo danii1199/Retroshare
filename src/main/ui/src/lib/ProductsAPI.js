@@ -10,7 +10,7 @@ const ProductsAPI = () => {
   }, []);
 
   const obtenerDatos = async () => {
-    RetroshareService.getProduct().then((response) => {
+    RetroshareService.getProducts().then((response) => {
       const { data } = response;
       setProduct(data);
     });

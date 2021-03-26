@@ -40,7 +40,7 @@ const getGameConsole = () => {
   return http.get("/gc-all");
 };
 
-const getProduct = () => {
+const getProducts = () => {
   return http.get("/pr-all");
 };
 const getOneProduct = (id) => {
@@ -65,10 +65,11 @@ const services = {
   getGame,
   getGameConsole,
   getRecordPlayer,
-  getProduct,
+  getProducts,
   findByProductName,
   createProduct,
-  findByEmail
+  findByEmail,
+  getOneProduct
 };
 
 export default services;

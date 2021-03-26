@@ -1,6 +1,6 @@
 import React, { Component , useState} from 'react'
 import TextField from '@material-ui/core/TextField';  
-import { Autocomplete } from '@material-ui/lab';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import axios from 'axios';  
 import {  fade, makeStyles, withStyles } from "@material-ui/core/styles";
 import { Link } from '@material-ui/core';
@@ -50,6 +50,23 @@ const useStyles = makeStyles((theme) => ({
 }))
 
 export class AComplete extends Component {  
+
+
+
+  /*const [ProductData, setSearchData] = useState();
+
+  RetroshareService.getProducts().then((response) => {
+    setSearchData({
+      ProductData: response,
+    });
+  });
+
+  useEffect(() => {
+    RetroshareService.getProducts().then((response) => {
+      setSearchData(response);
+    });
+  }, []);*/
+
         constructor(props) {  
                 super(props)  
                 
