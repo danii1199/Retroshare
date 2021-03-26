@@ -13,10 +13,15 @@ import { Step3 } from "./components/ProductForm/Step3";
 import Products from "./components/Products/Products";
 import VinylDataComponent from "./components/DataComponent/VinylDataComponent";
 import RecordPlayerDataComponent from "./components/DataComponent/RecordPlayerDataComponent";
+import ProductById from "./components/ProductView/ProductView";
 import { Result } from "./components/ProductForm/Result";
 
 
 const App = () => {
+  //const addProduct =async(productId)=>{
+    //const response = await commerce.products.list();
+    //setBasketData(response);
+  //}
   return (
     <Router>
       <Container>
@@ -39,10 +44,12 @@ const App = () => {
           <Route path="/vinyl" exact component={VinylDataComponent}></Route>
           <Route path="/" exact component={Products}></Route>
           <Route path="/basket" exact></Route>
+          <Route path="/pr/:id" ><ProductById/></Route>
           <Route path="/step1" exact component={Step1}></Route>
           <Route path="/step2" component={Step2}></Route>
           <Route path="/step3" component={Step3}></Route>
           <Route path="/result" component={Result}></Route>
+
         </Switch>
       </Container>
     </Router>

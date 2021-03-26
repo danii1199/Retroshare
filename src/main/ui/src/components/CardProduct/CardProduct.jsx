@@ -6,6 +6,7 @@ import {
     Typography,
     CardActionArea,
     Button,
+    Link,
   } from "@material-ui/core";
   import { ShoppingCart } from "@material-ui/icons";
   import "./styleCard.css";
@@ -20,37 +21,39 @@ const CardProduct = ({
 }) => {
   return (
     <Card className="custom-card" >
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt={product.image}
-          height="260"
-          className="card-image"
-          image={product.image}
-          title={product.name}
-        />
-        <CardContent className="content">
-          <Typography
-            align="left"
-            className="title"
-            gutterBottom
-            variant="h5"
-            component="h2"
-          >
-            {product.name}
-          </Typography>
-          <Typography
-            align="right"
-            className="status"
-            gutterBottom
-            variant="h5"
-            component="h2"
-            color="secondary"
-            
-          >{product.productStatus?.status}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
+      <Link to={`pr/${product.id}`}>
+        <CardActionArea>
+          <CardMedia
+            component="img"
+            alt={product.image}
+            height="260"
+            className="card-image"
+            image={product.image}
+            title={product.name}
+          />
+          <CardContent className="content">
+            <Typography
+              align="left"
+              className="title"
+              gutterBottom
+              variant="h5"
+              component="h2"
+            >
+              {product.name}
+            </Typography>
+            <Typography
+              align="right"
+              className="status"
+              gutterBottom
+              variant="h5"
+              component="h2"
+              color="secondary"
+              
+            >{product.productStatus?.status}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+       </Link>
       {basket && (
         <CardActions>
           <Typography
@@ -62,6 +65,7 @@ const CardProduct = ({
             {product.price.formatted_with_symbol}
           </Typography>
         </CardActions>
+       
       )}
       <CardActions className="actions-content" >
         {!basket && (
