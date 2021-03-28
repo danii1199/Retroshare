@@ -13,12 +13,9 @@ import { Step3 } from "./components/ProductForm/Step3";
 import Products from "./components/Products/Products";
 import VinylDataComponent from "./components/DataComponent/VinylDataComponent";
 import RecordPlayerDataComponent from "./components/DataComponent/RecordPlayerDataComponent";
-<<<<<<< HEAD
-import { Result } from "./components/Form/Result";
-import ProductById from "./components/ProductView/ProductView";
-=======
 import { Result } from "./components/ProductForm/Result";
->>>>>>> d92204b0fa05f8967963d986bf9e854185dcdf89
+import ProductView from "./components/ProductView/ProductView";
+
 
 const App = () => {
   //const addProduct =async(productId)=>{
@@ -47,19 +44,12 @@ const App = () => {
           <Route path="/vinyl" exact component={VinylDataComponent}></Route>
           <Route path="/" exact component={Products}></Route>
           <Route path="/basket" exact></Route>
-<<<<<<< HEAD
-        </Switch>
-        <Switch>
-        <Route path="/step1" exact component={Step1}></Route>
-          <Route path="/step2"  component={Step2}></Route>
-          <Route path="/result"  component={Result}></Route>
-          <Route path="/pr/:id" ><ProductById/></Route>
-=======
+          <Route path="/pr/:id" ><ProductView/></Route>
           <Route path="/step1" exact component={Step1}></Route>
           <Route path="/step2" component={Step2}></Route>
           <Route path="/step3" component={Step3}></Route>
           <Route path="/result" component={Result}></Route>
->>>>>>> d92204b0fa05f8967963d986bf9e854185dcdf89
+
         </Switch>
       </Container>
     </Router>

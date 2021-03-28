@@ -8,6 +8,7 @@ import {
     Button,
     Link,
   } from "@material-ui/core";
+  import { Link as RouterLink } from 'react-router-dom'
   import { ShoppingCart } from "@material-ui/icons";
   import "./styleCard.css";
   import EuroSymbolIcon from '@material-ui/icons/EuroSymbol';
@@ -21,7 +22,7 @@ const CardProduct = ({
 }) => {
   return (
     <Card className="custom-card" >
-      <Link to={`pr/${product.id}`}>
+      <Link underline='none' component={RouterLink} to={`pr/${product.id}`}>
         <CardActionArea>
           <CardMedia
             component="img"

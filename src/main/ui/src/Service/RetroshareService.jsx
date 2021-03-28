@@ -73,6 +73,7 @@ const services = {
   getGameConsole,
   getRecordPlayer,
   getProduct,
+  getOneProduct,
   findByProductName,
   createProduct
 };

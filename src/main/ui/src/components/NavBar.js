@@ -14,8 +14,9 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import AComplete from "./Search/AComplete";
-import { Hidden } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
+import AuComplete from "./Search/AuComplete";
+import { Grid, Hidden } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -148,14 +149,8 @@ const Header = (props) => {
             />{" "}
             RetroShare
           </IconButton>
-         
           
-            
-              <AComplete/>
-       
-            
-         
-          
+          <AuComplete/>
           <Button color="inherit" component={Link} to="/users">
             Usuarios
           </Button>
