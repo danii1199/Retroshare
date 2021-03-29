@@ -22,8 +22,8 @@ const ProductView = () => {
     <>
       <div>
         <Container id="products">
-          <Grid container>
-            <Grid key={product.id} item>
+          <Grid container spacing={4}>
+            <Grid key={product.id} item xs={12} sm={6} md={4}>
               <Product product={product} />
               <Card />
             </Grid>

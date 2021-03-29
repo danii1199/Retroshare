@@ -22,7 +22,7 @@ const CardProduct = ({
 }) => {
   return (
     <Card className="custom-card" >
-      <Link underline='none' component={RouterLink} to={`pr/${product.id}`}>
+      <Link color="inherit" underline='none' component={RouterLink} to={`pr/${product.id}`}>
         <CardActionArea>
           <CardMedia
             component="img"

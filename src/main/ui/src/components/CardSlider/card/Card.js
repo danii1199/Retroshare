@@ -38,7 +38,7 @@ const Cards = (basket, addProduct) => {
                     alt={product.image}
                     height="260"
                     className="card-image"
-                    image={product.image}
+                    image={process.env.PUBLIC_URL + "/" + product.image}
                     title={product.name}
                   />
                   <CardContent className="content">

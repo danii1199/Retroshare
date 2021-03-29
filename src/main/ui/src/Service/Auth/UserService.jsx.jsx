@@ -1,4 +1,4 @@
-import http from "../Http-common";
+import http from "../../Http-common";
 
 import AuthHeader from "./AuthHeader";
 

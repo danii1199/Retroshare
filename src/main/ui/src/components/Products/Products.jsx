@@ -7,8 +7,6 @@ import "./style.css";
 const Products = () => {
   return (
     <>
-      <div></div>
-
       <div>
         <Container id="products">
           <Grid container spacing={4}>
