@@ -3,26 +3,16 @@ import { makeStyles, fade } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import SearchIcon from "@material-ui/icons/Search";
-import  { useEffect, useState } from "react";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-<<<<<<< HEAD
-import SearchIcon from "@material-ui/icons/Search";
 import AuComplete from "./Search/AuComplete";
-import { Grid, Hidden } from "@material-ui/core";
-=======
-import RetroshareService from "../Service/RetroshareService";
-
->>>>>>> 50c12f59f23d0fff2dca665aefc555ee00b38d4a
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -193,26 +183,7 @@ const Header = (props) => {
             />{" "}
             RetroShare
           </IconButton>
-<<<<<<< HEAD
-=======
-
-          <div className={classes.search}>
-            <div className={classes.searchIcon}>
-            <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            ></InputBase>
-          </div>
-
->>>>>>> 50c12f59f23d0fff2dca665aefc555ee00b38d4a
-          
-          <AuComplete/>
+          <AuComplete />
           <Button color="inherit" component={Link} to="/users">
             Usuarios
           </Button>

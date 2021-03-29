@@ -65,16 +65,11 @@ const services = {
   getGame,
   getGameConsole,
   getRecordPlayer,
-<<<<<<< HEAD
-  getProduct,
   getOneProduct,
-=======
   getProducts,
->>>>>>> 50c12f59f23d0fff2dca665aefc555ee00b38d4a
   findByProductName,
   createProduct,
   findByEmail,
-  getOneProduct
 };
 
 export default services;
