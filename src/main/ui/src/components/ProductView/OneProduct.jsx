@@ -1,6 +1,8 @@
-import { Button, Container, Grid, Typography } from "@material-ui/core";
+import { Card, Button, Container, Grid, Typography, CardMedia} from "@material-ui/core";
 import { ShoppingCart } from "@material-ui/icons";
 import "./StyleProductView.css";
+
+
 const createMarkup = (text) => {
   return { __html: text };
 };
@@ -15,13 +17,16 @@ const OneProduct = ({
     <Container className="product-view">
       <Grid container spacing={4}>
         <Grid item xs={12} md={8} className="image-wrapper">
-          <img
-            // onLoad={()=>{
-            // setLoading(false);
-            //}}
-            src={product.image}
-            alt={product.name}
+        <Card className="custom-card" >
+          <CardMedia
+            component="img"
+            alt={product.image}
+            height="300"
+            className="card-image"
+            image={process.env.PUBLIC_URL + "/" + product.image}
+            title={product.name}
           />
+          </Card>
         </Grid>
         <Grid item xs={12} md={4} className="text">
           <Typography variant="h2">{product.name}</Typography>
