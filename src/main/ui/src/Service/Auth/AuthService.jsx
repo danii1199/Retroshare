@@ -1,4 +1,4 @@
-import http from "../Http-common";
+import http from "../../Http-common";
 
 const register = (data) => {
   return http.post("/save/2", data);
@@ -7,7 +7,9 @@ const register = (data) => {
 const login = async (data) => {
   return http.post("/login", data).then((response) => {
     let token = response.data.token;
+    let authorization = response.data.authorities
     localStorage.setItem("userLoged", token);
+    localStorage.setItem("authorization", authorization)
   });
 };
 
