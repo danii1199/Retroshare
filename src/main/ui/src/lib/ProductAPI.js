@@ -2,16 +2,18 @@ import { useEffect, useState } from "react";
 import RetroshareService from "../Service/RetroshareService";
 
 
-const ProductsAPI = () => {
+const ProductsAPI =() => {
   const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    obtenerDatos();
+    const id=(window.location.pathname.split("/")[2]);
+    obtenerDatos(id);
   }, []);
 
-  const obtenerDatos = async () => {
-    RetroshareService.getProducts().then((response) => {
-      const { data } = response;
+  const obtenerDatos = async (id) => {
+    console.log(id)
+    RetroshareService.getOneProduct(id).then((response) => {
+      const {data}   = response;
       setProduct(data);
     });
   };

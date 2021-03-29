@@ -12,7 +12,8 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useForm } from "react-hook-form";
-import RetroshareService from "../../Service/RetroshareService";
+import AuthService from "../../Service/Auth/AuthService";
+import  { isEmail } from "validator"
 
 function Copyright() {
   return (
@@ -25,6 +26,16 @@ function Copyright() {
       {"."}
     </Typography>
   );
+}
+
+const emailVer = value => {
+  if (!isEmail(value)) {
+    return (
+      <div className = "alert alert-danger" role="alert">
+        This is not a valid email.
+      </div>
+    )
+  }
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -47,12 +58,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function SingIn() {
   const classes = useStyles();
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    RetroshareService.login(data);
+    AuthService.login(data);
   };
 
   return (
@@ -63,7 +74,7 @@ export default function SignIn() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign in
+          Sing in
         </Typography>
         <form
           className={classes.form}
@@ -75,6 +86,7 @@ export default function SignIn() {
             margin="normal"
             inputRef={register({
               required: { value: true, message: "required field" },
+              
             })}
             fullWidth
             id="email"
@@ -82,6 +94,7 @@ export default function SignIn() {
             name="email"
             autoComplete="email"
             autoFocus
+            validations={[emailVer]}
           />
           <TextField
             variant="outlined"
@@ -113,7 +126,7 @@ export default function SignIn() {
             color="primary"
             className={classes.submit}
           >
-            Sign In
+            Sing In
           </Button>
           <Grid container>
             <Grid item xs>
@@ -123,7 +136,7 @@ export default function SignIn() {
             </Grid>
             <Grid item>
               <Link href="/singup" variant="body2">
-                {"Don't have an account? Sign Up"}
+                {"Don't have an account? Sing Up"}
               </Link>
             </Grid>
           </Grid>
@@ -134,4 +147,5 @@ export default function SignIn() {
       </Box>
     </Container>
   );
+
 }

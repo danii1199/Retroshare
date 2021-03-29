@@ -1,4 +1,3 @@
-
 package org.proyecto.retroshare.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +35,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors();
 		http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-				.authorizeRequests().antMatchers("/retroshare/login", ("/retroshare/save/2"), "/retroshare/v-all","/retroshare/g-all").permitAll()
+				.authorizeRequests().antMatchers("/retroshare/login", "/retroshare/save/2", "/retroshare/v-all","/retroshare/g-all").permitAll()
 				.antMatchers("/retroshare/all").hasAnyRole("ADMIN")
 				.antMatchers("/retroshare/delete/**","/retroshare/pr-all").hasAnyRole("USER")
 				.anyRequest().authenticated();

@@ -11,9 +11,11 @@ import { Step1 } from "./components/ProductForm/Step1";
 import { Step2 } from "./components/ProductForm/Step2";
 import { Step3 } from "./components/ProductForm/Step3";
 import Products from "./components/Products/Products";
+import { Result } from "./components/ProductForm/Result";
+import ProductView from "./components/ProductView/ProductView";
+import ProductById from "./components/ProductView/ProductView";
 import VinylDataComponent from "./components/DataComponent/VinylDataComponent";
 import RecordPlayerDataComponent from "./components/DataComponent/RecordPlayerDataComponent";
-import { Result } from "./components/ProductForm/Result";
 
 const App = () => {
   return (
@@ -38,6 +40,12 @@ const App = () => {
           <Route path="/vinyl" exact component={VinylDataComponent}></Route>
           <Route path="/" exact component={Products}></Route>
           <Route path="/basket" exact></Route>
+          <Route path="/pr/:id">
+            <ProductView />
+          </Route>
+          <Route path="/pr/:id">
+            <ProductById />
+          </Route>
           <Route path="/step1" exact component={Step1}></Route>
           <Route path="/step2" component={Step2}></Route>
           <Route path="/step3" component={Step3}></Route>

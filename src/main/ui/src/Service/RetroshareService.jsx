@@ -8,14 +8,6 @@ const get = (id) => {
   return http.get(`/find/${id}`);
 };
 
-const create = (data) => {
-  return http.post("/save/2", data);
-};
-
-const login = (data) => {
-  return http.post("/login", data);
-};
-
 const update = (id, data) => {
   return http.put(`/update/${id}`, data);
 };
@@ -26,6 +18,10 @@ const remove = (id) => {
 
 const findByUserName = (userName) => {
   return http.get(`/all?userName=${userName}`);
+};
+
+const findByEmail = (email) => {
+  return http.get(`/all?email=${email}`);
 };
 
 const getVinyl = () => {
@@ -44,8 +40,11 @@ const getGameConsole = () => {
   return http.get("/gc-all");
 };
 
-const getProduct = () => {
+const getProducts = () => {
   return http.get("/pr-all");
+};
+const getOneProduct = (id) => {
+  return http.get(`/pr/${id}`);
 };
 
 const findByProductName = (productName) => {
@@ -56,22 +55,21 @@ const createProduct = (data, tproduct, idUser, idProductStatus) => {
   return http.post(`/${tproduct}/${idUser}/${idProductStatus}`, data);
 };
 
-
 const services = {
   getAll,
   get,
-  create,
   update,
   remove,
   findByUserName,
-  login,
   getVinyl,
   getGame,
   getGameConsole,
   getRecordPlayer,
-  getProduct,
+  getOneProduct,
+  getProducts,
   findByProductName,
-  createProduct
+  createProduct,
+  findByEmail,
 };
 
 export default services;

@@ -1,0 +1,32 @@
+.au-cp{
+    color: white;
+    border-color: white;
+
+}
+.MuiAutocomplete-root{ color: white;
+    border-color: white;}
+.MuiFormControl-root{
+    border-color: white;
+    color: white;
+} 
+.MuiTextField-root{
+    border-color: white;
+    color: white;
+}
+.MuiFormLabel-root{
+    color: white;
+    border-color: white;
+}
+.MuiInputBase-root{ color: white;
+    border-color: white;}
+.MuiInputBase-input{ color: white;
+    border-color: white;} 
+.MuiOutlinedInput-input{ color: white;
+    border-color: white;} 
+.MuiAutocomplete-input { color: white;
+    border-color: white;}
+.MuiAutocomplete-inputFocused { color: white;
+    border-color: white;}
+.MuiInputBase-inputAdornedStart { color: white;
+    border-color: white;}
+
