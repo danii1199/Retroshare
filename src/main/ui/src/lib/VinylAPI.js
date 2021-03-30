@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RetroshareService from "../Service/RetroshareService"
+import RetroshareService from "../Service/RetroshareService";
 
 const VinylAPI = () => {
   const [vinyl, setVinyl] = useState([]);

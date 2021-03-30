@@ -7,9 +7,8 @@ const register = (data) => {
 const login = async (data) => {
   return http.post("/login", data).then((response) => {
     let token = response.data.token;
-    let authorization = response.data.authorities
     localStorage.setItem("userLoged", token);
-    localStorage.setItem("authorization", authorization)
+    
   });
 };
 

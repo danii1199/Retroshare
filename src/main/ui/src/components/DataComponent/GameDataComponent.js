@@ -16,7 +16,7 @@ const GameComponent = () => {
       valueFormatter: (game) => game.row?.productStatus?.status,
     },
     {
-      field: "firstName",
+      field: "userName",
       headerName: "Owner user",
       width: 130,
       valueFormatter: (game) => game.row?.user?.userName,

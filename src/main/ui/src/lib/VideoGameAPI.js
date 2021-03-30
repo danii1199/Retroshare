@@ -1,4 +1,4 @@
-import RetroshareService from "../Service/RetroshareService"
+import RetroshareService from "../Service/RetroshareService";
 
 import { useEffect, useState } from "react";
 
