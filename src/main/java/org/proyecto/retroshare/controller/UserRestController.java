@@ -47,7 +47,7 @@ public class UserRestController {
 
 	@Autowired
 	private RoleRepository roleRepository;
-	
+
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
@@ -74,8 +74,6 @@ public class UserRestController {
 		String pwd = user.getPassword();
 		String pwdEncript = new BCryptPasswordEncoder().encode(pwd);
 		user.setPassword(pwdEncript);
-		
-		
 
 		Role role = roleRepository.findById(idRole)
 				.orElseThrow(() -> new ResourceNotFoundException("No existe el rol" + idRole));
@@ -85,11 +83,11 @@ public class UserRestController {
 
 		return new ResponseEntity<User>(obj, HttpStatus.OK);
 	}
-	
 
 	// Actualizar un ususario
 	@PostMapping(value = "update/{id}")
-	public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user,@RequestPart(name="file",required = false) MultipartFile file) throws IOException {
+	public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user,
+			@RequestPart(name = "file", required = false) MultipartFile file) throws IOException {
 
 		User userUpdate = userRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("No existe el usuario" + id));
@@ -136,7 +134,7 @@ public class UserRestController {
 		}
 		return "redirect:all";
 	}
-	
+
 	@PostMapping(value = "/login", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public ResponseEntity<String> authenticate(@RequestBody User user) {
 		log.info("UserResourceImpl : authenticate");
@@ -146,13 +144,13 @@ public class UserRestController {
 					.authenticate(new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword()));
 			if (authentication.isAuthenticated()) {
 				String email = user.getEmail();
-				User usuario=userRepository.findByEmail(user.getEmail());
-				jsonObject.put("id",usuario.getId());
+				User usuario = userRepository.findByEmail(user.getEmail());
+				jsonObject.put("id", usuario.getId());
 				jsonObject.put("name", authentication.getName());
 				jsonObject.put("authorities", authentication.getAuthorities());
 				jsonObject.put("token", tokenProvider.createToken(email, userRepository.findByEmail(email).getRole()));
 				return new ResponseEntity<String>(jsonObject.toString(), HttpStatus.OK);
-				
+
 			}
 		} catch (JSONException e) {
 			try {

@@ -13,7 +13,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useForm } from "react-hook-form";
 import AuthService from "../../Service/Auth/AuthService";
-import  { isEmail } from "validator"
+import { isEmail } from "validator";
+import { useHistory } from "react-router-dom";
+import { useData } from "../ProductForm/DataContext";
 
 function Copyright() {
   return (
@@ -28,15 +30,15 @@ function Copyright() {
   );
 }
 
-const emailVer = value => {
+const emailVer = (value) => {
   if (!isEmail(value)) {
     return (
-      <div className = "alert alert-danger" role="alert">
+      <div className="alert alert-danger" role="alert">
         This is not a valid email.
       </div>
-    )
+    );
   }
-}
+};
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -59,11 +61,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SingIn() {
+  const { setValues, data } = useData();
   const classes = useStyles();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, errors } = useForm({
+    defaultValues: { email: data.email, password: data.password },
+    mode: "onBlur",
+  });
+  const history = useHistory();
 
   const onSubmit = (data) => {
-    AuthService.login(data);
+    AuthService.login(data).then(() => {
+      history.push("/profile");
+      setValues(data);
+    });
   };
 
   return (
@@ -86,7 +96,6 @@ export default function SingIn() {
             margin="normal"
             inputRef={register({
               required: { value: true, message: "required field" },
-              
             })}
             fullWidth
             id="email"
@@ -95,6 +104,8 @@ export default function SingIn() {
             autoComplete="email"
             autoFocus
             validations={[emailVer]}
+            error={!!errors.name}
+            helperText={errors?.name?.message}
           />
           <TextField
             variant="outlined"
@@ -147,5 +158,4 @@ export default function SingIn() {
       </Box>
     </Container>
   );
-
 }

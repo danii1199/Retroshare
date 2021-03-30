@@ -16,6 +16,7 @@ import ProductView from "./components/ProductView/ProductView";
 import ProductById from "./components/ProductView/ProductView";
 import VinylDataComponent from "./components/DataComponent/VinylDataComponent";
 import RecordPlayerDataComponent from "./components/DataComponent/RecordPlayerDataComponent";
+import  UserProfile  from "./components/User/UserProfile"
 
 const App = () => {
   return (
@@ -50,6 +51,7 @@ const App = () => {
           <Route path="/step2" component={Step2}></Route>
           <Route path="/step3" component={Step3}></Route>
           <Route path="/result" component={Result}></Route>
+          <Route path="/profile" exact component={UserProfile}></Route>
         </Switch>
       </Container>
     </Router>

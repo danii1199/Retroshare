@@ -5,10 +5,8 @@ const register = (data) => {
 };
 
 const login = async (data) => {
-  return http.post("/login", data).then((response) => {
-    let token = response.data.token;
-    localStorage.setItem("userLoged", token);
-    
+  return http.post("/login", JSON.stringify(data)).then((response) => {
+    localStorage.setItem("user", JSON.stringify(response.data));
   });
 };
 
@@ -17,7 +15,7 @@ const logout = () => {
 };
 
 const getCurrentUser = () => {
-  return JSON.parse(localStorage.getItem("userLoged"));
+  return JSON.parse(localStorage.getItem("user"));
 };
 
 const AuthService = {

@@ -1,9 +1,14 @@
 import http from "../Http-common";
+import AuthHeader from "./Auth/AuthHeader";
 
-const getAll = () => {
-  return http.get("/all");
+const getAll = async () => {
+  return http.get("/all", {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
 };
-
+console.log(getAll().headers);
 const get = (id) => {
   return http.get(`/find/${id}`);
 };
