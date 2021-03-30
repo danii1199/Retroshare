@@ -1,13 +1,11 @@
 package org.proyecto.retroshare.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.proyecto.retroshare.domain.Product;
 import org.proyecto.retroshare.exception.ProductNotFoundException;
 import org.proyecto.retroshare.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

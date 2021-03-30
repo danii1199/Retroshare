@@ -1,5 +1,4 @@
 package org.proyecto.retroshare.repositories;
-import java.util.List;
 import java.util.Optional;
 import org.proyecto.retroshare.domain.Product;
 import org.springframework.data.jpa.repository.JpaRepository;

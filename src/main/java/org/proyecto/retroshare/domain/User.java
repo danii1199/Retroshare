@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -51,6 +52,14 @@ public class User {
 	@JoinColumn(name = "role_id")
 	@ManyToOne(cascade = CascadeType.PERSIST, optional = true)
 	private Role role;
+	
+	@JsonIgnoreProperties(value="users",allowSetters = true)
+	@ManyToMany(cascade = CascadeType.ALL)
+	private Collection<Valuation> valuations;
+	
+	@JsonIgnoreProperties(value = "comments", allowSetters = true)
+	@OneToMany(mappedBy = "productComment", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	private Collection<Comment> comments;
 
 	public User(String firstName, String lastName, String userName, String password, String sex, String address,
 			Integer zipCode, String city, String country, Integer phoneNumber, String email, String avatar, Date date) {
@@ -200,6 +209,22 @@ public class User {
 
 	public void setProducts(Collection<Product> products) {
 		this.products = products;
+	}
+
+	public Collection<Valuation> getValuations() {
+		return valuations;
+	}
+
+	public void setValuations(Collection<Valuation> valuations) {
+		this.valuations = valuations;
+	}
+
+	public Collection<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Collection<Comment> comments) {
+		this.comments = comments;
 	}
 	
 
