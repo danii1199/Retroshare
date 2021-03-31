@@ -72,6 +72,7 @@ export default function SingIn() {
   const onSubmit = (data) => {
     AuthService.login(data).then(() => {
       history.push("/profile");
+      history.go()
       setValues(data);
     });
   };

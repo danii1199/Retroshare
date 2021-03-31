@@ -16,7 +16,7 @@ import ProductView from "./components/ProductView/ProductView";
 import ProductById from "./components/ProductView/ProductView";
 import VinylDataComponent from "./components/DataComponent/VinylDataComponent";
 import RecordPlayerDataComponent from "./components/DataComponent/RecordPlayerDataComponent";
-import  UserProfile  from "./components/User/UserProfile"
+import UserProfile from "./components/User/UserProfile";
 
 const App = () => {
   return (
@@ -27,6 +27,7 @@ const App = () => {
           <Route exact path="/users" component={UserDataComponent}></Route>
           <Route path="/singin" exact component={SingIn}></Route>
           <Route path="/singup" exact component={SingUp}></Route>
+
           <Route path="/videogames" exact component={GameDataComponent}></Route>
           <Route
             path="/gameconsole"

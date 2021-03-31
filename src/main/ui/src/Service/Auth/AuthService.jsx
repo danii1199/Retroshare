@@ -11,18 +11,32 @@ const login = async (data) => {
 };
 
 const logout = () => {
-  localStorage.removeItem("userLoged");
+  localStorage.removeItem("user")
 };
 
 const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));
 };
 
+const getRoles = () => {
+  const role = JSON.parse(localStorage.getItem("user"))
+  
+
+  if(role && role.authorities[0] === "ROLE_ADMIN") {
+    return "Admin";
+  }
+  if(role && role.authorities[0] === "ROLE_USER") {
+    return "User";
+  }
+  else{}
+}
+
 const AuthService = {
   register,
   login,
   logout,
   getCurrentUser,
+  getRoles
 };
 
 export default AuthService;

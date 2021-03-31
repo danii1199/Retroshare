@@ -8,7 +8,6 @@ const getAll = async () => {
     },
   });
 };
-console.log(getAll().headers);
 const get = (id) => {
   return http.get(`/find/${id}`);
 };

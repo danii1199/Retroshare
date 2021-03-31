@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { makeStyles, fade } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -12,7 +12,9 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
-import AuComplete from "./Search/AuComplete";
+import SearchBar from "./Search/SearchBar";
+import AuthService from "../Service/Auth/AuthService";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -81,13 +83,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Header = (props) => {
+const NavBar = () => {
   const classes = useStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  const logOut = () => AuthService.logout;
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -163,87 +167,142 @@ const Header = (props) => {
       </MenuItem>
     </Menu>
   );
-
-  return (
-    <div className={classes.grow}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton
-            src="../public/discoVinilo.png"
-            color="inherit"
-            component={Link}
-            to="/"
-          >
-            <img
-              alt={"pokeball"}
-              width={"50"}
-              src={
-                "https://www.pikpng.com/pngl/b/59-590145_pokeball-8-bit-pixel-art-pokemon-clipart.png"
-              }
-            />{" "}
-            RetroShare
-          </IconButton>
-          <AuComplete />
-          <Button color="inherit" component={Link} to="/users">
-            Usuarios
-          </Button>
-          <Button color="inherit" component={Link} to="/videogames">
-            Games
-          </Button>
-          <Button color="inherit" component={Link} to="/gameconsole">
-            G.Console
-          </Button>
-          <Button color="inherit" component={Link} to="/rplayer">
-            R.Player
-          </Button>
-          <Button color="inherit" component={Link} to="/vinyl">
-            Vinyl
-          </Button>
-          <Button color="inherit" component={Link} to="/step1">
-            New Product
-          </Button>
-
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 5 new notifications" color="inherit">
-              <Badge badgeContent={5} color="secondary">
-                <ShoppingCartIcon />
-              </Badge>
-            </IconButton>
+  if (AuthService.getRoles() === "Admin") {
+    //BARRA DE ADMINISTRADOR
+    return (
+      <div className={classes.grow}>
+        <AppBar position="static">
+          <Toolbar>
             <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
+              src="../public/discoVinilo.png"
               color="inherit"
               component={Link}
-              to="/singin"
+              to="/"
             >
-              <AccountCircle />
+              <img
+                alt={"pokeball"}
+                width={"50"}
+                src={
+                  "https://www.pikpng.com/pngl/b/59-590145_pokeball-8-bit-pixel-art-pokemon-clipart.png"
+                }
+              />{" "}
+              RetroShare
             </IconButton>
-          </div>
-          <div className={classes.sectionMobile}>
+            <SearchBar />
+            <Button color="inherit" component={Link} to="/users">
+              Usuarios
+            </Button>
+            <Button color="inherit" component={Link} to="/videogames">
+              Games
+            </Button>
+            <Button color="inherit" component={Link} to="/gameconsole">
+              G.Console
+            </Button>
+            <Button color="inherit" component={Link} to="/rplayer">
+              R.Player
+            </Button>
+            <Button color="inherit" component={Link} to="/vinyl">
+              Vinyl
+            </Button>
+            <Button color="inherit" component={Link} to="/step1">
+              New Product
+            </Button>
+
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              <IconButton aria-label="show 4 new mails" color="inherit">
+                <Badge badgeContent={4} color="secondary">
+                  <MailIcon />
+                </Badge>
+              </IconButton>
+              <IconButton aria-label="show 5 new notifications" color="inherit">
+                <Badge badgeContent={5} color="secondary">
+                  <ShoppingCartIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                edge="end"
+                aria-label="exit app"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                color="inherit"
+                onClick={logOut()}
+                href={"/"}
+              >
+                <ExitToAppIcon />
+              </IconButton>
+            </div>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+      </div>
+    );
+  } else {
+    //BARRA DE ANON
+    return (
+      <div className={classes.grow}>
+        <AppBar position="static">
+          <Toolbar>
             <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
+              src="../public/discoVinilo.png"
               color="inherit"
+              component={Link}
+              to="/"
             >
-              <MoreIcon />
+              <img
+                alt={"pokeball"}
+                width={"50"}
+                src={
+                  "https://www.pikpng.com/pngl/b/59-590145_pokeball-8-bit-pixel-art-pokemon-clipart.png"
+                }
+              />{" "}
+              RetroShare
             </IconButton>
-          </div>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </div>
-  );
+            <SearchBar />
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              <IconButton
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                color="inherit"
+                component={Link}
+                to="/singin"
+              >
+                LogIn<AccountCircle />
+              </IconButton>
+            </div>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+      </div>
+    );
+  }
 };
 
-export default Header;
+export default NavBar;

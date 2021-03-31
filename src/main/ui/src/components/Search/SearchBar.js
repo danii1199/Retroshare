@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
   },
 }));
-const AuComplete = () => {
+const SearchBar = () => {
   const [option, setOption] = useState([]);
 
   useEffect(() => {
@@ -92,4 +92,4 @@ const AuComplete = () => {
     />
   );
 };
-export default AuComplete;
+export default SearchBar;
