@@ -36,8 +36,8 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors();
 		http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.authorizeRequests().antMatchers("/retroshare/pr-all","/retroshare/login", "/retroshare/save/2", "/retroshare/v-all","/retroshare/g-all").permitAll()
-				.antMatchers("/retroshare/all").hasAnyRole("ADMIN")
-				.antMatchers("/retroshare/delete/**").hasAnyRole("USER")
+				.antMatchers("/retroshare/all","/retroshare/pr-all","/retroshare/v-all","/retroshare/g-all","/retroshare/gc-all","/retroshare/rp-all").hasAnyRole("ADMIN")
+				.antMatchers("/retroshare/delete/**","/retroshare/pr-all").hasAnyRole("USER")
 				.anyRequest().authenticated();
 		http.apply(new JwtTokenConfigurer(tokenProvider));
 	}

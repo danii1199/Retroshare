@@ -61,6 +61,10 @@ public class User {
 	@OneToMany(mappedBy = "productComment", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Comment> comments;
 
+	@JsonIgnoreProperties(value="conversations",allowSetters = true)
+	@ManyToMany(cascade = CascadeType.ALL)
+	private Collection<Conversation> conversations;
+	
 	public User(String firstName, String lastName, String userName, String password, String sex, String address,
 			Integer zipCode, String city, String country, Integer phoneNumber, String email, String avatar, Date date) {
 		super();
@@ -226,6 +230,15 @@ public class User {
 	public void setComments(Collection<Comment> comments) {
 		this.comments = comments;
 	}
+
+	public Collection<Conversation> getConversations() {
+		return conversations;
+	}
+
+	public void setConversations(Collection<Conversation> conversations) {
+		this.conversations = conversations;
+	}
+	
 	
 
 }
