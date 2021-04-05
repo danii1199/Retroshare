@@ -9,54 +9,106 @@ const getAll = async () => {
   });
 };
 const get = (id) => {
-  return http.get(`/find/${id}`);
+  return http.get(`/find/${id}`, {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
 };
 
 const update = (id, data) => {
-  return http.put(`/update/${id}`, data);
+  return http.put(`/update/${id}`, data, {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
 };
 
 const remove = (id) => {
-  return http.delete(`/delete/${id}`);
+  return http.delete(`/delete/${id}`, {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
 };
 
 const findByUserName = (userName) => {
-  return http.get(`/all?userName=${userName}`);
+  return http.get(`/all?userName=${userName}`, {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
 };
 
 const findByEmail = (email) => {
-  return http.get(`/all?email=${email}`);
+  return http.get(`/all?email=${email}`, {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
 };
 
 const getVinyl = () => {
-  return http.get("/v-all");
+  return http.get("/v-all", {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
 };
 
 const getGame = () => {
-  return http.get("/g-all");
+  return http.get("/g-all", {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
 };
 
 const getRecordPlayer = () => {
-  return http.get("/rp-all");
+  return http.get("/rp-all", {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
 };
 
 const getGameConsole = () => {
-  return http.get("/gc-all");
+  return http.get("/gc-all", {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
 };
 
 const getProducts = () => {
-  return http.get("/pr-all");
+  return http.get("/pr-all", {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
 };
 const getOneProduct = (id) => {
-  return http.get(`/pr/${id}`);
+  return http.get(`/pr/${id}`, {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
 };
 
 const findByProductName = (productName) => {
-  return http.get(`/pr-all?name=${productName}`);
+  return http.get(`/pr-all?name=${productName}`, {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
 };
 
 const createProduct = (data, tproduct, idUser, idProductStatus) => {
-  return http.post(`/${tproduct}/${idUser}/${idProductStatus}`, data);
+  return http.post(`/${tproduct}/${idUser}/${idProductStatus}`, data, {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
 };
 
 const services = {

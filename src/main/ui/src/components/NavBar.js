@@ -249,6 +249,74 @@ const NavBar = () => {
         {renderMenu}
       </div>
     );
+  }
+  if (AuthService.getRoles() === "User") {
+    //BARRA DE USER
+    return (
+      <div className={classes.grow}>
+        <AppBar position="static">
+          <Toolbar>
+            <IconButton
+              src="../public/discoVinilo.png"
+              color="inherit"
+              component={Link}
+              to="/"
+            >
+              <img
+                alt={"pokeball"}
+                width={"50"}
+                src={
+                  "https://www.pikpng.com/pngl/b/59-590145_pokeball-8-bit-pixel-art-pokemon-clipart.png"
+                }
+              />{" "}
+              RetroShare
+            </IconButton>
+            <SearchBar />
+            <Button color="inherit" component={Link} to="/step1">
+              New Product
+            </Button>
+
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              <IconButton aria-label="show 4 new mails" color="inherit">
+                <Badge badgeContent={4} color="secondary">
+                  <MailIcon />
+                </Badge>
+              </IconButton>
+              <IconButton aria-label="show 5 new notifications" color="inherit">
+                <Badge badgeContent={5} color="secondary">
+                  <ShoppingCartIcon />
+                </Badge>
+              </IconButton>
+              <IconButton
+                edge="end"
+                aria-label="exit app"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                color="inherit"
+                onClick={logOut()}
+                href={"/"}
+              >
+                <ExitToAppIcon />
+              </IconButton>
+            </div>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MoreIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+      </div>
+    );
   } else {
     //BARRA DE ANON
     return (
@@ -270,7 +338,6 @@ const NavBar = () => {
               />{" "}
               RetroShare
             </IconButton>
-            <SearchBar />
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton
