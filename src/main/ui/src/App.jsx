@@ -17,6 +17,7 @@ import ProductById from "./components/ProductView/ProductView";
 import VinylDataComponent from "./components/DataComponent/VinylDataComponent";
 import RecordPlayerDataComponent from "./components/DataComponent/RecordPlayerDataComponent";
 import UserProfile from "./components/User/UserProfile";
+import Cart from "./pages/cart"
 
 const App = () => {
   return (
@@ -41,7 +42,7 @@ const App = () => {
           ></Route>
           <Route path="/vinyl" exact component={VinylDataComponent}></Route>
           <Route path="/" exact component={Products}></Route>
-          <Route path="/basket" exact></Route>
+          <Route path="/cart" component={Cart} />
           <Route path="/pr/:id">
             <ProductView />
           </Route>

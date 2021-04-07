@@ -1,34 +1,22 @@
 import { Grid, Button, Container } from "@material-ui/core";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import CardProduct from "../CardProduct/CardProduct";
-import Spinner from "../Spinner/Spinner";
-import Banner from "../Banner/Banner";
+
 
 import "./style.css";
 
 const Basket = ({
+  addProduct,
   basketData,
   updateProduct,
   handleEmptyBasket,
   RemoveItemFromBasket,
 }) => {
-  const [showSpinner, setShowSpinner] = useState(true);
-  const loading = () => {
-    setTimeout(() => {
-      setShowSpinner(false);
-    }, 2000);
-    if (showSpinner) {
-      return <Spinner />;
-    }
-    return <Banner />;
-  };
-
-  if (!basketData.line_items || !basketData.line_items.length) return loading();
+  console.log(basketData)
   return (
     <Container id="basket">
       <Grid container justify="center" spacing={4}>
-        {basketData.line_items.map((item) => {
+        {basketData.map((item) => {
           return (
             <Grid key={item.id} item xs={12} sm={6} md={4}>
               <CardProduct
@@ -37,10 +25,18 @@ const Basket = ({
                 updateProduct={updateProduct}
                 RemoveItemFromBasket={RemoveItemFromBasket}
               />
+              <div className="col-2">
+             
+             <button onClick={() => addProduct(item)} className="add">
+               +
+             </button>
+           </div>
             </Grid>
           );
         })}
       </Grid>
+      
+
       <div className="actions">
         <Button
           size="small"

@@ -6,27 +6,31 @@ import {
   Container,
   Typography,
 } from "@material-ui/core";
-import ProductsAPI from "../../../lib/ProductsAPI";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
 import "./style.css";
 import { Link as RouterLink } from "react-router-dom";
+import { ProductsContext } from "../../../contexts/ProductsContext";
+import { useContext } from "react";
 
-const Cards = (basket, addProduct) => {
+const Cards = () => {
   var settings = {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
     slideToScroll: 1,
   };
+
+  const { products } = useContext(ProductsContext);
+
   return (
     <Container>
       <Slider {...settings}>
-        {ProductsAPI().map((product) => {
+        {products.map((product) => {
           return (
-            <Card className="card-design">
+            <Card key={product} className="card-design">
               <Link
                 underline="none"
                 component={RouterLink}

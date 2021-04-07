@@ -62,8 +62,6 @@ export const Result = () => {
     return <h1>Regisrtado</h1>;
   };
 
-  
-
   return (
     <>
       <MainContainer>

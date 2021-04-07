@@ -38,8 +38,8 @@ const OneProduct = ({
           <Button
             size="large"
             className="custom-button"
-            onclick={() => {
-              // addProduct(product.id)
+            onClick={() => {
+               addProduct(product.id)
             }}
           >
             <ShoppingCart />

@@ -1,6 +1,9 @@
 import CardProduct from "../CardProduct/CardProduct";
 
-const Product = ({ basket, product, addProduct, RemoveItemFromBasket }) => (
+
+
+const Product = ({ product, basket , addProduct, RemoveItemFromBasket}) => (
+  
   <CardProduct
     basket={basket}
     product={product}

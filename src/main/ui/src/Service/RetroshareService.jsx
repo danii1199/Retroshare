@@ -111,6 +111,14 @@ const createProduct = (data, tproduct, idUser, idProductStatus) => {
   });
 };
 
+const addToCart = (idProduct) => {
+  return http.post(`/addtocart/${idProduct}/1`, {
+    headers: {
+      Authorization: AuthHeader(),
+    },
+  });
+};
+
 const services = {
   getAll,
   get,
@@ -126,6 +134,7 @@ const services = {
   findByProductName,
   createProduct,
   findByEmail,
+  addToCart
 };
 
 export default services;

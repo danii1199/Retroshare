@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { makeStyles, fade } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -15,6 +15,7 @@ import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import SearchBar from "./Search/SearchBar";
 import AuthService from "../Service/Auth/AuthService";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { CartContext } from "../contexts/CartContext";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -87,6 +88,7 @@ const NavBar = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const { itemCount } = useContext(CartContext);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -96,7 +98,6 @@ const NavBar = () => {
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
-
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
@@ -215,8 +216,13 @@ const NavBar = () => {
                   <MailIcon />
                 </Badge>
               </IconButton>
-              <IconButton aria-label="show 5 new notifications" color="inherit">
-                <Badge badgeContent={5} color="secondary">
+              <IconButton
+                aria-label="cart"
+                color="inherit"
+                component={Link}
+                to="/cart"
+              >
+                <Badge badgeContent={itemCount} color="secondary">
                   <ShoppingCartIcon />
                 </Badge>
               </IconButton>
@@ -349,7 +355,8 @@ const NavBar = () => {
                 component={Link}
                 to="/singin"
               >
-                LogIn<AccountCircle />
+                LogIn
+                <AccountCircle />
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>
