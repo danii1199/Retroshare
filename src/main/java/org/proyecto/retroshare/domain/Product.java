@@ -45,6 +45,10 @@ public class Product {
 	@OneToMany(mappedBy = "productComment", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Comment> comments;
 	
+	@JsonIgnoreProperties(value = "products", allowSetters = true)
+	@ManyToOne(cascade = CascadeType.PERSIST, optional = true)
+	private ShoppingCart shoppingCart;
+	
 	
 
 	public Product(String description, String image) {
@@ -116,5 +120,15 @@ public class Product {
 	public void setComments(Collection<Comment> comments) {
 		this.comments = comments;
 	}
+
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
+	}
+
+	public void setShoppingCart(ShoppingCart shoppingCart) {
+		this.shoppingCart = shoppingCart;
+	}
+	
+	
 
 }

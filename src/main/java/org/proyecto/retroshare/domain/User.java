@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -60,6 +61,9 @@ public class User {
 	@JsonIgnoreProperties(value = "comments", allowSetters = true)
 	@OneToMany(mappedBy = "productComment", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Comment> comments;
+	
+	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	private ShoppingCart shoppingCart;
 
 	public User(String firstName, String lastName, String userName, String password, String sex, String address,
 			Integer zipCode, String city, String country, Integer phoneNumber, String email, String avatar, Date date) {
@@ -226,6 +230,16 @@ public class User {
 	public void setComments(Collection<Comment> comments) {
 		this.comments = comments;
 	}
+
+	public ShoppingCart getShoppingCart() {
+		return shoppingCart;
+	}
+
+	public void setShoppingCart(ShoppingCart shoppingCart) {
+		this.shoppingCart = shoppingCart;
+	}
+	
+	
 	
 
 }
