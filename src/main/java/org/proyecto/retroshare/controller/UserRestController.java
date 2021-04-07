@@ -9,8 +9,10 @@ import java.util.List;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 import org.proyecto.retroshare.domain.Role;
+import org.proyecto.retroshare.domain.ShoppingCart;
 import org.proyecto.retroshare.domain.User;
 import org.proyecto.retroshare.repositories.RoleRepository;
+import org.proyecto.retroshare.repositories.ShoppingCartRepository;
 import org.proyecto.retroshare.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
@@ -50,6 +52,9 @@ public class UserRestController {
 
 	@Autowired
 	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private ShoppingCartRepository shoppingCartRepository;
 
 	@Autowired
 	private JwtTokenProvider tokenProvider;
