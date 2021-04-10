@@ -1,4 +1,8 @@
+import OneUser from "../../lib/OneUser";
 import AuthService from "../../Service/Auth/AuthService";
+
+
+
 
 const UserProfile = () => {
   const currentUser = AuthService.getCurrentUser();
@@ -19,6 +23,13 @@ const UserProfile = () => {
       <p>
         <strong>name:</strong> {currentUser.name}
       </p>
+
+      <p>
+        <strong>user:</strong> {OneUser(currentUser.id).userName}
+      </p>
+
+    
+      
       <strong>Authorities:</strong>
       <ul>
         {currentUser.authorities &&

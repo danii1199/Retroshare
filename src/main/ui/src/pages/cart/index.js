@@ -7,13 +7,8 @@ import { Link } from "react-router-dom";
 import {
   Container,
   Grid,
-  Card,
-  CardMedia,
-  CardContent,
-  CardActions,
   Typography,
-  CardActionArea,
-  Button,
+  
 } from "@material-ui/core";
 
 const Cart = () => {

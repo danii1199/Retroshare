@@ -289,8 +289,13 @@ const NavBar = () => {
                   <MailIcon />
                 </Badge>
               </IconButton>
-              <IconButton aria-label="show 5 new notifications" color="inherit">
-                <Badge badgeContent={5} color="secondary">
+              <IconButton
+                aria-label="cart"
+                color="inherit"
+                component={Link}
+                to="/cart"
+              >
+                <Badge badgeContent={itemCount} color="secondary">
                   <ShoppingCartIcon />
                 </Badge>
               </IconButton>
