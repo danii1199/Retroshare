@@ -211,8 +211,12 @@ const NavBar = () => {
 
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton aria-label="show 4 new mails" color="inherit">
-                <Badge badgeContent={4} color="secondary">
+              <IconButton 
+              aria-label="chat" 
+              color="inherit"
+              component={Link}
+              to ="/chat">
+                <Badge badgeContent={1} color="secondary">
                   <MailIcon />
                 </Badge>
               </IconButton>

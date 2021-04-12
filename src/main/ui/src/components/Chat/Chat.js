@@ -13,6 +13,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from '@material-ui/core/Avatar';
 import Fab from '@material-ui/core/Fab';
 import SendIcon from '@material-ui/icons/Send';
+import AuthService from "../../Service/Auth/AuthService";
+import OneUser from "../../lib/OneUser";
 
 const useStyles = makeStyles({
   table: {
@@ -20,7 +22,7 @@ const useStyles = makeStyles({
   },
   chatSection: {
     width: '100%',
-    height: '80vh'
+    height: '82vh'
   },
   headBG: {
       backgroundColor: '#e0e0e0'
@@ -29,16 +31,16 @@ const useStyles = makeStyles({
       borderRight: '1px solid #e0e0e0'
   },
   messageArea: {
-    height: '70vh',
+    height: '65vh',
     overflowY: 'auto'
   }
 });
 
 const Chat = () => {
   const classes = useStyles();
-
+  const currentUser = AuthService.getCurrentUser();
   
-
+  
   return (
       <div>
         <Grid container>
@@ -51,16 +53,16 @@ const Chat = () => {
                 <List>
                     <ListItem button key="RemySharp">
                         <ListItemIcon>
-                        <Avatar alt="Remy Sharp" src="https://material-ui.com/static/images/avatar/1.jpg" />
+                        <Avatar alt={currentUser.name} src={OneUser(currentUser.id).image} />
                         </ListItemIcon>
-                        <ListItemText primary="John Wick"></ListItemText>
+                        <ListItemText primary={currentUser.name}></ListItemText>
                     </ListItem>
                 </List>
                 <Divider />
                 <Grid item xs={12} style={{padding: '10px'}}>
                     <TextField id="outlined-basic-email" label="Search" variant="outlined" fullWidth />
                 </Grid>
-                <Divider />
+                <Divider/>
                 <List>
                     <ListItem button key="RemySharp">
                         <ListItemIcon>
