@@ -1,7 +1,5 @@
 import CardProduct from "../CardProduct/CardProduct";
 
-
-
 const Product = ({ product, basket , addProduct, RemoveItemFromBasket}) => (
   
   <CardProduct

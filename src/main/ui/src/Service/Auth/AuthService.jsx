@@ -12,6 +12,7 @@ const login = async (data) => {
 
 const logout = () => {
   localStorage.removeItem("user")
+  localStorage.removeItem("cart")
 };
 
 const getCurrentUser = () => {

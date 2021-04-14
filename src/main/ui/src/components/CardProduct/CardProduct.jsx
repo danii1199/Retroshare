@@ -35,6 +35,7 @@ const CardProduct = ({ product }) => {
           <CardContent className="content">
             <Typography
               align="left"
+              display="inline"
               className="title"
               gutterBottom
               variant="h5"
@@ -43,12 +44,11 @@ const CardProduct = ({ product }) => {
               {product.name}
             </Typography>
             <Typography
-              align="right"
               className="status"
+              align="right"
               gutterBottom
-              variant="h5"
+              variant="h6"
               component="h2"
-              color="secondary"
             >
               {product.productStatus?.status}
             </Typography>
@@ -65,7 +65,7 @@ const CardProduct = ({ product }) => {
               className="custom-button"
               onClick={() => addProduct(product)}
             >
-              <ShoppingCart /> Add to Cart
+              <ShoppingCart />
             </Button>
           </>
         )}

@@ -8,7 +8,6 @@ import { ProductsContext } from '../../contexts/ProductsContext';
 const ProductView = () => {
   
   const { products } = useContext(ProductsContext)
-  
  
   return (
     <>
