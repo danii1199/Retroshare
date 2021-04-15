@@ -1,21 +1,32 @@
 import { Container, Grid } from "@material-ui/core";
-import { useContext } from "react";
-import Product from "./Product";
+import { useState, useEffect } from "react";
+import OneProduct from "./OneProduct";
 import "./StyleProductView.css";
 import Card from "../CardSlider/card/Card";
-import { ProductsContext } from '../../contexts/ProductsContext';
+import RetroshareService from "../../Service/RetroshareService";
 
 const ProductView = () => {
-  
-  const { products } = useContext(ProductsContext)
- 
+  const [products, setProduct] = useState([]);
+
+  useEffect(() => {
+    obtenerDatos();
+  }, []);
+
+  const obtenerDatos = async () => {
+    const id = window.location.pathname.split("/")[2];
+    RetroshareService.getOneProduct(id).then((response) => {
+      const { data } = response;
+      setProduct(data);
+    });
+  };
+
   return (
     <>
       <div>
         <Container id="products">
-          <Grid container spacing={4}>
-            <Grid  item xs={12} sm={6} md={4}>
-              <Product key={products.id} product={products} />
+          <Grid container spacing={12}>
+            <Grid item xs={12}>
+              <OneProduct key={products.id} product={products} />
               <Card />
             </Grid>
           </Grid>

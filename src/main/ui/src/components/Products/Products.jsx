@@ -1,5 +1,5 @@
 import { Grid, Container, Typography, ThemeProvider } from "@material-ui/core";
-import Product from "../Product/Product";
+import CardProduct from "../CardProduct/CardProduct";
 import { ProductsContext } from "../../contexts/ProductsContext";
 import { useContext } from "react";
 import Button from "@material-ui/core/Button";
@@ -72,7 +72,7 @@ const Products = () => {
               .map((product) => {
                 return (
                   <Grid key={product.id} item xs={12} sm={6} md={3}>
-                    <Product key={product.id} product={product} />
+                    <CardProduct key={product.id} product={product} />
                   </Grid>
                 );
               })}
@@ -88,7 +88,7 @@ const Products = () => {
             {games.slice(games.length - 4, games.length).map((product) => {
               return (
                 <Grid key={games.id} item xs={12} sm={6} md={3}>
-                  <Product key={games.id} product={product} />
+                  <CardProduct key={games.id} product={product} />
                 </Grid>
               );
             })}
@@ -106,7 +106,7 @@ const Products = () => {
               .map((product) => {
                 return (
                   <Grid key={consoles.id} item xs={12} sm={6} md={3}>
-                    <Product key={consoles.id} product={product} />
+                    <CardProduct key={consoles.id} product={product} />
                   </Grid>
                 );
               })}
@@ -122,7 +122,7 @@ const Products = () => {
             {vinyls.slice(vinyls.length - 4, vinyls.length).map((product) => {
               return (
                 <Grid key={vinyls.id} item xs={12} sm={6} md={3}>
-                  <Product key={vinyls.id} product={product} />
+                  <CardProduct key={vinyls.id} product={product} />
                 </Grid>
               );
             })}
@@ -140,7 +140,7 @@ const Products = () => {
               .map((product) => {
                 return (
                   <Grid key={recordPlayers.id} item xs={12} sm={6} md={3}>
-                    <Product key={recordPlayers.id} product={product} />
+                    <CardProduct key={recordPlayers.id} product={product} />
                   </Grid>
                 );
               })}

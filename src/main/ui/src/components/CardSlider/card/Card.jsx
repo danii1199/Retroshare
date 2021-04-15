@@ -9,65 +9,64 @@ import {
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Link } from "react-router-dom";
 import "./style.css";
-import { Link as RouterLink } from "react-router-dom";
-import { ProductsContext } from "../../../contexts/ProductsContext";
-import { useContext } from "react";
+import ProductsAPI from "../../../lib/ProductsAPI";
+import { useHistory } from "react-router-dom";
 
 const Cards = () => {
-  var settings = {
+  let settings = {
     infinite: true,
-    speed: 500,
-    slidesToShow: 3,
+    speed: 100,
+    slidesToShow: 5,
     slideToScroll: 1,
   };
+  const history = useHistory();
 
-  const { products } = useContext(ProductsContext);
+  const products = ProductsAPI();
 
   return (
     <Container>
       <Slider {...settings}>
         {products.map((product) => {
           return (
+            
             <Card key={product} className="card-design">
-              <Link
-                underline="none"
-                component={RouterLink}
-                to={`pr/${product.id}`}
+              <CardActionArea
+                onClick={() => {
+                  history.push(`/pr/${product.id}`);
+                  history.go();
+                }}
               >
-                <CardActionArea>
-                  <CardMedia
-                    component="img"
-                    alt={product.image}
-                    height="260"
-                    className="card-image"
-                    image={process.env.PUBLIC_URL + "/" + product.image}
-                    title={product.name}
-                  />
-                  <CardContent className="content">
-                    <Typography
-                      align="left"
-                      className="title"
-                      gutterBottom
-                      variant="h5"
-                      component="h2"
-                    >
-                      {product.name}
-                    </Typography>
-                    <Typography
-                      align="right"
-                      className="status"
-                      gutterBottom
-                      variant="h5"
-                      component="h2"
-                      color="secondary"
-                    >
-                      {product.productStatus?.status}
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Link>
+                <CardMedia
+                  component="img"
+                  alt={product.image}
+                  height="260"
+                  className="card-image"
+                  image={process.env.PUBLIC_URL + "/" + product.image}
+                  title={product.name}
+                />
+                <CardContent className="content">
+                  <Typography
+                    align="left"
+                    className="title"
+                    gutterBottom
+                    variant="h5"
+                    component="h2"
+                  >
+                    {product.name}
+                  </Typography>
+                  <Typography
+                    align="right"
+                    className="status"
+                    gutterBottom
+                    variant="h5"
+                    component="h2"
+                    color="secondary"
+                  >
+                    {product.productStatus?.status}
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
             </Card>
           );
         })}
