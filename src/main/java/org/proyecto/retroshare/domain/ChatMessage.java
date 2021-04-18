@@ -1,13 +1,27 @@
 package org.proyecto.retroshare.domain;
 
+import java.time.LocalDateTime;
 
 public class ChatMessage {
+    private MessageType type;
     private String content;
     private String sender;
-    private MessageType type;
-
+    private String receiver;
+	private LocalDateTime dateTime=LocalDateTime.now();
+    
     public enum MessageType {
-        CHAT, LEAVE, JOIN
+        CHAT,
+        JOIN,
+        LEAVE,
+        TYPING
+    }
+
+    public MessageType getType() {
+        return type;
+    }
+
+    public void setType(MessageType type) {
+        this.type = type;
     }
 
     public String getContent() {
@@ -25,12 +39,20 @@ public class ChatMessage {
     public void setSender(String sender) {
         this.sender = sender;
     }
+    
+    public String getReceiver() {
+		return receiver;
+	}
 
-    public MessageType getType() {
-        return type;
-    }
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
+	}
+    
+    public LocalDateTime getDateTime() {
+		return dateTime;
+	}
 
-    public void setType(MessageType type) {
-        this.type = type;
-    }
+	public void setDateTime(LocalDateTime dateTime) {
+		this.dateTime = dateTime;
+	}
 }

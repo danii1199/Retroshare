@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { DataProvider } from "./components/ProductForm/DataContext";
 import ProductsContextProvider from "./contexts/ProductsContext";
 import CartContextProvider from "./contexts/CartContext";
-import UsersContextProvider from "./contexts/CartContext";
+import UsersContextProvider from "./contexts/UsersContext";
 
 
 
