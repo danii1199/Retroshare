@@ -61,9 +61,9 @@ export const Step1 = () => {
           }}
         >
           <option value={"game"}>Game</option>
-          <option value={"game console"}>Game Console</option>
+          <option value={"gameconsole"}>Game Console</option>
           <option value={"vinyl"}>Vinyl</option>
-          <option value={"record player"}>Record Player</option>
+          <option value={"recordplayer"}>Record Player</option>
         </NativeSelect>
         <FormHelperText>Product type</FormHelperText>
         <PrimaryButton>Next</PrimaryButton>

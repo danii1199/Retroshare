@@ -286,6 +286,10 @@ const NavBar = () => {
               New Product
             </Button>
 
+            <Button color="inherit" component={Link} to="/profile">
+              Profile
+            </Button>
+
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
             <IconButton 

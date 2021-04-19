@@ -47,7 +47,7 @@ public class RecordPlayerRestController {
 	}
 
 	// GUARDAR NUEVO TOCADISCO
-	@PostMapping(value = "/record%20player/{idUser}/{idProductStatus}")
+	@PostMapping(value = "/recordplayer/{idUser}/{idProductStatus}")
 	public ResponseEntity<RecordPlayer> save(@RequestBody RecordPlayer recordPlayer, @PathVariable Long idUser,
 			@PathVariable Long idProductStatus) {
 		User user = userRepository.getOne(idUser);

@@ -47,7 +47,7 @@ public class GameConsoleRestController {
 	}
 
 	// GUARDAR NUEVO JUEGO
-	@PostMapping(value = "/game%20console/{idUser}/{idProductStatus}")
+	@PostMapping(value = "/gameconsole/{idUser}/{idProductStatus}")
 	public ResponseEntity<GameConsole> save(@RequestBody GameConsole gameConsole, @PathVariable Long idUser,
 			@PathVariable Long idProductStatus) {
 		// User user = userRepository.getOne(idUser);
