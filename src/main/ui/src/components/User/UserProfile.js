@@ -25,6 +25,10 @@ const UserProfile = () => {
       </p>
 
       <p>
+        <strong>name:</strong> {currentUser.firstName}
+      </p>
+
+      <p>
         <strong>user:</strong> {OneUser(currentUser.id).userName}
       </p>
 
