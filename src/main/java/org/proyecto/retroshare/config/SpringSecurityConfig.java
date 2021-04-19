@@ -35,7 +35,10 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.cors();
 		http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-				.authorizeRequests().antMatchers("/retroshare/pr-all","/retroshare/login", "/retroshare/save/2", "/retroshare/v-all","/retroshare/g-all", "/retroshare/gc-all", "/retroshare/rp-all").permitAll()
+				.authorizeRequests()
+				.antMatchers("/retroshare/pr-all", "/retroshare/login", "/retroshare/save/2", "/retroshare/v-all",
+						"/retroshare/g-all", "/retroshare/gc-all",
+						"/retroshare/rp-all", "/retroshare/pr/{id}").permitAll()
 				.antMatchers("/retroshare/all").hasAnyRole("ADMIN")
 				.antMatchers("/retroshare/delete/**").hasAnyRole("USER")
 				.anyRequest().authenticated();

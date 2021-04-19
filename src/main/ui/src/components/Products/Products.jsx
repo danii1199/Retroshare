@@ -36,6 +36,8 @@ const Products = () => {
   const vinyls = VinylAPI();
   const recordPlayers = RecordPlayerAPI();
 
+  
+
   return (
     <>
       <div>

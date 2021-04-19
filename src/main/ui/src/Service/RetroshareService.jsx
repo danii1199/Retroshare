@@ -81,26 +81,14 @@ const getGameConsole = () => {
 };
 
 const getProducts = () => {
-  return http.get("/pr-all", {
-    headers: {
-      Authorization: AuthHeader(),
-    },
-  });
+  return http.get("/pr-all");
 };
 const getOneProduct = (id) => {
-  return http.get(`/pr/${id}`, {
-    headers: {
-      Authorization: AuthHeader(),
-    },
-  });
+  return http.get(`/pr/${id}`);
 };
 
 const findByProductName = (productName) => {
-  return http.get(`/pr-all?name=${productName}`, {
-    headers: {
-      Authorization: AuthHeader(),
-    },
-  });
+  return http.get(`/pr-all?name=${productName}`);
 };
 
 const createProduct = (data, tproduct, idUser, idProductStatus) => {
