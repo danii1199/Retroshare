@@ -1,11 +1,14 @@
 .MuiCard-root.custom-card {
   transition: all 0.2s ease-in-out;
+  background: #121212;
+  color: #FFFFFF;
 }
 
 .MuiCard-root.custom-card:hover {
   transform: scale(1.01);
-  box-shadow: 0px 0px 20px 1px #3f51b5;
+  box-shadow: 0px 0px 20px 1px #FFFFFF;
 }
+
 
 .custom-card .content {
   padding-bottom: 0px;
@@ -17,12 +20,9 @@
   text-overflow: ellipsis;
 }
 
-.custom-card .card-image {
-  padding: 0px 0px 0px 0px;
-}
+
 
 .custom-card p {
-  color: #3f51b5;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -30,7 +30,6 @@
 
 .custom-card .price {
   margin-top: 10px;
-  color: #0323da;
 }
 
 .custom-card .status {
@@ -55,12 +54,11 @@
 }
 
 .custom-card .custom-button {
-  color: rgb(255, 255, 255);
-  background-color: #3f51b5;
+  color: yellow;
 }
 
 .custom-card .custom-button:hover {
-  color: #3f51b5;
+  color: purple;
 }
 
 .custom-card .custom-button svg {
@@ -68,6 +66,6 @@
 }
 
 .custom-card .increase-product-quantity {
-  color: #3f51b5;
-  border-color: #3f51b5;
+  color: purple;
+  border-color: purple;
 }

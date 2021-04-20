@@ -1,9 +1,9 @@
 .product-view {
-  margin: 10px 0 60px 0;
+  margin: 80px 0 60px 0;
 }
 
 .product-view .text {
-  color: #3f51b5;
+  color: #FFFFFF;
 }
 .product-view .text h2 {
   font-size: 35px;
@@ -28,13 +28,14 @@
   margin-top: 10px;
 }
 .product-view .action-part .custom-button {
-  color: rgb(255, 255, 255);
-  background-color: #3f51b5;
+  color: purple;
+  background-color: yellow;
   float:right
 }
 .product-view .action-part .custom-button:hover {
-  color: #3f51b5;
-  padding-left: 10px;
+  color: yellow;
+  background-color: purple;
+  padding-left: 20px;
 }
 .product-view .action-part .custom-button svg {
   margin-right: 10px;

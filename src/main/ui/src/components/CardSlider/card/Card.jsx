@@ -51,20 +51,12 @@ const Cards = () => {
                     className="title"
                     gutterBottom
                     variant="h5"
-                    component="h2"
+                    
                   >
                     {product.name}
                   </Typography>
-                  <Typography
-                    align="right"
-                    className="status"
-                    gutterBottom
-                    variant="h5"
-                    component="h2"
-                    color="secondary"
-                  >
-                    {product.productStatus?.status}
-                  </Typography>
+                  
+                  
                 </CardContent>
               </CardActionArea>
             </Card>

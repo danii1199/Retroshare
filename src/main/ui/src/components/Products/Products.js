@@ -5,12 +5,15 @@ import { useContext } from "react";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { createMuiTheme } from "@material-ui/core/styles";
-
+import Carousel from "react-material-ui-carousel";
 import "./style.css";
 import VideoGameAPI from "../../lib/VideoGameAPI";
 import GameConsoleAPI from "../../lib/GameConsoleAPI";
 import VinylAPI from "../../lib/VinylAPI";
 import RecordPlayerAPI from "../../lib/RecordPlayerAPI";
+import AlbumIcon from "@material-ui/icons/Album";
+import Image from "../../icons/n64icon.jpg";
+import Item from "../Carousel/Item";
 
 const Products = () => {
   const theme = createMuiTheme({
@@ -30,20 +33,56 @@ const Products = () => {
     },
   };
 
+  theme.Carousel = {};
+
+  const styles = {
+    paperContainer: {
+      backgroundImage: `url(${Image})`,
+    },
+  };
+
   const { products } = useContext(ProductsContext);
   const games = VideoGameAPI();
   const consoles = GameConsoleAPI();
   const vinyls = VinylAPI();
   const recordPlayers = RecordPlayerAPI();
 
-  
-
   return (
     <>
+      <Carousel
+        IndicatorIcon={<AlbumIcon />}
+        indicatorIconButtonProps={{
+          style: {
+            padding: "10px", // 1
+            color: "#FFFFFF", // 3
+          },
+        }}
+        activeIndicatorIconButtonProps={{
+          style: {
+            backgroundColor: "#121212", // 2
+          },
+        }}
+        indicatorContainerProps={{
+          style: {
+            marginTop: "50px", // 5
+            textAligh: "right", // 4
+          },
+        }}
+      >
+        {products.map((item, i) => (
+          <Item key={i} item={item} />
+        ))}
+      </Carousel>
+
       <div>
         <Container id="buttons">
           <Grid container spacing={1}>
-            <Button className="button" component={Link} to="/videogames">
+            <Button
+              className="button"
+              component={Link}
+              to="/videogames"
+              style={styles.paperContainer}
+            >
               Games
             </Button>
             <Button className="button" component={Link} to="/gameconsole">

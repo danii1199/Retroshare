@@ -69,6 +69,9 @@ const useStyles = makeStyles((theme) => ({
   inputRoot: {
     color: "inherit",
   },
+  background:{
+    background: "#121212"
+  },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
     // vertical padding + font size from searchIcon
@@ -172,7 +175,7 @@ const NavBar = () => {
     //BARRA DE ADMINISTRADOR
     return (
       <div className={classes.grow}>
-        <AppBar position="static">
+        <AppBar position="fixed" className={classes.background}>
           <Toolbar>
             <IconButton
               src="../public/discoVinilo.png"
@@ -264,7 +267,7 @@ const NavBar = () => {
     //BARRA DE USER
     return (
       <div className={classes.grow}>
-        <AppBar position="static">
+        <AppBar position="fixed">
           <Toolbar>
             <IconButton
               src="../public/discoVinilo.png"
@@ -344,7 +347,7 @@ const NavBar = () => {
     //BARRA DE ANON
     return (
       <div className={classes.grow}>
-        <AppBar position="static">
+        <AppBar position="fixed">
           <Toolbar>
             <IconButton
               src="../public/discoVinilo.png"

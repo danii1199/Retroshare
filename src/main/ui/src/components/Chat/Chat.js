@@ -1,8 +1,6 @@
-import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -16,6 +14,7 @@ import SendIcon from '@material-ui/icons/Send';
 import AuthService from "../../Service/Auth/AuthService";
 import OneUser from "../../lib/OneUser";
 import UserAPI from '../../lib/UserAPI';
+import "./style.css"
 
 
 const useStyles = makeStyles({
@@ -27,14 +26,17 @@ const useStyles = makeStyles({
         height: '82vh'
     },
     headBG: {
-        backgroundColor: '#e0e0e0'
+        backgroundColor: '#FFFFFF'
     },
     borderRight500: {
-        borderRight: '1px solid #e0e0e0'
+        borderRight: '1px solid #FFFFFF'
     },
     messageArea: {
         height: '65vh',
         overflowY: 'auto'
+    },
+    background: {
+        marginTop: "90px"
     }
 });
 function handleClick(e) {
@@ -50,7 +52,7 @@ const Chat = () => {
 
     return (
             <div>
-                <Grid container>
+                <Grid container className={classes.background}>
                     <Grid item xs={12} >
                         <Typography variant="h5" className="header-message">Chat</Typography>
                     </Grid>
