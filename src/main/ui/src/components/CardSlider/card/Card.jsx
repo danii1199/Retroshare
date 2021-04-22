@@ -56,7 +56,7 @@ const Cards = () => {
                     {product.name}
                   </Typography>
                   
-                  
+                
                 </CardContent>
               </CardActionArea>
             </Card>

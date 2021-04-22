@@ -50,6 +50,9 @@ const Products = () => {
   return (
     <>
       <Carousel
+        
+        NextIcon="next" // Change the "inside" of the next button to "next"
+        PrevIcon="prev"
         IndicatorIcon={<AlbumIcon />}
         indicatorIconButtonProps={{
           style: {
@@ -68,9 +71,19 @@ const Products = () => {
             textAligh: "right", // 4
           },
         }}
+        NavButton={({ onClick, className, style, next, prev }) => {
+          return (
+            <Button onClick={onClick} className={className} style={style}>
+              {next && "Next"}
+              {prev && "Previous"}
+            </Button>
+          );
+        }}
       >
-        {products.map((item, i) => (
-          <Item key={i} item={item} />
+        {products.map((item) => (
+          <Grid key={item.id}>
+            <Item item={item} />
+          </Grid>
         ))}
       </Carousel>
 
@@ -98,9 +111,9 @@ const Products = () => {
         </Container>
       </div>
 
-      <Container xs id="products">
+      <Container id="products">
         <Grid container spacing={8}>
-          <Grid item xs={12}>
+          <Grid item>
             <ThemeProvider theme={theme}>
               <Typography fontFamily="BlinkMacSystemFont" variant="h3">
                 Recently Add
@@ -112,14 +125,14 @@ const Products = () => {
               .slice(products.length - 4, products.length)
               .map((product) => {
                 return (
-                  <Grid key={product.id} item xs={12} sm={6} md={3}>
-                    <CardProduct key={product.id} product={product} />
+                  <Grid key={product.id} item sm={6} md={3}>
+                    <CardProduct product={product} />
                   </Grid>
                 );
               })}
           </Grid>
           {games.length > 0 && (
-            <Grid item xs={12}>
+            <Grid item>
               <ThemeProvider theme={theme}>
                 <Typography variant="h3">Games</Typography>
               </ThemeProvider>
@@ -128,14 +141,14 @@ const Products = () => {
           <Grid container spacing={2}>
             {games.slice(games.length - 4, games.length).map((product) => {
               return (
-                <Grid key={games.id} item xs={12} sm={6} md={3}>
-                  <CardProduct key={games.id} product={product} />
+                <Grid key={games.id} item sm={6} md={3}>
+                  <CardProduct product={product} />
                 </Grid>
               );
             })}
           </Grid>
           {consoles.length > 0 && (
-            <Grid item xs={12}>
+            <Grid item>
               <ThemeProvider theme={theme}>
                 <Typography variant="h3">Videoconsoles</Typography>
               </ThemeProvider>
@@ -146,14 +159,14 @@ const Products = () => {
               .slice(consoles.length - 4, consoles.length)
               .map((product) => {
                 return (
-                  <Grid key={consoles.id} item xs={12} sm={6} md={3}>
-                    <CardProduct key={consoles.id} product={product} />
+                  <Grid key={consoles.id} item sm={6} md={3}>
+                    <CardProduct product={product} />
                   </Grid>
                 );
               })}
           </Grid>
           {vinyls.length > 0 && (
-            <Grid item xs={12}>
+            <Grid item>
               <ThemeProvider theme={theme}>
                 <Typography variant="h3">Vinyls</Typography>
               </ThemeProvider>
@@ -162,14 +175,14 @@ const Products = () => {
           <Grid container spacing={2}>
             {vinyls.slice(vinyls.length - 4, vinyls.length).map((product) => {
               return (
-                <Grid key={vinyls.id} item xs={12} sm={6} md={3}>
-                  <CardProduct key={vinyls.id} product={product} />
+                <Grid key={vinyls.id} item sm={6} md={3}>
+                  <CardProduct product={product} />
                 </Grid>
               );
             })}
           </Grid>
           {recordPlayers.length > 0 && (
-            <Grid item xs={12}>
+            <Grid item>
               <ThemeProvider theme={theme}>
                 <Typography variant="h3">RecordPlayers</Typography>
               </ThemeProvider>
@@ -180,8 +193,8 @@ const Products = () => {
               .slice(recordPlayers.length - 4, recordPlayers.length)
               .map((product) => {
                 return (
-                  <Grid key={recordPlayers.id} item xs={12} sm={6} md={3}>
-                    <CardProduct key={recordPlayers.id} product={product} />
+                  <Grid key={recordPlayers.id} item sm={6} md={3}>
+                    <CardProduct product={product} />
                   </Grid>
                 );
               })}

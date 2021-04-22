@@ -51,7 +51,7 @@ const GameDataComponent = () => {
     <Container xs id="products">
       <Grid container spacing={8}>
         {games.length > 0 && (
-          <Grid item xs={12}>
+          <Grid item >
             <ThemeProvider theme={theme}>
               <Typography variant="h3">Videogames</Typography>
             </ThemeProvider>
@@ -62,8 +62,8 @@ const GameDataComponent = () => {
             .slice(games.length - 4, games.length)
             .map((product) => {
               return (
-                <Grid key={games.id} item xs={12} sm={6} md={3}>
-                  <CardProduct key={games.id} product={product} />
+                <Grid key={games.id} item  sm={6} md={3}>
+                  <CardProduct product={product} />
                 </Grid>
               );
             })}
