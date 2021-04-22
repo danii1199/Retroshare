@@ -8,41 +8,52 @@ const UserProfile = () => {
   const currentUser = AuthService.getCurrentUser();
 
   return (
-    <div className="container">
-      <header className="jumbotron">
-        <h3>
-          <strong>{currentUser.name}</strong> Profile
-        </h3>
-      </header>
-      <p>
-        <strong>Token:</strong> {currentUser.token}
-      </p>
-      <p>
-        <strong>Id:</strong> {currentUser.id}
-      </p>
-      <p>
-        <strong>name:</strong> {currentUser.name}
-      </p>
+    <div style={{maxWidth:"550px",margin:"0px auto"}}>
+        <div style={{
+           margin:"18px 0px",
+            borderBottom:"1px solid grey"
+        }}>
 
-      <p>
-        <strong>name:</strong> {currentUser.firstName}
-      </p>
-
-      <p>
-        <strong>user:</strong> {OneUser(currentUser.id).userName}
-      </p>
-
-    
       
-      <strong>Authorities:</strong>
-      <ul>
-        {currentUser.authorities &&
-          currentUser.authorities.map((role, index) => (
-            <li key={index}>{role}</li>
-          ))}
-      </ul>
+        <div style={{
+            display:"flex",
+            justifyContent:"space-around",
+           
+        }}>
+            <div>
+                <img style={{width:"160px",height:"160px",borderRadius:"80px"}}
+                src={currentUser.avatar}
+                />
+              
+            </div>
+            <div>
+                <h4>{currentUser.name}</h4>
+                <h5>{currentUser.name}</h5>
+                <div style={{display:"flex",width:"108%"}}>
+                    <h6 style={{paddingLeft:"30px"}}>First Name:  {currentUser.name} </h6>
+                    <h6 style={{paddingLeft:"30px"}}>{currentUser.name} </h6>
+                    <h6 style={{paddingLeft:"30px"}}>{currentUser.name} </h6>
+                </div>
+
+            </div>
+        </div>
+     
+         <div className="file-field input-field" style={{margin:"10px"}}>
+         </div>
+         </div>      
+        <div className="gallery">
+           {/*  {
+                mypics.map(item=>{
+                    return(
+                     <img key={item._id} className="item" src={item.photo} alt={item.title}/>  
+                    )
+                })
+            }
+ */}
+        
+        </div>
     </div>
-  );
+);
 };
 
 export default UserProfile;

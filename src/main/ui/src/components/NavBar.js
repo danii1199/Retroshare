@@ -8,6 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
+import Person from "@material-ui/icons/Person"
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
@@ -196,16 +197,16 @@ const NavBar = () => {
             <Button color="inherit" component={Link} to="/users">
               Usuarios
             </Button>
-            <Button color="inherit" component={Link} to="/videogames">
+            <Button color="inherit" component={Link} to="/videogames-admin">
               Games
             </Button>
-            <Button color="inherit" component={Link} to="/gameconsole">
+            <Button color="inherit" component={Link} to="/gameconsole-admin">
               G.Console
             </Button>
-            <Button color="inherit" component={Link} to="/rplayer">
+            <Button color="inherit" component={Link} to="/rplayer-admin">
               R.Player
             </Button>
-            <Button color="inherit" component={Link} to="/vinyl">
+            <Button color="inherit" component={Link} to="/vinyl-admin">
               Vinyl
             </Button>
             <Button color="inherit" component={Link} to="/step1">
@@ -214,6 +215,7 @@ const NavBar = () => {
 
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
+
               <IconButton 
               aria-label="chat" 
               color="inherit"
@@ -223,6 +225,7 @@ const NavBar = () => {
                   <MailIcon />
                 </Badge>
               </IconButton>
+              
               <IconButton
                 aria-label="cart"
                 color="inherit"
@@ -233,6 +236,15 @@ const NavBar = () => {
                   <ShoppingCartIcon />
                 </Badge>
               </IconButton>
+
+              <IconButton 
+              aria-label="profile" 
+              color="inherit"
+              component={Link}
+              to ="/profile">
+                  <Person />
+              </IconButton>
+
               <IconButton
                 edge="end"
                 aria-label="exit app"
@@ -267,7 +279,7 @@ const NavBar = () => {
     //BARRA DE USER
     return (
       <div className={classes.grow}>
-        <AppBar position="fixed">
+        <AppBar position="fixed" className={classes.background}>
           <Toolbar>
             <IconButton
               src="../public/discoVinilo.png"
@@ -287,10 +299,6 @@ const NavBar = () => {
             <SearchBar />
             <Button color="inherit" component={Link} to="/step1">
               New Product
-            </Button>
-
-            <Button color="inherit" component={Link} to="/profile">
-              Profile
             </Button>
 
             <div className={classes.grow} />
@@ -314,6 +322,15 @@ const NavBar = () => {
                   <ShoppingCartIcon />
                 </Badge>
               </IconButton>
+
+              <IconButton 
+              aria-label="profile" 
+              color="inherit"
+              component={Link}
+              to ="/profile">
+                  <Person />
+              </IconButton>
+              
               <IconButton
                 edge="end"
                 aria-label="exit app"
@@ -347,7 +364,7 @@ const NavBar = () => {
     //BARRA DE ANON
     return (
       <div className={classes.grow}>
-        <AppBar position="fixed">
+        <AppBar position="fixed" className={classes.background}>
           <Toolbar>
             <IconButton
               src="../public/discoVinilo.png"
