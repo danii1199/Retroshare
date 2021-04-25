@@ -1,78 +1,39 @@
-import { Grid, Container, Typography, ThemeProvider } from "@material-ui/core";
-import { createMuiTheme } from "@material-ui/core/styles";
-import "./style.css";
-import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
-import VideoGameAPI from "../../lib/VideoGameAPI";
-import CardProduct from "../CardProduct/CardProduct";
+import * as React from "react";
+import { DataGrid } from "@material-ui/data-grid";
 
+const GameComponentAdmin = () => {
+  const [game, setGame] = React.useState([]);
 
-const GameDataComponent = () => {
-  const theme = createMuiTheme({
-    typography: {
-      fontFamily: "sans-serif",
-    },
-  });
+  React.useEffect(() => {
+    obtenerDatos();
+  }, []);
 
-  theme.typography.h3 = {
-    fontFamily: "sans-serif",
-    fontSize: "1.2rem",
-    "@media (min-width:600px)": {
-      fontSize: "1.5rem",
-    },
-    [theme.breakpoints.up("md")]: {
-      fontSize: "2.4rem",
-    },
+  const obtenerDatos = async () => {
+    const data = await fetch("http://localhost:8080/retroshare/g-all");
+    const games = await data.json();
+    setGame(games);
   };
 
-  const games = VideoGameAPI();
+  const columns = [
+    { field: "id", headerName: "ID", width: 70 },
+    { field: "name", headerName: "Name", width: 130 },
+    { field: "gender", headerName: "Gender", width: 150 },
+    { field: "developer", headerName: "developer", width: 150 },
+    { field: "price", headerName: "Price", width: 150 },
+    {
+      field: "firstName",
+      headerName: "Owner user",
+      width: 130,
+      valueFormatter: (game) => game.row?.user?.userName,
+    },
+    { field: "productStatus", headerName: "Product Status", width: 150,valueFormatter: (game) => game.row?.productStatus?.status},
+  ];
 
   return (
-    <>
-    <div>
-      <Container id="buttons">
-        <Grid container spacing={1}>
-          <Button className="button" component={Link} to="/videogames">
-            Games
-          </Button>
-          <Button className="button" component={Link} to="/gameconsole">
-            Consoles
-          </Button>
-          <Button className="button" component={Link} to="/rplayer">
-            R.Player
-          </Button>
-          <Button className="button" component={Link} to="/vinyl">
-            Vinyl
-          </Button>
-        </Grid>
-      </Container>
+    <div style={{ height: 400, width: "100%" ,backgroundColor:"white"}}>
+      <DataGrid rows={game} columns={columns} pageSize={5} checkboxSelection />
     </div>
-
-    <Container xs id="products">
-      <Grid container spacing={8}>
-        {games.length > 0 && (
-          <Grid item >
-            <ThemeProvider theme={theme}>
-              <Typography variant="h3">Videogames</Typography>
-            </ThemeProvider>
-          </Grid>
-        )}
-        <Grid container spacing={2}>
-          {games
-            .slice(games.length - 4, games.length)
-            .map((product) => {
-              return (
-                <Grid key={games.id} item  sm={6} md={3}>
-                  <CardProduct product={product} />
-                </Grid>
-              );
-            })}
-        </Grid>
-      </Grid>
-    </Container>
-  </>
-);
+  );
 };
 
-export default GameDataComponent;
-
+export default GameComponentAdmin;

@@ -3,9 +3,9 @@ import NavBar from "./components/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import UserDataComponent from "./components/DataComponent/UserDataComponent";
 import GameDataComponent from "./components/DataComponent/GameDataComponent";
-import GameDataComponentAdmin from "./components/DataComponent/GameDataComponentAdmin";
+import Game from "./components/DataComponent/Game";
 import GameConsoleDataComponent from "./components/DataComponent/GameConsoleDataComponent";
-import GameConsoleDataComponentAdmin from "./components/DataComponent/GameConsoleDataComponentAdmin";
+import GameConsole from "./components/DataComponent/GameConsole";
 import SingIn from "./components/UserAuth/SingIn";
 import SingUp from "./components/UserAuth/SingUp";
 import { Step1 } from "./components/ProductForm/Step1";
@@ -16,9 +16,9 @@ import { Result } from "./components/ProductForm/Result";
 import ProductView from "./components/ProductView/ProductView";
 import ProductById from "./components/ProductView/ProductView";
 import VinylDataComponent from "./components/DataComponent/VinylDataComponent";
-import VinylDataComponentAdmin from "./components/DataComponent/VinylDataComponentAdmin";
+import Vinyl from "./components/DataComponent/Vinyl";
 import RecordPlayerDataComponent from "./components/DataComponent/RecordPlayerDataComponent";
-import RecordPlayerDataComponentAdmin from "./components/DataComponent/RecordPlayerDataComponentAdmin";
+import RecordPlayer from "./components/DataComponent/RecordPlayer";
 import UserProfile from "./components/User/UserProfile";
 import Cart from "./pages/cart";
 import Chat from "./components/Chat/Chat";
@@ -32,17 +32,17 @@ const App = () => {
           <Route path="/singin" exact component={SingIn}></Route>
           <Route path="/singup" exact component={SingUp}></Route>
 
-          <Route path="/videogames" exact component={GameDataComponent}></Route>
-          <Route path="/videogames-admin" exact component={GameDataComponentAdmin}></Route>
+          <Route path="/videogames-admin" exact component={GameDataComponent}></Route>
+          <Route path="/videogames" exact component={Game}></Route>
 
-          <Route path="/gameconsole" exact component={GameConsoleDataComponent}></Route>
-          <Route path="/gameconsole-admin" exact component={GameConsoleDataComponentAdmin}></Route>
+          <Route path="/gameconsole-admin" exact component={GameConsoleDataComponent}></Route>
+          <Route path="/gameconsole" exact component={GameConsole}></Route>
 
-          <Route path="/rplayer" exact component={RecordPlayerDataComponent}></Route>
-          <Route path="/rplayer-admin" exact component={RecordPlayerDataComponentAdmin}></Route>
+          <Route path="/rplayer-admin" exact component={RecordPlayerDataComponent}></Route>
+          <Route path="/rplayer" exact component={RecordPlayer}></Route>
 
-          <Route path="/vinyl" exact component={VinylDataComponent}></Route>
-          <Route path="/vinyl-admin" exact component={VinylDataComponentAdmin}></Route>
+          <Route path="/vinyl-admin" exact component={VinylDataComponent}></Route>
+          <Route path="/vinyl" exact component={Vinyl}></Route>
 
           <Route path="/" exact component={Products}></Route>
           <Route path="/cart" component={Cart} />

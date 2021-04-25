@@ -1,11 +1,15 @@
 import OneUser from "../../lib/OneUser";
 import AuthService from "../../Service/Auth/AuthService";
-
+import { ProductsContext } from "../../contexts/ProductsContext";
+import { useContext } from "react";
+import { Grid, Container, Typography, ThemeProvider } from "@material-ui/core";
+import CardProduct from "../CardProduct/CardProduct";
 
 
 
 const UserProfile = () => {
   const currentUser = AuthService.getCurrentUser();
+  const { products } = useContext(ProductsContext);
 
   return (
     <div style={{maxWidth:"550px",margin:"0px auto"}}>
@@ -27,12 +31,14 @@ const UserProfile = () => {
               
             </div>
             <div>
-                <h4>{currentUser.name}</h4>
-                <h5>{currentUser.name}</h5>
+                <h4 style={{paddingLeft:"30px"}}>UserName: {currentUser.name}</h4>
+                <h5 style={{paddingLeft:"30px"}}>First Name: {currentUser.name}</h5>
+                <h5 style={{paddingLeft:"30px"}}>First Name: {currentUser.name}</h5>
                 <div style={{display:"flex",width:"108%"}}>
-                    <h6 style={{paddingLeft:"30px"}}>First Name:  {currentUser.name} </h6>
-                    <h6 style={{paddingLeft:"30px"}}>{currentUser.name} </h6>
-                    <h6 style={{paddingLeft:"30px"}}>{currentUser.name} </h6>
+                    <h6 style={{paddingLeft:"30px"}}>Email:  {currentUser.name} </h6>
+                    <h6 style={{paddingLeft:"30px"}}>Last Name: {currentUser.name} </h6>
+                    <h6 style={{paddingLeft:"30px"}}>Phone Number: {currentUser.name} </h6>
+                    <h6 style={{paddingLeft:"30px"}}>City: {currentUser.name} </h6>
                 </div>
 
             </div>
@@ -41,17 +47,18 @@ const UserProfile = () => {
          <div className="file-field input-field" style={{margin:"10px"}}>
          </div>
          </div>      
-        <div className="gallery">
-           {/*  {
-                mypics.map(item=>{
-                    return(
-                     <img key={item._id} className="item" src={item.photo} alt={item.title}/>  
-                    )
-                })
-            }
- */}
         
-        </div>
+        <Grid container spacing={2}>
+            {products
+              .map((product) => {
+                return (
+                  <Grid key={product.id} item sm={6} md={3}>
+                    <CardProduct product={product} />
+                  </Grid>
+                );
+              })}
+          </Grid>
+        
     </div>
 );
 };
