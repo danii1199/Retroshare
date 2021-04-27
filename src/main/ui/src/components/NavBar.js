@@ -6,9 +6,8 @@ import IconButton from "@material-ui/core/IconButton";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
-import Person from "@material-ui/icons/Person"
+import Person from "@material-ui/icons/Person";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
@@ -17,6 +16,7 @@ import SearchBar from "./Search/SearchBar";
 import AuthService from "../Service/Auth/AuthService";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import { CartContext } from "../contexts/CartContext";
+import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -70,8 +70,8 @@ const useStyles = makeStyles((theme) => ({
   inputRoot: {
     color: "inherit",
   },
-  background:{
-    background: "#121212"
+  background: {
+    background: "#121212",
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -92,18 +92,23 @@ const NavBar = () => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const [sideMenuMoreAnchorEl, setSideMenuMoreAnchorEl] = useState(null);
   const { itemCount } = useContext(CartContext);
+
+  const isAdmin = AuthService.getRoles() === "Admin";
+  const isUser = AuthService.getRoles() === "User";
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
+  const isSideMenuOpen = Boolean(sideMenuMoreAnchorEl);
   const logOut = () => AuthService.logout;
 
-  const handleProfileMenuOpen = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+  
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
+  };
+  const handleSideMenuClose = () => {
+    setSideMenuMoreAnchorEl(null);
   };
 
   const handleMenuClose = () => {
@@ -113,6 +118,9 @@ const NavBar = () => {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+  const handleSideMenuOpen = (event) => {
+    setSideMenuMoreAnchorEl(event.currentTarget);
   };
 
   const menuId = "primary-search-account-menu";
@@ -143,41 +151,176 @@ const NavBar = () => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      {isUser && (
+        <>
+          <MenuItem>
+            <IconButton
+              aria-label="chat"
+              color="inherit"
+              component={Link}
+              to="/chat"
+            >
+              <Badge badgeContent={1} color="secondary">
+                <MailIcon />
+              </Badge>
+            </IconButton>
+            <p>Chat</p>
+          </MenuItem>
+          <MenuItem>
+            <IconButton
+              aria-label="profile"
+              color="inherit"
+              component={Link}
+              to="/profile"
+            >
+              <Person />
+            </IconButton>
+            <p>Profile</p>
+          </MenuItem>
+          <MenuItem>
+            <IconButton
+              edge="end"
+              aria-label="exit app"
+              aria-controls={menuId}
+              aria-haspopup="true"
+              color="inherit"
+              onClick={logOut()}
+              href={"/"}
+            >
+              <ExitToAppIcon />
+            </IconButton>
+            <p>Log out</p>
+          </MenuItem>
+        </>
+      )}
       <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
+        <IconButton
+          edge="end"
+          aria-label="account of current user"
+          aria-controls={menuId}
+          aria-haspopup="true"
+          color="inherit"
+          component={Link}
+          to="/singin"
+        >
+          <ExitToAppIcon />
         </IconButton>
-        <p>Chat</p>
+        <p>Log In</p>
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
+        <IconButton
+          aria-label="cart"
+          color="inherit"
+          component={Link}
+          to="/cart"
+        >
+          <Badge badgeContent={itemCount} color="secondary">
             <ShoppingCartIcon />
           </Badge>
         </IconButton>
         <p>Cart</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+    </Menu>
+  );
+  const sideMenuId = "primary-search-account-menu-mobile";
+  const renderSideMenu = (
+    <Menu
+      anchorEl={sideMenuMoreAnchorEl}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
+      id={sideMenuId}
+      keepMounted
+      transformOrigin={{ vertical: "top", horizontal: "right" }}
+      open={isSideMenuOpen}
+      onClose={handleSideMenuClose}
+    >
+      {isAdmin && (
+        <>
+          <MenuItem>
+            <Button
+              color="inherit"
+              aria-controls={menuId}
+              component={Link}
+              to="/users"
+            >
+              Usuarios
+            </Button>
+          </MenuItem>
+          <MenuItem>
+            <Button
+              color="inherit"
+              aria-controls={menuId}
+              component={Link}
+              to="/videogames-admin"
+            >
+              Games
+            </Button>
+          </MenuItem>
+          <MenuItem>
+            <Button
+              color="inherit"
+              aria-controls={menuId}
+              component={Link}
+              to="/gameconsole-admin"
+            >
+              G.Console
+            </Button>
+          </MenuItem>
+          <MenuItem>
+            <Button
+              color="inherit"
+              aria-controls={menuId}
+              component={Link}
+              to="/rplayer-admin"
+            >
+              R.Player
+            </Button>
+          </MenuItem>
+          <MenuItem>
+            <Button
+              color="inherit"
+              aria-controls={menuId}
+              component={Link}
+              to="/vinyl-admin"
+            >
+              Vinyl
+            </Button>
+          </MenuItem>
+        </>
+      )}
+      {isUser && (
+        <MenuItem>
+          <Button
+            color="inherit"
+            aria-controls={menuId}
+            component={Link}
+            to="/step1"
+          >
+            New Product
+          </Button>
+        </MenuItem>
+      )}
     </Menu>
   );
   if (AuthService.getRoles() === "Admin") {
     //BARRA DE ADMINISTRADOR
     return (
       <div className={classes.grow}>
+        {renderSideMenu}
         <AppBar position="fixed" className={classes.background}>
           <Toolbar>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                onClick={handleSideMenuOpen}
+                {...{
+                  edge: "start",
+                  color: "inherit",
+                  "aria-label": "menu",
+                  "aria-haspopup": "true",
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </div>
             <IconButton
               src="../public/discoVinilo.png"
               color="inherit"
@@ -194,38 +337,69 @@ const NavBar = () => {
               RetroShare
             </IconButton>
             <SearchBar />
-            <Button color="inherit" component={Link} to="/users">
-              Usuarios
-            </Button>
-            <Button color="inherit" component={Link} to="/videogames-admin">
-              Games
-            </Button>
-            <Button color="inherit" component={Link} to="/gameconsole-admin">
-              G.Console
-            </Button>
-            <Button color="inherit" component={Link} to="/rplayer-admin">
-              R.Player
-            </Button>
-            <Button color="inherit" component={Link} to="/vinyl-admin">
-              Vinyl
-            </Button>
-            <Button color="inherit" component={Link} to="/step1">
-              New Product
-            </Button>
-
+            <div className={classes.sectionDesktop}>
+              <Button
+                color="inherit"
+                aria-controls={menuId}
+                component={Link}
+                to="/users"
+              >
+                Usuarios
+              </Button>
+              <Button
+                color="inherit"
+                aria-controls={menuId}
+                component={Link}
+                to="/videogames-admin"
+              >
+                Games
+              </Button>
+              <Button
+                color="inherit"
+                aria-controls={menuId}
+                component={Link}
+                to="/gameconsole-admin"
+              >
+                G.Console
+              </Button>
+              <Button
+                color="inherit"
+                aria-controls={menuId}
+                component={Link}
+                to="/rplayer-admin"
+              >
+                R.Player
+              </Button>
+              <Button
+                color="inherit"
+                aria-controls={menuId}
+                component={Link}
+                to="/vinyl-admin"
+              >
+                Vinyl
+              </Button>
+              <Button
+                color="inherit"
+                aria-controls={menuId}
+                component={Link}
+                to="/step1"
+              >
+                New Product
+              </Button>
+            </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-
-              <IconButton 
-              aria-label="chat" 
-              color="inherit"
-              component={Link}
-              to ="/chat">
+              <IconButton
+                aria-label="chat"
+                color="inherit"
+                component={Link}
+                to="/chat"
+              >
                 <Badge badgeContent={1} color="secondary">
                   <MailIcon />
                 </Badge>
               </IconButton>
-              
+
               <IconButton
                 aria-label="cart"
                 color="inherit"
@@ -237,12 +411,13 @@ const NavBar = () => {
                 </Badge>
               </IconButton>
 
-              <IconButton 
-              aria-label="profile" 
-              color="inherit"
-              component={Link}
-              to ="/profile">
-                  <Person />
+              <IconButton
+                aria-label="profile"
+                color="inherit"
+                component={Link}
+                to="/profile"
+              >
+                <Person />
               </IconButton>
 
               <IconButton
@@ -279,8 +454,22 @@ const NavBar = () => {
     //BARRA DE USER
     return (
       <div className={classes.grow}>
+        {renderSideMenu}
         <AppBar position="fixed" className={classes.background}>
           <Toolbar>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                onClick={handleSideMenuOpen}
+                {...{
+                  edge: "start",
+                  color: "inherit",
+                  "aria-label": "menu",
+                  "aria-haspopup": "true",
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </div>
             <IconButton
               src="../public/discoVinilo.png"
               color="inherit"
@@ -297,17 +486,20 @@ const NavBar = () => {
               RetroShare
             </IconButton>
             <SearchBar />
-            <Button color="inherit" component={Link} to="/step1">
-              New Product
-            </Button>
+            <div className={classes.sectionDesktop}>
+              <Button color="inherit" component={Link} to="/step1">
+                New Product
+              </Button>
+            </div>
 
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-            <IconButton 
-              aria-label="chat" 
-              color="inherit"
-              component={Link}
-              to ="/chat">
+              <IconButton
+                aria-label="chat"
+                color="inherit"
+                component={Link}
+                to="/chat"
+              >
                 <Badge badgeContent={1} color="secondary">
                   <MailIcon />
                 </Badge>
@@ -323,14 +515,15 @@ const NavBar = () => {
                 </Badge>
               </IconButton>
 
-              <IconButton 
-              aria-label="profile" 
-              color="inherit"
-              component={Link}
-              to ="/profile">
-                  <Person />
+              <IconButton
+                aria-label="profile"
+                color="inherit"
+                component={Link}
+                to="/profile"
+              >
+                <Person />
               </IconButton>
-              
+
               <IconButton
                 edge="end"
                 aria-label="exit app"
@@ -364,8 +557,22 @@ const NavBar = () => {
     //BARRA DE ANON
     return (
       <div className={classes.grow}>
+        {renderSideMenu}
         <AppBar position="fixed" className={classes.background}>
           <Toolbar>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                onClick={handleSideMenuOpen}
+                {...{
+                  edge: "start",
+                  color: "inherit",
+                  "aria-label": "menu",
+                  "aria-haspopup": "true",
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+            </div>
             <IconButton
               src="../public/discoVinilo.png"
               color="inherit"
@@ -384,6 +591,17 @@ const NavBar = () => {
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
               <IconButton
+                aria-label="cart"
+                color="inherit"
+                component={Link}
+                to="/cart"
+              >
+                <Badge badgeContent={itemCount} color="secondary">
+                  <ShoppingCartIcon />
+                </Badge>
+              </IconButton>
+              
+              <IconButton
                 edge="end"
                 aria-label="account of current user"
                 aria-controls={menuId}
@@ -392,9 +610,10 @@ const NavBar = () => {
                 component={Link}
                 to="/singin"
               >
-                LogIn
-                <AccountCircle />
+                <p>Log In</p>
+                <ExitToAppIcon />
               </IconButton>
+              
             </div>
             <div className={classes.sectionMobile}>
               <IconButton

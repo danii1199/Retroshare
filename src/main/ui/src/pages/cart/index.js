@@ -5,6 +5,7 @@ import { CartContext } from "../../contexts/CartContext";
 import { formatNumber } from "../../helpers/utils";
 import { Link } from "react-router-dom";
 import {
+  Button,
   Container,
   Grid,
   Typography,
@@ -24,12 +25,12 @@ const Cart = () => {
   return (
     <Container title="Cart" description="This is the Cart page">
       <Grid>
-        <Grid item xs>
+        <Grid item>
             <Typography variant={"h2"}>Cart</Typography>
         </Grid>
 
         <Grid align="justify-center">
-          <Grid item xs>
+          <Grid item>
             {cartItems.length > 0 ? (
               <CartProducts />
             ) : (
@@ -48,28 +49,27 @@ const Cart = () => {
             )}
           </Grid>
           {cartItems.length > 0 && (
-            <Grid item xs>
-              <Grid item xs={3} align="justify-center">
+            <Grid item>
+              <Grid item xs={3} align="actions-content">
                 <p className="mb-1">Total Items</p>
                 <h4 className=" mb-3 txt-right">{itemCount}</h4>
                 <p className="mb-1">Total Payment</p>
                 <h3 className="m-0 txt-right">{formatNumber(total)}</h3>
                 <hr className="my-4" />
                 <Grid className="text-center">
-                  <button
-                    type="button"
-                    className="btn btn-primary mb-2"
+                  <Button
+                    className="custom-button"
                     onClick={handleCheckout}
                   >
                     CHECKOUT
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outlineprimary btn-sm"
+                  </Button>
+                  <Button
+            
+                    className="custom-button"
                     onClick={clearCart}
                   >
                     CLEAR
-                  </button>
+                  </Button>
                 </Grid>
               </Grid>
             </Grid>

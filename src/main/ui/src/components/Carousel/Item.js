@@ -1,4 +1,4 @@
-import { Paper, CardMedia, CardActionArea, Typography } from "@material-ui/core";
+import { Paper, CardMedia, CardActionArea } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 

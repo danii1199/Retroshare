@@ -85,7 +85,7 @@ export default function SingIn() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sing in
+          Log in
         </Typography>
         <form
           className={classes.form}
@@ -138,7 +138,7 @@ export default function SingIn() {
             color="primary"
             className={classes.submit}
           >
-            Sing In
+            Log In
           </Button>
           <Grid container>
             <Grid item xs>
@@ -148,7 +148,7 @@ export default function SingIn() {
             </Grid>
             <Grid item>
               <Link href="/singup" variant="body2">
-                {"Don't have an account? Sing Up"}
+                {"Don't have an account? Sign Up"}
               </Link>
             </Grid>
           </Grid>

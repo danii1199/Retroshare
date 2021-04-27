@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import DeleteIcon from "@material-ui/icons/Delete";
 import RemoveIcon from "@material-ui/icons/Remove";
-import AddIcon from "@material-ui/icons/Add";
 import EuroSymbolIcon from "@material-ui/icons/EuroSymbol";
 import {
   Grid,
@@ -18,16 +17,16 @@ import { CartContext } from "../../contexts/CartContext";
 import { formatNumber } from "../../helpers/utils";
 
 const CartItem = ({ product }) => {
-  const { increase, decrease, removeProduct } = useContext(CartContext);
+  const {  decrease, removeProduct } = useContext(CartContext);
 
   return (
-    <Grid item xs >
-      <Card className="custom-card">
+    <Grid item xs>
+      <Card className="custom-card" >
         <CardActionArea component={Link} to={`pr/${product.id}`}>
           <CardMedia
             component="img"
             alt={product.image}
-            height="260"
+            height="100"
             className="card-image"
             image={product.image}
             title={product.name}
@@ -61,15 +60,11 @@ const CartItem = ({ product }) => {
           </CardContent>
         </CardActionArea>
         <CardActions className="actions-content">
-          <Button className="custom-button" onClick={() => increase(product)}>
-            <AddIcon />
-          </Button>
           {product.quantity > 1 && (
             <Button onClick={() => decrease(product)} className="custom-button">
               <RemoveIcon />
             </Button>
           )}
-
           {product.quantity === 1 && (
             <Button
               onClick={() => removeProduct(product)}

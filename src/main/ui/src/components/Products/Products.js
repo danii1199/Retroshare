@@ -1,7 +1,7 @@
 import { Grid, Container, Typography, ThemeProvider } from "@material-ui/core";
 import CardProduct from "../CardProduct/CardProduct";
 import { ProductsContext } from "../../contexts/ProductsContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import { createMuiTheme } from "@material-ui/core/styles";
@@ -47,10 +47,21 @@ const Products = () => {
   const vinyls = VinylAPI();
   const recordPlayers = RecordPlayerAPI();
 
+  const [offset, setOffset] = useState(0);
+
+  useEffect(() => {
+    window.onScroll = () => {
+      setOffset(window.pageYOffset)
+    }
+  }, []);
+
+  console.log(offset);
+
   return (
     <>
       <Carousel
-        
+
+
         NextIcon="next" // Change the "inside" of the next button to "next"
         PrevIcon="prev"
         IndicatorIcon={<AlbumIcon />}
