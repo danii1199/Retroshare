@@ -26,7 +26,7 @@ export const Step1 = () => {
   return (
     <MainContainer>
       <Typography component="h2" variant="h5">
-        🦄 Step 1
+        New Product
       </Typography>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input

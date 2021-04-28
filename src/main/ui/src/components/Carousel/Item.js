@@ -21,7 +21,8 @@ const Item = (props) => {
           <CardMedia
             component="img"
             alt={props.item.image}
-            height="690"
+            height="500px"
+            width="auto"
             className="card-image"
             image={props.item.image}
             title={props.item.name}

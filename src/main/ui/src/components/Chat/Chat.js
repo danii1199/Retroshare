@@ -46,6 +46,7 @@ const Chat = () => {
   const classes = useStyles();
   const currentUser = AuthService.getCurrentUser();
   const users = UserAPI();
+  
 
   return (
     <div>
@@ -81,7 +82,7 @@ const Chat = () => {
           <Divider />
           <List>
             {users.map((user) => {
-              if (currentUser.name != user.firstName) {
+              if (currentUser.name !== user.firstName) {
                 return (
                   <ListItem button key={user.id}>
                     <ListItemIcon>
