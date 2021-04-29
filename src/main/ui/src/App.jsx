@@ -20,6 +20,7 @@ import Vinyl from "./components/DataComponent/Vinyl";
 import RecordPlayerDataComponent from "./components/DataComponent/RecordPlayerDataComponent";
 import RecordPlayer from "./components/DataComponent/RecordPlayer";
 import UserProfile from "./components/User/UserProfile";
+import OneUser from "./components/User/OneUser";
 import Cart from "./pages/cart";
 import Chat from "./components/Chat/Chat";
 
@@ -53,6 +54,9 @@ const App = () => {
           <Route path="/pr/:id">
             <ProductById />
           </Route>
+
+          <Route path="/user/:id" component={OneUser}></Route>
+
           <Route path="/step1" exact component={Step1}></Route>
           <Route path="/step2" component={Step2}></Route>
           <Route path="/step3" component={Step3}></Route>

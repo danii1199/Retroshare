@@ -9,6 +9,7 @@ import {
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { ShoppingCart } from "@material-ui/icons";
+import { Person } from "@material-ui/icons";
 import "./styleCard.css";
 import EuroSymbolIcon from "@material-ui/icons/EuroSymbol";
 import { useContext } from "react";
@@ -58,6 +59,15 @@ const CardProduct = ({ product }) => {
         <Typography field="price" gutterBottom variant="h5" component="h2">
           {product.price} <EuroSymbolIcon />
         </Typography>
+
+        <Button 
+        size="large"
+        className="custom-button"
+        component={Link} to={`user/${product.user.id}`}
+        >
+          <Person />
+        </Button>
+
         {isInCart && (
           <>
             <Button
