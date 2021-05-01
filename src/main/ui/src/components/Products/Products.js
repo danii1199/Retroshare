@@ -155,11 +155,7 @@ const Products = () => {
               );
             })}
           </Grid>
-          {recordPlayers.length > 0 && (
-            <Grid item>
-              <Typography variant="h3">RecordPlayers</Typography>
-            </Grid>
-          )}
+          {recordPlayers.length > 0 && <Grid item></Grid>}
           <Grid container spacing={2}>
             {recordPlayers
               .slice(recordPlayers.length - 4, recordPlayers.length)

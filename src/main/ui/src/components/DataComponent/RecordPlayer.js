@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import RecordPlayerAPI from "../../lib/RecordPlayerAPI";
 import CardProduct from "../CardProduct/CardProduct";
 
-
 const RecordPlayerDataComponent = () => {
   const theme = createMuiTheme({
     typography: {
@@ -29,49 +28,47 @@ const RecordPlayerDataComponent = () => {
 
   return (
     <>
-    <div>
-      <Container id="buttons">
-        <Grid container spacing={1}>
-          <Button className="button" component={Link} to="/videogames">
-            Games
-          </Button>
-          <Button className="button" component={Link} to="/gameconsole">
-            Consoles
-          </Button>
-          <Button className="button" component={Link} to="/rplayer">
-            R.Player
-          </Button>
-          <Button className="button" component={Link} to="/vinyl">
-            Vinyl
-          </Button>
-        </Grid>
-      </Container>
-    </div>
-
-    <Container xs id="products">
-      <Grid container spacing={8}>
-        {recordplayers.length > 0 && (
-          <Grid item xs={12}>
-            <ThemeProvider theme={theme}>
-              <Typography variant="h3">Record Players</Typography>
-            </ThemeProvider>
+      <div>
+        <Container id="buttons">
+          <Grid container spacing={1}>
+            <Button className="button" component={Link} to="/videogames">
+              Games
+            </Button>
+            <Button className="button" component={Link} to="/gameconsole">
+              Consoles
+            </Button>
+            <Button className="button" component={Link} to="/rplayer">
+              R.Player
+            </Button>
+            <Button className="button" component={Link} to="/vinyl">
+              Vinyl
+            </Button>
           </Grid>
-        )}
-        <Grid container spacing={2}>
-          {recordplayers
-            .slice(recordplayers.length - 4, recordplayers.length)
-            .map((product) => {
+        </Container>
+      </div>
+
+      <Container xs id="products">
+        <Grid container spacing={8}>
+          {recordplayers.length > 0 && (
+            <Grid item xs={12}>
+              <ThemeProvider theme={theme}>
+                <Typography variant="h3">Record Players</Typography>
+              </ThemeProvider>
+            </Grid>
+          )}
+          <Grid container spacing={2}>
+            {recordplayers.map((product) => {
               return (
                 <Grid key={recordplayers.id} item xs={12} sm={6} md={3}>
                   <CardProduct key={recordplayers.id} product={product} />
                 </Grid>
               );
             })}
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
-  </>
-);
+      </Container>
+    </>
+  );
 };
 
 export default RecordPlayerDataComponent;

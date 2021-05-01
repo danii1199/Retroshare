@@ -14,9 +14,11 @@ import "./styleCard.css";
 import EuroSymbolIcon from "@material-ui/icons/EuroSymbol";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
+import { useHistory } from "react-router-dom";
 
 const CardProduct = ({ product }) => {
-  const { addProduct, cartItems, increase } = useContext(CartContext);
+  const { addProduct, cartItems } = useContext(CartContext);
+  const history = useHistory();
 
   const isInCart = (product) => {
     return !!cartItems.find((item) => item.id === product.id);
@@ -60,15 +62,16 @@ const CardProduct = ({ product }) => {
           {product.price} <EuroSymbolIcon />
         </Typography>
 
-        <Button 
-        size="large"
-        className="custom-button"
-        component={Link} to={`user/${product.user.id}`}
+        <Button
+          size="large"
+          className="custom-button"
+          component={Link}
+          to={`user/${product.user.id}`}
         >
           <Person />
         </Button>
 
-        {isInCart && (
+        {!isInCart(product) && (
           <>
             <Button
               size="large"
@@ -79,17 +82,18 @@ const CardProduct = ({ product }) => {
             </Button>
           </>
         )}
-        {!isInCart && (
+        {isInCart(product) && (
           <>
             <Button
-              size="small"
-              color="secondary"
-              variant="outlined"
+              size="large"
+              className="custom-button"
+              
               onClick={() => {
-                increase(product);
+                history.push(`/cart`);
+                history.go();
               }}
             >
-              Add more
+              To Cart
             </Button>
           </>
         )}

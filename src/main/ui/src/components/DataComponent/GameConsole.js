@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import GameConsoleAPI from "../../lib/GameConsoleAPI";
 import CardProduct from "../CardProduct/CardProduct";
 
-
 const GameConsoleComponent = () => {
   const theme = createMuiTheme({
     typography: {
@@ -29,50 +28,47 @@ const GameConsoleComponent = () => {
 
   return (
     <>
-    <div>
-      <Container id="buttons">
-        <Grid container spacing={1}>
-          <Button className="button" component={Link} to="/videogames">
-            Games
-          </Button>
-          <Button className="button" component={Link} to="/gameconsole">
-            Consoles
-          </Button>
-          <Button className="button" component={Link} to="/rplayer">
-            R.Player
-          </Button>
-          <Button className="button" component={Link} to="/vinyl">
-            Vinyl
-          </Button>
-        </Grid>
-      </Container>
-    </div>
-
-    <Container xs id="products">
-      <Grid container spacing={8}>
-        {consoles.length > 0 && (
-          <Grid item xs={12}>
-            <ThemeProvider theme={theme}>
-              <Typography variant="h3">Videoconsoles</Typography>
-            </ThemeProvider>
+      <div>
+        <Container id="buttons">
+          <Grid container spacing={1}>
+            <Button className="button" component={Link} to="/videogames">
+              Games
+            </Button>
+            <Button className="button" component={Link} to="/gameconsole">
+              Consoles
+            </Button>
+            <Button className="button" component={Link} to="/rplayer">
+              R.Player
+            </Button>
+            <Button className="button" component={Link} to="/vinyl">
+              Vinyl
+            </Button>
           </Grid>
-        )}
-        <Grid container spacing={2}>
-          {consoles
-            .slice(consoles.length - 4, consoles.length)
-            .map((product) => {
+        </Container>
+      </div>
+
+      <Container xs id="products">
+        <Grid container spacing={8}>
+          {consoles.length > 0 && (
+            <Grid item xs={12}>
+              <ThemeProvider theme={theme}>
+                <Typography variant="h3">Videoconsoles</Typography>
+              </ThemeProvider>
+            </Grid>
+          )}
+          <Grid container spacing={2}>
+            {consoles.map((product) => {
               return (
                 <Grid key={consoles.id} item xs={12} sm={6} md={3}>
                   <CardProduct key={consoles.id} product={product} />
                 </Grid>
               );
             })}
+          </Grid>
         </Grid>
-      </Grid>
-    </Container>
-  </>
-);
+      </Container>
+    </>
+  );
 };
 
 export default GameConsoleComponent;
-

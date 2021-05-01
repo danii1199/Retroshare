@@ -6,20 +6,27 @@ import {
   Typography,
   CardActionArea,
 } from "@material-ui/core";
-import { Link } from "react-router-dom";
 import "./styleCard.css";
 import EuroSymbolIcon from "@material-ui/icons/EuroSymbol";
+import { useHistory } from "react-router-dom";
 
 const CardProduct = ({ product }) => {
+  const history = useHistory();
+
   return (
     <Card className="custom-card">
-      <CardActionArea component={Link} to={`pr/${product.id}`}>
+      <CardActionArea
+        onClick={() => {
+          history.push(`/pr/${product.id}`);
+          history.go();
+        }}
+      >
         <CardMedia
           component="img"
           alt={product.image}
           height="260"
           className="card-image"
-          image={product.image}
+          image={process.env.PUBLIC_URL + "/" + product.image}
           title={product.name}
         />
         <CardContent className="content">

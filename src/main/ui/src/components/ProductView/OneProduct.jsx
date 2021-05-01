@@ -10,9 +10,12 @@ import { ShoppingCart } from "@material-ui/icons";
 import "./StyleProductView.css";
 import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
+import { useHistory } from "react-router-dom";
+
 
 const OneProduct = ({ product }) => {
-  const { addProduct, cartItems, increase } = useContext(CartContext);
+  const { addProduct, cartItems } = useContext(CartContext);
+  const history = useHistory();
 
   const isInCart = (product) => {
     return !!cartItems.find((item) => item.id === product.id);
@@ -39,7 +42,7 @@ const OneProduct = ({ product }) => {
           <Typography variant="h3">Price: {product.price}€</Typography>
         </Grid>
         <Grid item xs={12} className="action-part">
-          {isInCart && (
+          {!isInCart(product) && (
             <>
               <Button
                 size="large"
@@ -50,20 +53,21 @@ const OneProduct = ({ product }) => {
               </Button>
             </>
           )}
-          {!isInCart && (
-            <>
-              <Button
-                size="small"
-                color="secondary"
-                variant="outlined"
-                onClick={() => {
-                  increase(product);
-                }}
-              >
-                Add more
-              </Button>
-            </>
-          )}
+          {isInCart(product) && (
+          <>
+            <Button
+              size="large"
+              className="custom-button"
+              
+              onClick={() => {
+                history.push(`/cart`);
+                history.go();
+              }}
+            >
+              To Cart
+            </Button>
+          </>
+        )}
         </Grid>
       </Grid>
     </Container>
