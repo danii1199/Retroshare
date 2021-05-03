@@ -17,11 +17,11 @@ import { CartContext } from "../../contexts/CartContext";
 import { formatNumber } from "../../helpers/utils";
 
 const CartItem = ({ product }) => {
-  const {  decrease, removeProduct } = useContext(CartContext);
+  const { decrease, removeProduct } = useContext(CartContext);
 
   return (
     <Grid item xs>
-      <Card className="custom-card" >
+      <Card className="custom-card">
         <CardActionArea component={Link} to={`pr/${product.id}`}>
           <CardMedia
             component="img"
@@ -52,7 +52,7 @@ const CartItem = ({ product }) => {
               {product.productStatus?.status}
             </Typography>
             <Typography field="price" gutterBottom variant="h5" component="h2">
-              {formatNumber(product.price)} <EuroSymbolIcon />
+              {formatNumber(product.price)}
             </Typography>
             <Typography field="cant" gutterBottom variant="h5" component="h2">
               Qty: {product.quantity}

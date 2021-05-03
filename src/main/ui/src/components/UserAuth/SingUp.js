@@ -1,5 +1,4 @@
 import Avatar from "@material-ui/core/Avatar";
-import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
@@ -10,7 +9,11 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import { useForm } from "react-hook-form";
-import AuthService from "../../Service/Auth/AuthService";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useData } from "../ProductForm/DataContext";
+import { useHistory } from "react-router-dom";
+import { PrimaryButton } from "../ProductForm/components/PrimaryButton";
 
 function Copyright() {
   return (
@@ -24,6 +27,22 @@ function Copyright() {
     </Typography>
   );
 }
+
+const schema = yup.object().shape({
+  email: yup
+    .string()
+    .email("Email should have correct format")
+    .required("Email is a required field"),
+
+  firstName: yup
+    .string()
+    .matches(/^([^0-9]*)$/, "First name should not contain numbers")
+    .required("First name is a required field"),
+  lastName: yup
+    .string()
+    .matches(/^([^0-9]*)$/, "Last name should not contain numbers")
+    .required("Last name is a required field"),
+});
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -47,11 +66,24 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp() {
+  const { setValues, data } = useData();
+  const history = useHistory();
   const classes = useStyles();
-  const { register, errors, handleSubmit } = useForm();
+
+  const { register, errors, handleSubmit } = useForm({
+    defaultValues: {
+      firstName: data.firstName,
+      lastName: data.lastName,
+      email: data.email,
+      password: data.password,
+    },
+    mode: "onBlur",
+    resolver: yupResolver(schema),
+  });
 
   const onSubmit = (data) => {
-    AuthService.register(data);
+    history.push("./SignUpResult");
+    setValues(data);
   };
 
   return (
@@ -111,6 +143,9 @@ export default function SignUp() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                error={!!errors.email}
+                helperText={errors?.email?.message}
+                required
               />
             </Grid>
             <Grid item xs={12}>
@@ -128,15 +163,7 @@ export default function SignUp() {
               />
             </Grid>
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Sign Up
-          </Button>
+          <PrimaryButton>Sign Up</PrimaryButton>
           <Grid container justify="flex-end">
             <Grid item>
               <Link href="/singin" variant="body2">

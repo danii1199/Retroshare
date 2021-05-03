@@ -95,7 +95,7 @@ const Products = () => {
 
       <Container id="products">
         <Grid container spacing={8}>
-          <Grid item>
+          <Grid container>
             <Typography fontFamily="BlinkMacSystemFont" variant="h3">
               Recently Add
             </Typography>
@@ -112,7 +112,7 @@ const Products = () => {
               })}
           </Grid>
           {games.length > 0 && (
-            <Grid item>
+            <Grid container>
               <Typography variant="h3">Games</Typography>
             </Grid>
           )}
@@ -126,7 +126,7 @@ const Products = () => {
             })}
           </Grid>
           {consoles.length > 0 && (
-            <Grid item>
+            <Grid container>
               <Typography variant="h3">Videoconsoles</Typography>
             </Grid>
           )}
@@ -142,7 +142,7 @@ const Products = () => {
               })}
           </Grid>
           {vinyls.length > 0 && (
-            <Grid item>
+            <Grid container>
               <Typography variant="h3">Vinyls</Typography>
             </Grid>
           )}

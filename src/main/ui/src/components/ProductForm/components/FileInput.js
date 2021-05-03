@@ -11,16 +11,16 @@ import InsertDriveFile from "@material-ui/icons/InsertDriveFile";
 
 const useStyles = makeStyles(() => ({
     root: {
-      backgroundColor: "#eee",
+      backgroundColor: "#121212",
       textAlign: "center",
       cursor: "pointer",
-      color: "white",
+      color: "#ffffff",
       padding: "10px",
       marginTop: "20px",
     },
     icon: {
       marginTop: "16px",
-      color: "#888888",
+      color: "#ffffff",
       fontSize: "42px",
     },
   }));

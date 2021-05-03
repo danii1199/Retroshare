@@ -8,19 +8,17 @@ import ProductsContextProvider from "./contexts/ProductsContext";
 import CartContextProvider from "./contexts/CartContext";
 import UsersContextProvider from "./contexts/UsersContext";
 
-
-
 ReactDOM.render(
   <BrowserRouter>
-    <DataProvider>
-      <UsersContextProvider>
-        <ProductsContextProvider>
-          <CartContextProvider>
-            <App />
-          </CartContextProvider>
-        </ProductsContextProvider>
-      </UsersContextProvider>
-    </DataProvider>
+      <DataProvider>
+        <UsersContextProvider>
+          <ProductsContextProvider>
+            <CartContextProvider>
+              <App />
+            </CartContextProvider>
+          </ProductsContextProvider>
+        </UsersContextProvider>
+      </DataProvider>
   </BrowserRouter>,
   document.getElementById("root")
 );

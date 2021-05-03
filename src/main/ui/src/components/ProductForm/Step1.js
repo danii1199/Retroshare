@@ -9,6 +9,13 @@ import { useData } from "./DataContext";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import NativeSelect from "@material-ui/core/NativeSelect";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  selector: {
+    background: "#ffffff"
+  },
+}));
 
 export const Step1 = () => {
   const { setValues, data } = useData();
@@ -17,6 +24,7 @@ export const Step1 = () => {
     defaultValues: { name: data.name, price: data.price },
     mode: "onBlur",
   });
+  const styles = useStyles();
 
   const onSubmit = (data) => {
     history.push("./step2");
@@ -50,6 +58,7 @@ export const Step1 = () => {
 
         <InputLabel htmlFor="productType">Product type</InputLabel>
         <NativeSelect
+          className={styles.selector}
           variant="outlined"
           margin="normal"
           fullWidth

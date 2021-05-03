@@ -134,7 +134,7 @@ const NavBar = () => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose} component={Link} to="/singin">
+      <MenuItem onClick={handleMenuClose} component={Link} to="/logIn">
         Sing In
       </MenuItem>
     </Menu>
@@ -201,7 +201,7 @@ const NavBar = () => {
           aria-haspopup="true"
           color="inherit"
           component={Link}
-          to="/singin"
+          to="/logIn"
         >
           <ExitToAppIcon />
         </IconButton>
@@ -608,7 +608,7 @@ const NavBar = () => {
                 aria-haspopup="true"
                 color="inherit"
                 component={Link}
-                to="/singin"
+                to="/logIn"
               >
                 <p>Log In</p>
                 <ExitToAppIcon />

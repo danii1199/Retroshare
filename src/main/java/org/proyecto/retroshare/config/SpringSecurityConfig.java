@@ -38,7 +38,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				.antMatchers("/retroshare/pr-all", "/retroshare/login", "/retroshare/save/2", "/retroshare/v-all",
 						"/retroshare/g-all", "/retroshare/gc-all",
-						"/retroshare/rp-all", "/retroshare/pr/{id}").permitAll()
+						"/retroshare/rp-all", "/retroshare/pr/{id}", "/retroshare/update/{id}").permitAll()
 				.antMatchers("/retroshare/all").hasAnyRole("ADMIN")
 				.antMatchers("/retroshare/delete/**").hasAnyRole("USER")
 				.anyRequest().authenticated();

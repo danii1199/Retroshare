@@ -88,28 +88,28 @@ public class UserRestController {
 	}
 
 	// Actualizar un ususario
-	@PostMapping(value = "update/{id}")
+	@PostMapping(value = "/update/{id}")
 	public ResponseEntity<User> update(@PathVariable Long id, @RequestBody User user,
 			@RequestPart(name = "file", required = false) MultipartFile file) throws IOException {
 
 		User userUpdate = userRepository.findById(id)
 				.orElseThrow(() -> new ResourceNotFoundException("No existe el usuario" + id));
 
-		userUpdate.setFirstName(user.getFirstName());
-		userUpdate.setLastName(user.getLastName());
+		//userUpdate.setFirstName(user.getFirstName());
+		//userUpdate.setLastName(user.getLastName());
 		userUpdate.setUserName(user.getUserName());
-		userUpdate.setPassword(user.getPassword());
+		//userUpdate.setPassword(user.getPassword());
 		userUpdate.setSex(user.getSex());
 		userUpdate.setAddress(user.getAddress());
 		userUpdate.setZipCode(user.getZipCode());
 		userUpdate.setCity(user.getCity());
 		userUpdate.setCountry(user.getCountry());
 		userUpdate.setPhoneNumber(user.getPhoneNumber());
-		userUpdate.setEmail(user.getEmail());
+		//userUpdate.setEmail(user.getEmail());
 		userUpdate.setAvatar(user.getAvatar());
 
 		/* FOTO USUARIO */
-		if (!file.isEmpty()) {
+		/*if (!file.isEmpty()) {
 			String ruta = "\\src\\main\\resources\\static\\img\\users";
 			Long contador = userRepository.count() + 1;
 			try {
@@ -122,7 +122,7 @@ public class UserRestController {
 			} catch (Exception e) {
 				// TODO: handle exception
 			}
-		}
+		}*/
 		User obj = userRepository.save(userUpdate);
 		return new ResponseEntity<User>(obj, HttpStatus.OK);
 

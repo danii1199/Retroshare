@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Permanent Marker",
     textAlign: "center",
     fontSize: "40px",
-    color: "deeppink",
+    color: "#ffffff",
     textShadow: "1px 1px darkmagenta",
   },
 }));

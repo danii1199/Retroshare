@@ -1,7 +1,7 @@
 import http from "../../Http-common";
 
 const register = (data) => {
-  return http.post("/save/2", data);
+  return http.post("/save/2", data)
 };
 
 const login = async (data) => {

@@ -4,29 +4,35 @@ import CartProducts from "./CartProducts";
 import { CartContext } from "../../contexts/CartContext";
 import { formatNumber } from "../../helpers/utils";
 import { Link } from "react-router-dom";
-import {
-  Button,
-  Container,
-  Grid,
-  Typography,
-  
-} from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+import { Button, Container, Grid, TextField, Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles({
+  Button: {
+    margin:"5px",
+    color: "purple",
+    background: "yellow",
+  },
+  text: {
+    
+    color: "#ffffff",
+    
+  },
+});
 
 const Cart = () => {
-  const {
-    total,
-    cartItems,
-    itemCount,
-    clearCart,
-    checkout,
-    handleCheckout,
-  } = useContext(CartContext);
+  const styles = useStyles();
+  const { total, cartItems, itemCount, clearCart, checkout } = useContext(
+    CartContext
+  );
+  const history = useHistory();
 
   return (
     <Container title="Cart" description="This is the Cart page">
       <Grid>
         <Grid item>
-            <Typography variant={"h2"}>Cart</Typography>
+          <Typography variant={"h2"}>Cart</Typography>
         </Grid>
 
         <Grid align="justify-center">
@@ -49,25 +55,24 @@ const Cart = () => {
             )}
           </Grid>
           {cartItems.length > 0 && (
-            <Grid item>
+            <Grid container >
               <Grid item xs={3} align="actions-content">
-                <p className="mb-1">Total Items</p>
-                <h4 className=" mb-3 txt-right">{itemCount}</h4>
-                <p className="mb-1">Total Payment</p>
-                <h3 className="m-0 txt-right">{formatNumber(total)}</h3>
+
+                <Typography className={styles.text}>Total Items</Typography>
+                <Typography variant="h4">{itemCount}</Typography>
+                <Typography className={styles.text}>Total Payment</Typography>
+                <Typography variant="h3">{formatNumber(total)}</Typography>
                 <hr className="my-4" />
                 <Grid className="text-center">
                   <Button
-                    className="custom-button"
-                    onClick={handleCheckout}
+                    className={styles.Button}
+                    onClick={() => {
+                      history.push(`/cartform`);
+                    }}
                   >
                     CHECKOUT
                   </Button>
-                  <Button
-            
-                    className="custom-button"
-                    onClick={clearCart}
-                  >
+                  <Button className={styles.Button} onClick={clearCart}>
                     CLEAR
                   </Button>
                 </Grid>

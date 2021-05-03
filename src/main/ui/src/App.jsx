@@ -22,14 +22,18 @@ import UserProfile from "./components/User/UserProfile";
 import OneUser from "./components/User/OneUser";
 import Cart from "./pages/cart";
 import Chat from "./components/Chat/Chat";
+import { SignUpResult } from "./components/UserAuth/SignUpResult"
+import { CartForm } from "./pages/cart/CartForm"
+import { CartFormResult } from "./pages/cart/CartFormResult"
 
 const App = () => {
   return (
     <Router>
       <NavBar />
       <Switch>
+      
         <Route exact path="/users" component={UserDataComponent} />
-        <Route path="/singin" exact component={SingIn} />
+        <Route path="/login" exact component={SingIn} />
         <Route path="/singup" exact component={SingUp} />
         <Route path="/videogames-admin" exact component={GameDataComponent} />
         <Route path="/videogames" exact component={Game} />
@@ -56,9 +60,12 @@ const App = () => {
         <Route path="/user/:id" component={OneUser} />
         <Route path="/step1" exact component={Step1} />
         <Route path="/step2" component={Step2} />
+        <Route path="/SignUpResult" component={SignUpResult} />
         <Route path="/step3" component={Step3} />
         <Route path="/result" component={Result} />
         <Route path="/profile" exact component={UserProfile} />
+        <Route path="/cartForm" exact component={CartForm} />
+        <Route path="/cartFormResult" exact component={CartFormResult} />
       </Switch>
     </Router>
   );
