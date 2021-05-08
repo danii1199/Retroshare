@@ -1,18 +1,19 @@
 .MuiCard-root.custom-card {
   transition: all 0.2s ease-in-out;
-  background: #12121298;
-  color: #ffffff;
+  background: #3f4669b9;
+  color: #d2d2d2;
   padding-top: 52px;
   background-image: url("../../fondoPantalla/chincheta.png");
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 50px 50px;
+  background-size: 40px 40px;
+  border-radius: 20px;
+  margin: "5px";
 }
 
 .MuiCard-root.custom-card:hover {
-  background-image: url("");
-
-  transform: scale(1.01);
+  background-image: none;
+  transform: scale(1.02);
   box-shadow: 0px 0px 20px 1px #ffffff;
 }
 

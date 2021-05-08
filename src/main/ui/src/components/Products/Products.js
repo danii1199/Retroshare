@@ -1,11 +1,11 @@
 import { Grid, Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import CardProduct from "../CardProduct/CardProduct";
+//import CardProduct from "../CardProduct/CardProduct";
 import { ProductsContext } from "../../contexts/ProductsContext";
-import { useContext } from "react";
+import { lazy, useContext, Suspense } from "react";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import Carousel from "react-material-ui-carousel";
+//import Carousel from "react-material-ui-carousel";
 import "./style.css";
 import VideoGameAPI from "../../lib/VideoGameAPI";
 import GameConsoleAPI from "../../lib/GameConsoleAPI";
@@ -14,9 +14,15 @@ import RecordPlayerAPI from "../../lib/RecordPlayerAPI";
 import AlbumIcon from "@material-ui/icons/Album";
 import Item from "../Carousel/Item";
 
+
+const CardProduct = lazy(() => import('../CardProduct/CardProduct'))
+const Carousel = lazy(() => import('react-material-ui-carousel'))
+
+
 const useStyles = makeStyles(() => ({
   carousel: {
     height: "auto",
+    
   },
   imagenes: {
     margin: "auto",
@@ -35,44 +41,47 @@ const Products = () => {
   const recordPlayers = RecordPlayerAPI();
 
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <div className={classes.carousel}>
-        <Carousel
-          NextIcon="next" // Change the "inside" of the next button to "next"
-          PrevIcon="prev"
-          IndicatorIcon={<AlbumIcon />}
-          indicatorIconButtonProps={{
-            style: {
-              padding: "10px", // 1
-              color: "#FFFFFF", // 3
-            },
-          }}
-          activeIndicatorIconButtonProps={{
-            style: {
-              backgroundColor: "#121212", // 2
-            },
-          }}
-          indicatorContainerProps={{
-            style: {
-              marginTop: "50px", // 5
-              textAligh: "right", // 4
-            },
-          }}
-          NavButton={({ onClick, className, style, next, prev }) => {
-            return (
-              <Button onClick={onClick} className={className} style={style}>
-                {next && "Next"}
-                {prev && "Previous"}
-              </Button>
-            );
-          }}
-        >
-          {products.map((item) => (
-            <Grid key={item.id}>
-              <Item className={classes.imagenes} item={item} />
-            </Grid>
-          ))}
-        </Carousel>
+        <Container maxWidth="lg">
+          <Carousel
+            key={20}
+            NextIcon="next" // Change the "inside" of the next button to "next"
+            PrevIcon="prev"
+            IndicatorIcon={<AlbumIcon />}
+            indicatorIconButtonProps={{
+              style: {
+                padding: "10px", // 1
+                color: "#FFFFFF", // 3
+              },
+            }}
+            activeIndicatorIconButtonProps={{
+              style: {
+                backgroundColor: "#121212", // 2
+              },
+            }}
+            indicatorContainerProps={{
+              style: {
+                marginTop: "50px", // 5
+                textAligh: "right", // 4
+              },
+            }}
+            NavButton={({ onClick, className, style, next, prev }) => {
+              return (
+                <Button onClick={onClick} className={className} style={style}>
+                  {next && "Next"}
+                  {prev && "Previous"}
+                </Button>
+              );
+            }}
+          >
+            {products.map((item) => (
+              <Grid key={item.id}>
+                <Item className={classes.imagenes} item={item} />
+              </Grid>
+            ))}
+          </Carousel>
+        </Container>
       </div>
       <div>
         <Container id="buttons">
@@ -169,7 +178,7 @@ const Products = () => {
           </Grid>
         </Grid>
       </Container>
-    </>
+    </Suspense>
   );
 };
 

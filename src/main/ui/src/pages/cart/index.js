@@ -5,7 +5,7 @@ import { CartContext } from "../../contexts/CartContext";
 import { formatNumber } from "../../helpers/utils";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { Button, Container, Grid, TextField, Typography } from "@material-ui/core";
+import { Button, Container, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({

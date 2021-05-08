@@ -94,6 +94,16 @@ const Chat = () => {
                   </ListItem>
                 );
               }
+              return (
+                <ListItem button key={user.id}>
+                  <ListItemIcon>
+                    <Avatar alt={user.avatar} src={user.avatar} />
+                  </ListItemIcon>
+                  <ListItemText primary={user.firstName}>
+                    {user.firstName}
+                  </ListItemText>
+                </ListItem>
+              );
             })}
           </List>
         </Grid>

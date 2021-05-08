@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import DeleteIcon from "@material-ui/icons/Delete";
 import RemoveIcon from "@material-ui/icons/Remove";
-import EuroSymbolIcon from "@material-ui/icons/EuroSymbol";
 import {
   Grid,
   Card,

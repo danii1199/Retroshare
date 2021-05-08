@@ -13,7 +13,6 @@ import TableRow from "@material-ui/core/TableRow";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import { useData } from "../ProductForm/DataContext";
-import AuthService from "../../Service/Auth/AuthService";
 import { useHistory } from "react-router-dom";
 import http from "../../Http-common";
 
