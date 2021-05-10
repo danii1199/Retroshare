@@ -3,7 +3,6 @@ package org.proyecto.retroshare.domain;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -23,7 +22,7 @@ public class ShoppingCart {
 	@JsonIgnoreProperties(value = "products", allowSetters = true)
 	@OneToMany(mappedBy = "shoppingCart", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Product> products;
-	
+
 	@OneToOne(mappedBy = "shoppingCart", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private User user;
 
@@ -52,4 +51,5 @@ public class ShoppingCart {
 	}
 
 	
+
 }

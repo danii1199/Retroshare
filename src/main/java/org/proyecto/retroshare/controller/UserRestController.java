@@ -58,7 +58,7 @@ public class UserRestController {
 	private JwtTokenProvider tokenProvider;
 
 	// CONSULTA DE TODOS LOS USUARIOS
-	@GetMapping(value = "/all")
+	@GetMapping(value = "all")
 	public List<User> findAll() {
 		return userRepository.findAll();
 	}
