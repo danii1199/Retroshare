@@ -2,7 +2,9 @@ package org.proyecto.retroshare.controller;
 
 import java.util.List;
 
+import org.proyecto.retroshare.domain.Game;
 import org.proyecto.retroshare.domain.Product;
+import org.proyecto.retroshare.domain.ProductStatus;
 import org.proyecto.retroshare.domain.ShoppingCart;
 import org.proyecto.retroshare.domain.User;
 import org.proyecto.retroshare.repositories.ProductRepository;
@@ -10,6 +12,7 @@ import org.proyecto.retroshare.repositories.ProductStatusRepository;
 import org.proyecto.retroshare.repositories.ShoppingCartRepository;
 import org.proyecto.retroshare.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -43,13 +46,9 @@ public class ShoppingCartRestController {
 
 	// Guardar un estado
 	@PostMapping(value = "/sc-save/{idUser}")
-	public ResponseEntity<ShoppingCart> save(@RequestBody ShoppingCart shoppingCart, @PathVariable Long idUser,
-			@PathVariable Long idProduct) {
+	public ResponseEntity<ShoppingCart> save(@RequestBody ShoppingCart shoppingCart, @PathVariable Long idUser) {
 		User user = userRepository.getOne(idUser);
 		shoppingCart.setUser(user);
-		
-		Product product = productRepository.findAll();
-		shoppingCart.setProducts(product);
 
 
 		ShoppingCart obj = shoppingCartRepository.save(shoppingCart);
@@ -57,4 +56,17 @@ public class ShoppingCartRestController {
 		return new ResponseEntity<ShoppingCart>(obj, HttpStatus.OK);
 	}
 
+	// Actualizar un juego
+		@PostMapping(value = "sc-update/{idUser}")
+		public ResponseEntity<ShoppingCart> update(@PathVariable Long id, @RequestBody ShoppingCart shoppingCart) {
+
+			ShoppingCart shoppingcartupdate = shoppingCartRepository.findById(id)
+					.orElseThrow(() -> new ResourceNotFoundException("No existe el carrtio" + id));
+
+			shoppingcartupdate.setProducts(shoppingCart.getProducts());
+
+			ShoppingCart obj = shoppingCartRepository.save(shoppingcartupdate);
+			return new ResponseEntity<ShoppingCart>(obj, HttpStatus.OK);
+
+		}
 }
