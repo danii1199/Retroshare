@@ -32,6 +32,11 @@ public class Product {
 	private User user;
 	
 	@JsonIgnoreProperties(value = { "products", "hibernateLazyInitializer" }, allowSetters = true)
+	@JoinColumn(name = "userBuy_id")
+	@ManyToOne(cascade = CascadeType.ALL, optional = true)
+	private User userBuyid;
+	
+	@JsonIgnoreProperties(value = { "products", "hibernateLazyInitializer" }, allowSetters = true)
 	@JoinColumn(name = "productStatus_id")
 	@ManyToOne(cascade = CascadeType.PERSIST, optional = true)
 	private ProductStatus productStatus;
@@ -44,10 +49,6 @@ public class Product {
 	@JsonIgnoreProperties(value = "comments", allowSetters = true)
 	@OneToMany(mappedBy = "productComment", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Comment> comments;
-	
-	@JsonIgnoreProperties(value = "products", allowSetters = true)
-	@ManyToOne(cascade = CascadeType.PERSIST, optional = true)
-	private ShoppingCart shoppingCart;
 	
 	
 
@@ -121,13 +122,15 @@ public class Product {
 		this.comments = comments;
 	}
 
-	public ShoppingCart getShoppingCart() {
-		return shoppingCart;
+	public User getUserBuyid() {
+		return userBuyid;
 	}
 
-	public void setShoppingCart(ShoppingCart shoppingCart) {
-		this.shoppingCart = shoppingCart;
+	public void setUserBuyid(User userBuyid) {
+		this.userBuyid = userBuyid;
 	}
+	
+	
 	
 	
 

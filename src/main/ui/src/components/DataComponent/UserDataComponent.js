@@ -1,7 +1,15 @@
 import UserAPI from "../../lib/UserAPI";
 import { DataGrid } from "@material-ui/data-grid";
+import Button from "@material-ui/core/Button";
+import { IconButton } from "@material-ui/core";
+
 
 const UserComponent = () => {
+  function eliminarSeleccionados(e) {
+    e.preventDefault();
+    console.log(DataGrid.length);
+    console.log("Fue clickado");
+  }
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
     { field: "userName", headerName: "User name", width: 130 },
@@ -26,9 +34,11 @@ const UserComponent = () => {
     { field: "city", headerName: "City", width: 100 },
     { field: "country", headerName: "Country", width: 150 },
     { field: "zipCode", headerName: "Zip Code", type: "number", width: 110 },
+  
   ];
 
   return (
+    
     <div style={{ height: 400, width: "100%",backgroundColor:"white" }}>
       <DataGrid
         rows={UserAPI()}
@@ -36,6 +46,14 @@ const UserComponent = () => {
         pageSize={5}
         checkboxSelection
       />
+      
+     <Button
+     style={{
+       backgroundColor:"white",
+       marginTop: "20px"
+     }}
+     onClick={eliminarSeleccionados}
+     >Borrar seleccionados</Button>
     </div>
   );
 };

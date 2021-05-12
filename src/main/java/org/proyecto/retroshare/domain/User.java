@@ -1,5 +1,6 @@
 package org.proyecto.retroshare.domain;
 
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 
@@ -43,11 +44,13 @@ public class User {
 	private String email;
 	@Column(unique = true)
 	private String avatar;
-	@JsonFormat(pattern = "dd-MM-YYYY", shape = Shape.STRING)
 	private Date date;
 
 	@OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Product> products;
+	
+	@OneToMany(mappedBy = "userBuyid", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	private Collection<Product> productsBuy;
 
 	@JsonIgnoreProperties(value = "users", allowSetters = true)
 	@JoinColumn(name = "role_id")
@@ -61,9 +64,6 @@ public class User {
 	@JsonIgnoreProperties(value = "comments", allowSetters = true)
 	@OneToMany(mappedBy = "productComment", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Comment> comments;
-	
-	@OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	private ShoppingCart shoppingCart;
 
 	public User(String firstName, String lastName, String userName, String password, String sex, String address,
 			Integer zipCode, String city, String country, Integer phoneNumber, String email, String avatar, Date date) {
@@ -231,13 +231,15 @@ public class User {
 		this.comments = comments;
 	}
 
-	public ShoppingCart getShoppingCart() {
-		return shoppingCart;
+	public Collection<Product> getProductsBuy() {
+		return productsBuy;
 	}
 
-	public void setShoppingCart(ShoppingCart shoppingCart) {
-		this.shoppingCart = shoppingCart;
+	public void setProductsBuy(Collection<Product> productsBuy) {
+		this.productsBuy = productsBuy;
 	}
+	
+	
 	
 	
 	
