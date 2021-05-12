@@ -16,7 +16,7 @@ const Item = (props) => {
   const classes = useStyles();
   
     return (
-      <Paper className={classes.padding}>
+      <Paper className={classes.padding} key={props.i}>
         <CardActionArea component={Link} to={`pr/${props.item.id}`}>
           <CardMedia
             component="img"

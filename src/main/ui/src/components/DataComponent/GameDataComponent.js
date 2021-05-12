@@ -20,8 +20,9 @@ const GameComponentAdmin = () => {
     { field: "gender", headerName: "Gender", width: 150 },
     { field: "developer", headerName: "developer", width: 150 },
     { field: "price", headerName: "Price", width: 150 },
+    { field: "userBuy", headerName: "Buy user", width: 130, valueFormatter: (game) => game.row?.user_buy?.userName},
     {
-      field: "firstName",
+      field: "userName",
       headerName: "Owner user",
       width: 130,
       valueFormatter: (game) => game.row?.user?.userName,

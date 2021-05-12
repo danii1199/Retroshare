@@ -24,7 +24,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
-	
+
 	@Bean
 	@Override
 	public AuthenticationManager authenticationManagerBean() throws Exception {
@@ -36,12 +36,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors();
 		http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.authorizeRequests()
-				.antMatchers("/retroshare/pr-all", "/retroshare/login", "/retroshare/save/2", "/retroshare/v-all",
-						"/retroshare/g-all", "/retroshare/gc-all",
-						"/retroshare/rp-all", "/retroshare/pr/{id}", "/retroshare/update/{id}", "/retroshare/sc-save/{idUser}", "/retroshare/sc-update/{idUser}").permitAll()
-				.antMatchers("/retroshare/all").hasAnyRole("ADMIN")
-				.antMatchers("/retroshare/delete/**").hasAnyRole("USER")
-				.anyRequest().authenticated();
+				.antMatchers("/retroshare/pr-update/{id}/{idUser}", "/retroshare/pr-all", "/retroshare/login", "/retroshare/save/2", "/retroshare/v-all",
+						"/retroshare/g-all", "/retroshare/gc-all", "/retroshare/rp-all", "/retroshare/pr/{id}",
+						"/retroshare/update/{id}", "/retroshare/sc-save/{idUser}", "/retroshare/sc-update/{idUser}")
+				.permitAll().antMatchers("/retroshare/all").hasAnyRole("ADMIN").antMatchers("/retroshare/delete/**")
+				.hasAnyRole("USER").anyRequest().authenticated();
 		http.apply(new JwtTokenConfigurer(tokenProvider));
 	}
 

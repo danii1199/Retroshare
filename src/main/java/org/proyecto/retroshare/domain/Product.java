@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -31,7 +32,7 @@ public class Product {
 	@ManyToOne(cascade = CascadeType.PERSIST, optional = true)
 	private User user;
 	
-	@JsonIgnoreProperties(value = { "products", "hibernateLazyInitializer" }, allowSetters = true)
+	@JsonIgnore
 	@JoinColumn(name = "userBuy_id")
 	@ManyToOne(cascade = CascadeType.ALL, optional = true)
 	private User userBuyid;

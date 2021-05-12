@@ -19,7 +19,7 @@ import Vinyl from "./components/DataComponent/Vinyl";
 import RecordPlayerDataComponent from "./components/DataComponent/RecordPlayerDataComponent";
 import RecordPlayer from "./components/DataComponent/RecordPlayer";
 import UserProfile from "./components/User/UserProfile";
-//import OneUser from "./components/User/OneUser";
+import OneUser from "./components/User/OneUser";
 import Cart from "./pages/cart";
 import Chat from "./components/Chat/Chat";
 import { SignUpResult } from "./components/UserAuth/SignUpResult";
@@ -54,7 +54,7 @@ const GameConsole = lazy(() =>
   import("./components/DataComponent/RecordPlayer")
 );
 const UserProfile = lazy(() => import("./components/User/UserProfile"));*/
-const OneUser = lazy(() => import("./components/User/OneUser"));
+//const OneUser = lazy(() => import("./components/User/OneUser"));
 //const ProductView = lazy(() => import("./components/ProductView/ProductView"));
 const SingIn = lazy(() => import("./components/UserAuth/SingIn"));
 const SingUp = lazy(() => import("./components/UserAuth/SingUp"));

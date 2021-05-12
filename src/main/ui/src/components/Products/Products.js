@@ -1,22 +1,16 @@
 import { Grid, Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-//import CardProduct from "../CardProduct/CardProduct";
+import CardProduct from "../CardProduct/CardProduct";
 import { ProductsContext } from "../../contexts/ProductsContext";
-import { lazy, useContext, Suspense } from "react";
+import { useContext, Suspense } from "react";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-//import Carousel from "react-material-ui-carousel";
 import "./style.css";
 import VideoGameAPI from "../../lib/VideoGameAPI";
 import GameConsoleAPI from "../../lib/GameConsoleAPI";
 import VinylAPI from "../../lib/VinylAPI";
 import RecordPlayerAPI from "../../lib/RecordPlayerAPI";
-import AlbumIcon from "@material-ui/icons/Album";
-import Item from "../Carousel/Item";
 import Caru1 from "../Carousel/Caru1";
-
-const CardProduct = lazy(() => import("../CardProduct/CardProduct"));
-const Carousel = lazy(() => import("react-material-ui-carousel"));
 
 const useStyles = makeStyles(() => ({
   carousel: {

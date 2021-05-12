@@ -20,6 +20,7 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class User {
@@ -49,6 +50,7 @@ public class User {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Product> products;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "userBuyid", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Product> productsBuy;
 

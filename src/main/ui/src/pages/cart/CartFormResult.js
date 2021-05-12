@@ -49,13 +49,17 @@ export const CartFormResult = () => {
 
     const res = http.post(`/update/${currentUser.id}`, data).then((res) => {
       if (res.status === 200) {
-        console.log([currentCart])
-        http.post(`/sc-save/${currentUser.id}`, [currentCart]).then((resCart) => {
-          if (resCart.status === 200) {
-            Swal.fire("Great job!", "Your buy is done", "success");
-            setSuccess(true);
-            handleCheckout();
-          }
+        currentCart.map(async (articles) => {
+          return (
+          http
+            .post(`pr-update/${articles.id}/${currentUser.id}`, articles)
+            .then((resCart) => {
+              if (resCart.status === 200) {
+                Swal.fire("Great job!", "Your buy is done", "success");
+                setSuccess(true);
+                handleCheckout();
+              }
+            }));
         });
       }
     });

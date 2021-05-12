@@ -8,7 +8,6 @@ const Caru1 = () => {
   const [autoPlay, setAutoplay] = useState(true);
   const [animation, setAnimation] = useState("fade");
   const [indicators, setIndicators] = useState(true);
-  const [timeout, setTimeout] = useState(500);
 
   useState(false);
 
@@ -24,10 +23,6 @@ const Caru1 = () => {
     setIndicators(indicators);
   };
 
-  const handleTimeout = () => {
-    setTimeout(timeout);
-  };
-
   const { products } = useContext(ProductsContext);
 
   return (
@@ -37,7 +32,7 @@ const Caru1 = () => {
         autoPlay={handleAutoPlay}
         animation={handleAnimation}
         indicators={handleIndicators}
-        timeout={handleTimeout}
+        
         next={(now, previous) =>
           console.log(
             `Next User Callback: Now displaying child${now}. Previously displayed child${previous}`

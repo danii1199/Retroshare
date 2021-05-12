@@ -47,7 +47,7 @@ public class ProductRestController {
 	}
 	
 	// Actualizar un producto
-		@PostMapping(value = "pr-update/{id}/{idUser}")
+		@PostMapping(value = "/pr-update/{id}/{idUser}")
 		public ResponseEntity<Product> update(@PathVariable Long id, @RequestBody Product product,@PathVariable Long idUser) throws IOException {
 
 			Product productUpdate = productRepository.findById(id)
