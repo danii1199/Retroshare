@@ -13,22 +13,27 @@ import VinylAPI from "../../lib/VinylAPI";
 import RecordPlayerAPI from "../../lib/RecordPlayerAPI";
 import AlbumIcon from "@material-ui/icons/Album";
 import Item from "../Carousel/Item";
+import Caru1 from "../Carousel/Caru1";
 
-
-const CardProduct = lazy(() => import('../CardProduct/CardProduct'))
-const Carousel = lazy(() => import('react-material-ui-carousel'))
-
+const CardProduct = lazy(() => import("../CardProduct/CardProduct"));
+const Carousel = lazy(() => import("react-material-ui-carousel"));
 
 const useStyles = makeStyles(() => ({
   carousel: {
     height: "auto",
-    
   },
   imagenes: {
     margin: "auto",
     width: "auto",
     height: "auto",
     position: "absolute",
+  },
+  buttons: {
+    marginBottom: "30px",
+  },
+
+  tittleH3: {
+    margin: "30px",
   },
 }));
 
@@ -44,48 +49,12 @@ const Products = () => {
     <Suspense fallback={<div>Loading...</div>}>
       <div className={classes.carousel}>
         <Container maxWidth="lg">
-          <Carousel
-            key={20}
-            NextIcon="next" // Change the "inside" of the next button to "next"
-            PrevIcon="prev"
-            IndicatorIcon={<AlbumIcon />}
-            indicatorIconButtonProps={{
-              style: {
-                padding: "10px", // 1
-                color: "#FFFFFF", // 3
-              },
-            }}
-            activeIndicatorIconButtonProps={{
-              style: {
-                backgroundColor: "#121212", // 2
-              },
-            }}
-            indicatorContainerProps={{
-              style: {
-                marginTop: "50px", // 5
-                textAligh: "right", // 4
-              },
-            }}
-            NavButton={({ onClick, className, style, next, prev }) => {
-              return (
-                <Button onClick={onClick} className={className} style={style}>
-                  {next && "Next"}
-                  {prev && "Previous"}
-                </Button>
-              );
-            }}
-          >
-            {products.map((item) => (
-              <Grid key={item.id}>
-                <Item className={classes.imagenes} item={item} />
-              </Grid>
-            ))}
-          </Carousel>
+          <Caru1 />
         </Container>
       </div>
       <div>
-        <Container id="buttons">
-          <Grid container spacing={1}>
+        <Container id="buttons" className={classes.buttons}>
+          <Grid item>
             <Button className="button" component={Link} to="/videogames">
               Games
             </Button>
@@ -105,8 +74,8 @@ const Products = () => {
       <Container id="products">
         <Grid container spacing={8}>
           <Grid container>
-            <Typography fontFamily="BlinkMacSystemFont" variant="h3">
-              Recently Add
+            <Typography variant="h3" className={classes.tittleH3}>
+              Ultimas Subidas
             </Typography>
           </Grid>
           <Grid container spacing={2}>
@@ -122,7 +91,9 @@ const Products = () => {
           </Grid>
           {games.length > 0 && (
             <Grid container>
-              <Typography variant="h3">Games</Typography>
+              <Typography variant="h3" className={classes.tittleH3}>
+                Games
+              </Typography>
             </Grid>
           )}
           <Grid container spacing={2}>
@@ -136,7 +107,9 @@ const Products = () => {
           </Grid>
           {consoles.length > 0 && (
             <Grid container>
-              <Typography variant="h3">Videoconsoles</Typography>
+              <Typography variant="h3" className={classes.tittleH3}>
+                Videoconsoles
+              </Typography>
             </Grid>
           )}
           <Grid container spacing={2}>
@@ -152,7 +125,9 @@ const Products = () => {
           </Grid>
           {vinyls.length > 0 && (
             <Grid container>
-              <Typography variant="h3">Vinyls</Typography>
+              <Typography variant="h3" className={classes.tittleH3}>
+                Vinyls
+              </Typography>
             </Grid>
           )}
           <Grid container spacing={2}>

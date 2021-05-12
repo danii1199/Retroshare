@@ -107,6 +107,11 @@ const addToCart = (idProduct) => {
   });
 };
 
+
+const getCurrentCart = () => {
+  return JSON.parse(localStorage.getItem("cart"));
+};
+
 const services = {
   getAll,
   get,
@@ -122,7 +127,8 @@ const services = {
   findByProductName,
   createProduct,
   findByEmail,
-  addToCart
+  addToCart,
+  getCurrentCart
 };
 
 export default services;
