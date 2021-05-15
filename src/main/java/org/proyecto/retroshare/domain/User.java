@@ -51,8 +51,8 @@ public class User {
 	private Collection<Product> products;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy = "userBuyid", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	private Collection<Product> productsBuy;
+	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	private Historial historial;
 
 	@JsonIgnoreProperties(value = "users", allowSetters = true)
 	@JoinColumn(name = "role_id")
@@ -233,13 +233,15 @@ public class User {
 		this.comments = comments;
 	}
 
-	public Collection<Product> getProductsBuy() {
-		return productsBuy;
+	public Historial getHistorial() {
+		return historial;
 	}
 
-	public void setProductsBuy(Collection<Product> productsBuy) {
-		this.productsBuy = productsBuy;
+	public void setHistorial(Historial historial) {
+		this.historial= historial;
 	}
+
+
 	
 	
 	

@@ -33,9 +33,9 @@ public class Product {
 	private User user;
 	
 	@JsonIgnore
-	@JoinColumn(name = "userBuy_id")
+	@JoinColumn(name = "historial_id")
 	@ManyToOne(cascade = CascadeType.ALL, optional = true)
-	private User userBuyid;
+	private Historial historial;
 	
 	@JsonIgnoreProperties(value = { "products", "hibernateLazyInitializer" }, allowSetters = true)
 	@JoinColumn(name = "productStatus_id")
@@ -123,13 +123,15 @@ public class Product {
 		this.comments = comments;
 	}
 
-	public User getUserBuyid() {
-		return userBuyid;
+	public Historial getHistorial() {
+		return historial;
 	}
 
-	public void setUserBuyid(User userBuyid) {
-		this.userBuyid = userBuyid;
+	public void setHistorial(Historial historial) {
+		this.historial = historial;
 	}
+
+	
 	
 	
 	

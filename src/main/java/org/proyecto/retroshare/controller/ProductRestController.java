@@ -46,27 +46,6 @@ public class ProductRestController {
 			     
 	}
 	
-	// Actualizar un producto
-		@PostMapping(value = "/pr-update/{id}/{idUser}")
-		public ResponseEntity<Product> update(@PathVariable Long id, @RequestBody Product product,@PathVariable Long idUser) throws IOException {
-
-			Product productUpdate = productRepository.findById(id)
-					.orElseThrow(() -> new ResourceNotFoundException("No existe el producto" + id));
-
-			User user = userRepository.findById(idUser)
-					.orElseThrow(() -> new ResourceNotFoundException("No existe el usuario" + id));
-			
-			productUpdate.setUserBuyid(user);
-			
-			user.getProductsBuy().add(product);
-			
-			
-
-			Product obj = productRepository.save(productUpdate);
-			return new ResponseEntity<Product>(obj, HttpStatus.OK);
-
-		}
-	
 	// BORRAR UN JUEGO
 	@GetMapping(value = "/p-delete/{id}")
 	public String delete(@PathVariable Long id) {
