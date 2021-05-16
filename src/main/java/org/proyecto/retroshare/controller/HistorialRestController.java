@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
+import org.proyecto.retroshare.domain.Game;
 import org.proyecto.retroshare.domain.Historial;
 import org.proyecto.retroshare.domain.Product;
 import org.proyecto.retroshare.domain.Role;
@@ -66,7 +67,7 @@ public class HistorialRestController {
 	}
 
 	// BUSCAR UN USUARIO
-	@GetMapping(value = "/find/{id}")
+	@GetMapping(value = "/h-find/{id}")
 	public User find(@PathVariable Long id) {
 		return userRepository.getOne(id);
 	}
@@ -84,7 +85,7 @@ public class HistorialRestController {
 		user.setHistorial(historial);
 		
 		Product producto=productRepository.getOne(product.getId());
-		historial.getProducts().add(producto);
+		//historial.getProducts().add(producto);
 		producto.setHistorial(historial);
 		
 
@@ -92,5 +93,20 @@ public class HistorialRestController {
 		return new ResponseEntity<Historial>(obj, HttpStatus.OK);
 	}
 
+	
+	// GUARDAR NUEVO USUARIO
+		@PostMapping(value = "/h-update/{idHistorial}")
+		public ResponseEntity<Historial> update(@RequestBody Product product, @PathVariable Long idHistorial) {
+			Historial historialUpdate = historialRepository.findById(idHistorial)
+					.orElseThrow(() -> new ResourceNotFoundException("No existe el historial" + idHistorial));
+			
+			Product producto=productRepository.getOne(product.getId());
+			historialUpdate.getProducts().add(producto);
+			producto.setHistorial(historialUpdate);
+			
+
+			Historial obj = historialRepository.save(historialUpdate);
+			return new ResponseEntity<Historial>(obj, HttpStatus.OK);
+		}
 
 }
