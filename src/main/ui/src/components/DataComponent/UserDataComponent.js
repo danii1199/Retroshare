@@ -4,14 +4,17 @@ import Button from "@material-ui/core/Button";
 import { IconButton } from "@material-ui/core";
 
 
+
 const UserComponent = () => {
+  
+  var miarray =[];
   function eliminarSeleccionados(e) {
     e.preventDefault();
-    console.log(DataGrid.length);
-    console.log("Fue clickado");
+  
+    console.log(miarray.length);
   }
   const columns = [
-    { field: "id", headerName: "ID", width: 70 },
+    { dataField:"id", field: "id", headerName: "ID", width: 70 },
     { field: "userName", headerName: "User name", width: 130 },
     { field: "date", headerName: "Register Date", width: 150 },
     {
@@ -36,7 +39,6 @@ const UserComponent = () => {
     { field: "zipCode", headerName: "Zip Code", type: "number", width: 110 },
   
   ];
-
   return (
     
     <div style={{ height: 400, width: "100%",backgroundColor:"white" }}>
@@ -45,6 +47,8 @@ const UserComponent = () => {
         columns={columns}
         pageSize={5}
         checkboxSelection
+        onSelectionModelChange={itm => itm.selectionModel}
+        
       />
       
      <Button
