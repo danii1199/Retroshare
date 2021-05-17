@@ -6,11 +6,13 @@ import CardInfo from "../CardProduct/CardInfo";
 
 const useStyles = makeStyles({
   avatar: {
+    marginTop:"20px",
     width: "160px",
     height: "160px",
     borderRadius: "80px",
   },
   texto: {
+    marginTop:"20px",
     paddingLeft: "30px",
   },
   titulo: {
