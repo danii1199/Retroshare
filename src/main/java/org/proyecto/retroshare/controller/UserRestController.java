@@ -134,7 +134,7 @@ public class UserRestController {
 	}
 
 	// BORRAR UN USUARIO
-	@GetMapping(value = "/delete/{id}")
+	@PostMapping(value = "/delete/{id}")
 	public String delete(@PathVariable Long id) {
 		User user = userRepository.getOne(id);
 		if (user != null) {

@@ -1,17 +1,20 @@
 import UserAPI from "../../lib/UserAPI";
 import { DataGrid } from "@material-ui/data-grid";
 import Button from "@material-ui/core/Button";
-import { IconButton } from "@material-ui/core";
+import RetroshareService from "../../Service/RetroshareService";
 
 
 
 const UserComponent = () => {
   
   var miarray =[];
-  function eliminarSeleccionados(e) {
-    e.preventDefault();
-  
-    console.log(miarray.length);
+  function eliminarSeleccionados() {
+
+    for(var i=0;i<miarray.length;i++){
+      console.log(miarray[i]);
+      RetroshareService.remove(miarray[i]);
+    }
+    window.location.reload(false);
   }
   const columns = [
     { dataField:"id", field: "id", headerName: "ID", width: 70 },
@@ -47,7 +50,7 @@ const UserComponent = () => {
         columns={columns}
         pageSize={5}
         checkboxSelection
-        onSelectionModelChange={itm => itm.selectionModel}
+        onSelectionModelChange={itm => miarray=itm.selectionModel}
         
       />
       

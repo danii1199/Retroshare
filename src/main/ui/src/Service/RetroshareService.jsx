@@ -25,7 +25,7 @@ const update = (id, data) => {
 };
 
 const remove = (id) => {
-  return http.delete(`/delete/${id}`, {
+  return http.post(`/delete/${id}`, {
     headers: {
       Authorization: AuthHeader(),
     },
