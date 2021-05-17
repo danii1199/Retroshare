@@ -85,7 +85,7 @@ const UserProfile = () => {
         </Typography>
       </Grid>
       <Grid container spacing={2}>
-        {user.products?.map((product) => {
+        {user.productOwner?.map((product) => {
           return (
             <Grid key={product.id} item sm={6} md={3}>
               <CardInfo product={product} />

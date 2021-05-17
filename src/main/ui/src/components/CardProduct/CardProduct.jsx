@@ -66,7 +66,7 @@ const CardProduct = ({ product }) => {
           size="large"
           className="custom-button"
           component={Link}
-          to={`user/${product.user.id}`}
+          to={`user/${product.userOwner}`}
         >
           <Person />
         </Button>
