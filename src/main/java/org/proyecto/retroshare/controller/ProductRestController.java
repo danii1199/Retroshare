@@ -30,8 +30,7 @@ public class ProductRestController {
 	@Autowired
 	private ProductRepository productRepository;
 	
-	@Autowired
-	private UserRepository userRepository;
+	
 	
 	//VER TODOS LOS PRODUCTOS
 	@GetMapping(value = "/pr-all")

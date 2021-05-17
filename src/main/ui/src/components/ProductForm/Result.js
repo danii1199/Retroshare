@@ -19,7 +19,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import InsertDriveFile from "@material-ui/icons/InsertDriveFile";
 import { useData } from "./DataContext"
 import RetroshareService from "../../Service/RetroshareService";
-
+import AuthService from "../../Service/Auth/AuthService";
 
 const useStyles = makeStyles({
   root: {
@@ -34,6 +34,7 @@ export const Result = () => {
   const [success, setSuccess] = useState(false);
   const styles = useStyles();
   const { data } = useData();
+  const currentUser = AuthService.getCurrentUser().id;
 
   const entries = Object.entries(data).filter((entry) => entry[0] !== "files");
   const { files } = data;
@@ -50,7 +51,7 @@ export const Result = () => {
       formData.append(entry[0], entry[1]);  
     });
 
-    const res = RetroshareService.createProduct(data, data.productType,1,data.status)
+    const res = RetroshareService.createProduct(data, data.productType,currentUser,data.status)
 
     if (res.status === 200) {
       Swal.fire("Great job!", "You've passed the challenge!", "success");

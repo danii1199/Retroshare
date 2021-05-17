@@ -53,8 +53,8 @@ public class GameConsoleRestController {
 		// User user = userRepository.getOne(idUser);
 		User user = userRepository.findById(idUser)
 				.orElseThrow(() -> new ResourceNotFoundException("No existe el usuario" + idUser));
-		gameConsole.setUser(user);
-		user.getProducts().add(gameConsole);
+		gameConsole.setUserOwner(user);
+		user.getProductOwner().add(gameConsole);
 
 		ProductStatus productStatus = productStatusRepository.getOne(idProductStatus);
 		gameConsole.setProductStatus(productStatus);

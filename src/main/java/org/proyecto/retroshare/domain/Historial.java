@@ -1,18 +1,13 @@
 package org.proyecto.retroshare.domain;
 
-import java.util.Collection;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
@@ -28,9 +23,9 @@ public class Historial {
 	
 	
 
-	@JsonIgnoreProperties(value = "products", allowSetters = true)
-	@OneToMany(mappedBy = "historial", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	private Collection<Product> products;
+	@JsonIgnore
+	@OneToOne(cascade = CascadeType.PERSIST, optional = true)
+	private Product product;
 
 
 
@@ -64,15 +59,19 @@ public class Historial {
 
 
 
-	public Collection<Product> getProducts() {
-		return products;
+	public Product getProduct() {
+		return product;
 	}
 
 
 
-	public void setProducts(Collection<Product> products) {
-		this.products = products;
+	public void setProduct(Product product) {
+		this.product = product;
 	}
+
+
+
+	
 	
 	
 	

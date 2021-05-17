@@ -47,22 +47,26 @@ public class User {
 	private String avatar;
 	private Date date;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	private Collection<Product> products;
+	@OneToMany(mappedBy = "userOwner", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	private Collection<Product> productOwner;
 	
-	@JsonIgnore
+	
+	@OneToMany(mappedBy = "userBuyer", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+	private Collection<Product> productBuyer;
+	
+	/*@JsonIgnore
 	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	private Historial historial;
+	private Historial historial;*/
 
 	@JsonIgnoreProperties(value = "users", allowSetters = true)
 	@JoinColumn(name = "role_id")
 	@ManyToOne(cascade = CascadeType.PERSIST, optional = true)
 	private Role role;
-	
-	@JsonIgnoreProperties(value="users",allowSetters = true)
+
+	@JsonIgnoreProperties(value = "users", allowSetters = true)
 	@ManyToMany(cascade = CascadeType.ALL)
 	private Collection<Valuation> valuations;
-	
+
 	@JsonIgnoreProperties(value = "comments", allowSetters = true)
 	@OneToMany(mappedBy = "productComment", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Comment> comments;
@@ -209,14 +213,6 @@ public class User {
 		this.role = role;
 	}
 
-	public Collection<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(Collection<Product> products) {
-		this.products = products;
-	}
-
 	public Collection<Valuation> getValuations() {
 		return valuations;
 	}
@@ -233,19 +229,22 @@ public class User {
 		this.comments = comments;
 	}
 
-	public Historial getHistorial() {
-		return historial;
+	public Collection<Product> getProductOwner() {
+		return productOwner;
 	}
 
-	public void setHistorial(Historial historial) {
-		this.historial= historial;
+	public void setProductOwner(Collection<Product> productOwner) {
+		this.productOwner = productOwner;
 	}
 
+	public Collection<Product> getProductBuyer() {
+		return productBuyer;
+	}
 
-	
-	
-	
-	
+	public void setProductBuyer(Collection<Product> productBuyer) {
+		this.productBuyer = productBuyer;
+	}
+
 	
 
 }
