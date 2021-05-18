@@ -26,13 +26,13 @@ public class Product {
 	private Long id;
 	private String description;
 	private String image;
-
-	@JsonIgnore
+	
+	@JsonIgnoreProperties(value = { "products", "hibernateLazyInitializer" }, allowSetters = true)
 	@JoinColumn(name = "userOwner_id")
 	@ManyToOne(cascade = CascadeType.PERSIST, optional = true)
 	private User userOwner;
 	
-	@JsonIgnore
+	@JsonIgnoreProperties(value = { "products", "hibernateLazyInitializer" }, allowSetters = true)
 	@JoinColumn(name = "userBuyer_id")
 	@ManyToOne(cascade = CascadeType.PERSIST, optional = true)
 	private User userBuyer;

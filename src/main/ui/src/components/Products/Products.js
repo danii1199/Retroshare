@@ -38,6 +38,7 @@ const Products = () => {
   const consoles = GameConsoleAPI();
   const vinyls = VinylAPI();
   const recordPlayers = RecordPlayerAPI();
+  console.log(products);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -73,15 +74,13 @@ const Products = () => {
             </Typography>
           </Grid>
           <Grid container spacing={2}>
-            {products
-              .slice(products.length - 4, products.length)
-              .map((product) => {
-                return (
-                  <Grid key={product.id} item sm={6} md={3}>
-                    <CardProduct product={product} />
-                  </Grid>
-                );
-              })}
+            {products.map((product) => {
+              return (
+                <Grid key={product.id} item sm={6} md={3}>
+                  <CardProduct product={product} />
+                </Grid>
+              );
+            })}
           </Grid>
           {games.length > 0 && (
             <Grid container>
@@ -91,9 +90,9 @@ const Products = () => {
             </Grid>
           )}
           <Grid container spacing={2}>
-            {games.slice(games.length - 4, games.length).map((product) => {
+            {games.map((product) => {
               return (
-                <Grid key={games.id} item sm={6} md={3}>
+                <Grid key={games.id+product.id} item sm={6} md={3}>
                   <CardProduct product={product} />
                 </Grid>
               );

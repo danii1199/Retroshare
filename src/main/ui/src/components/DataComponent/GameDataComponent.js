@@ -20,12 +20,12 @@ const GameComponentAdmin = () => {
     { field: "gender", headerName: "Gender", width: 150 },
     { field: "developer", headerName: "developer", width: 150 },
     { field: "price", headerName: "Price", width: 150 },
-    { field: "historialId", headerName: "Buy user", width: 130, valueFormatter: (game) => game.row?.buyUser},
+    { field: "useName", headerName: "Buy user", width: 130, valueFormatter: (game) => game.row?.userBuyer?.userName},
     {
       field: "userName",
       headerName: "Owner user",
       width: 130,
-      valueFormatter: (game) => game.row?.ownerUser?.userName,
+      valueFormatter: (game) => game.row?.userOwner?.userName,
     },
     { field: "productStatus", headerName: "Product Status", width: 150,valueFormatter: (game) => game.row?.productStatus?.status},
   ];

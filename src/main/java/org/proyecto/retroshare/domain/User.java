@@ -46,10 +46,11 @@ public class User {
 	@Column(unique = true)
 	private String avatar;
 	private Calendar date;
-
+	
+	@JsonIgnore
 	@OneToMany(mappedBy = "userOwner", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Product> productOwner;
-
+	@JsonIgnore
 	@OneToMany(mappedBy = "userBuyer", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Product> productBuyer;
 

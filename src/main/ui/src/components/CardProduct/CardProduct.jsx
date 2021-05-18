@@ -21,7 +21,9 @@ const CardProduct = ({ product }) => {
   const history = useHistory();
 
   const isInCart = (product) => {
+    console.log(product)
     return !!cartItems.find((item) => item.id === product.id);
+
   };
 
   return (
@@ -66,7 +68,7 @@ const CardProduct = ({ product }) => {
           size="large"
           className="custom-button"
           component={Link}
-          to={`user/${product.userOwner}`}
+          to={`user/${product.userOwner.id}`}
         >
           <Person />
         </Button>
