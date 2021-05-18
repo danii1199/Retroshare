@@ -112,6 +112,8 @@ const getCurrentCart = () => {
   return JSON.parse(localStorage.getItem("cart"));
 };
 
+
+
 const services = {
   getAll,
   get,

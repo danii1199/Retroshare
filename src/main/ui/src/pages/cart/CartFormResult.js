@@ -52,7 +52,7 @@ export const CartFormResult = () => {
         currentCart.map(async (articles) => {
           return (
           http
-            .post(`/h-save/${currentUser.id}/${articles.id}`, articles)
+            .post(`/pr-buy/${articles.id}/${currentUser.id}`, articles)
             .then((resCart) => {
               if (resCart.status === 200) {
                 Swal.fire("Great job!", "Your buy is done", "success");

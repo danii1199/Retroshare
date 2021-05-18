@@ -3,6 +3,9 @@ import AuthService from "../../Service/Auth/AuthService";
 import { Grid, Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import CardInfo from "../CardProduct/CardInfo";
+import { useContext } from "react";
+import { ProductsContext } from "../../contexts/ProductsContext";
+
 
 const useStyles = makeStyles({
   avatar: {
@@ -35,7 +38,7 @@ const UserProfile = () => {
   const classes = useStyles();
   const currentUser = AuthService.getCurrentUser();
   const user = OneUser(currentUser.id);
-
+  const { products } = useContext(ProductsContext);
   return (
     <Container>
       <Grid>
@@ -83,16 +86,35 @@ const UserProfile = () => {
       </Grid>
       <Grid item>
         <Typography variant="h4" className={classes.titulo}>
-          Your Products:
+          Productos Subidos:
         </Typography>
       </Grid>
       <Grid container spacing={2}>
-        {user.productOwner?.map((product) => {
-          return (
-            <Grid key={product.id} item sm={6} md={3}>
-              <CardInfo product={product} />
-            </Grid>
-          );
+        {products.map((product) => {
+          if(product.userOwner.id === user.id)
+            return(
+              <Grid key={product.id} item sm={6} md={3}>
+                <CardInfo product={product} />
+              </Grid>
+            )
+          return(<></>)
+        })}
+      </Grid>
+      <Grid item>
+        <Typography variant="h4" className={classes.titulo}>
+          Tus Compras:
+        </Typography>
+      </Grid>
+      <Grid container spacing={2}>
+        {products.map((product) => {
+          console.log(product.userBuyer)
+          if(product.userBuyer.id === user.id)
+            return(
+              <Grid key={product.id} item sm={6} md={3}>
+                <CardInfo product={product} />
+              </Grid>
+            )
+          return(<></>)
         })}
       </Grid>
     </Container>

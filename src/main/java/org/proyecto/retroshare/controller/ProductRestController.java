@@ -3,7 +3,9 @@ package org.proyecto.retroshare.controller;
 import java.io.IOException;
 import java.util.List;
 
+import org.proyecto.retroshare.domain.GameConsole;
 import org.proyecto.retroshare.domain.Product;
+import org.proyecto.retroshare.domain.ProductStatus;
 import org.proyecto.retroshare.domain.User;
 import org.proyecto.retroshare.exception.ProductNotFoundException;
 import org.proyecto.retroshare.repositories.ProductRepository;
@@ -29,22 +31,24 @@ public class ProductRestController {
 
 	@Autowired
 	private ProductRepository productRepository;
-	
-	
-	
-	//VER TODOS LOS PRODUCTOS
+
+	@Autowired
+	private UserRepository userRepository;
+
+	// VER TODOS LOS PRODUCTOS
 	@GetMapping(value = "/pr-all")
 	public List<Product> findAll() {
 		return productRepository.findAll();
 	}
+
 	@GetMapping(value = "/pr/{id}")
-	public ResponseEntity<Product> getById(@PathVariable("id")  Long id) {
-        Product prd = productRepository.findById(id)
-                                    .orElseThrow(()->new ProductNotFoundException("No Product with ID : "+id));
-        return ResponseEntity.ok().body(prd);
-			     
+	public ResponseEntity<Product> getById(@PathVariable("id") Long id) {
+		Product prd = productRepository.findById(id)
+				.orElseThrow(() -> new ProductNotFoundException("No Product with ID : " + id));
+		return ResponseEntity.ok().body(prd);
+
 	}
-	
+
 	// BORRAR UN JUEGO
 	@GetMapping(value = "/p-delete/{id}")
 	public String delete(@PathVariable Long id) {
@@ -54,5 +58,23 @@ public class ProductRestController {
 		}
 
 		return "redirect:pr-all";
+	}
+
+	@PostMapping(value = "/pr-buy/{id}/{userId}")
+	public ResponseEntity<Product> update(@PathVariable Long id, @PathVariable Long userId,
+			@RequestBody Product product) {
+
+		Product productUpdate = productRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("No existe el producto " + id));
+
+		User user = userRepository.getOne(userId);
+
+		productUpdate.setUserBuyer(user);
+		user.getProductBuyer().add(productUpdate);
+
+		Product obj = productRepository.save(productUpdate);
+
+		return new ResponseEntity<Product>(obj, HttpStatus.OK);
+
 	}
 }

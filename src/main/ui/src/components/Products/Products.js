@@ -11,6 +11,8 @@ import GameConsoleAPI from "../../lib/GameConsoleAPI";
 import VinylAPI from "../../lib/VinylAPI";
 import RecordPlayerAPI from "../../lib/RecordPlayerAPI";
 import Caru1 from "../Carousel/Caru1";
+import OneUser from "../../lib/OneUser";
+import AuthService from "../../Service/Auth/AuthService";
 
 const useStyles = makeStyles(() => ({
   carousel: {
@@ -32,12 +34,16 @@ const useStyles = makeStyles(() => ({
 }));
 
 const Products = () => {
-  const classes = useStyles();
+  const currentUser = AuthService.getCurrentUser();
+  const user = OneUser(currentUser?.id);
   const { products } = useContext(ProductsContext);
+
+  const classes = useStyles();
   const games = VideoGameAPI();
   const consoles = GameConsoleAPI();
   const vinyls = VinylAPI();
   const recordPlayers = RecordPlayerAPI();
+
   console.log(products);
 
   return (
@@ -74,13 +80,17 @@ const Products = () => {
             </Typography>
           </Grid>
           <Grid container spacing={2}>
-            {products.map((product) => {
-              return (
-                <Grid key={product.id} item sm={6} md={3}>
-                  <CardProduct product={product} />
-                </Grid>
-              );
-            })}
+            {products
+              .slice(products.length - 4, products.length)
+              .map((product) => {
+                if (product.userOwner.id !== user?.id)
+                  return (
+                    <Grid key={product.id} item sm={6} md={3}>
+                      <CardProduct product={product} />
+                    </Grid>
+                  );
+                return <></>;
+              })}
           </Grid>
           {games.length > 0 && (
             <Grid container>
@@ -90,9 +100,9 @@ const Products = () => {
             </Grid>
           )}
           <Grid container spacing={2}>
-            {games.map((product) => {
+            {games.slice(games.length - 4, games.length).map((product) => {
               return (
-                <Grid key={games.id+product.id} item sm={6} md={3}>
+                <Grid key={games.id + product.id} item sm={6} md={3}>
                   <CardProduct product={product} />
                 </Grid>
               );

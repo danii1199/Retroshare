@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^12.1.10",
     "angular-material-autocomplete-list": "^1.1.0",
     "axios": "^0.21.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "libphonenumber": "0.0.10",
     "libphonenumber-js": "^1.9.16",
     "material-ui-image": "^3.3.2",
