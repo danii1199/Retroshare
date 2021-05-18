@@ -5,11 +5,13 @@ import CardInfo from "../CardProduct/CardInfo";
 
 const useStyles = makeStyles({
   avatar: {
+    marginTop:"20px",
     width: "160px",
     height: "160px",
     borderRadius: "80px",
   },
   texto: {
+    marginTop:"20px",
     paddingLeft: "30px",
   },
   titulo: {
@@ -83,7 +85,7 @@ const UserProfile = () => {
         </Typography>
       </Grid>
       <Grid container spacing={2}>
-        {user.products?.map((product) => {
+        {user.productOwner?.map((product) => {
           return (
             <Grid key={product.id} item sm={6} md={3}>
               <CardInfo product={product} />
