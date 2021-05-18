@@ -87,7 +87,7 @@ public class UserRestController {
 		
 		Calendar fecha=Calendar.getInstance();
 		
-		user.setDate(fecha.getTime());
+		user.setDate(fecha);
 		User obj = userRepository.save(user);
 		return new ResponseEntity<User>(obj, HttpStatus.OK);
 	}

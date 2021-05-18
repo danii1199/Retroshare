@@ -2,7 +2,7 @@ package org.proyecto.retroshare.domain;
 
 import java.util.Calendar;
 import java.util.Collection;
-import java.util.Date;
+import java.util.Calendar;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -45,18 +45,20 @@ public class User {
 	private String email;
 	@Column(unique = true)
 	private String avatar;
-	private Date date;
+	private Calendar date;
 
 	@OneToMany(mappedBy = "userOwner", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Product> productOwner;
-	
-	
+
 	@OneToMany(mappedBy = "userBuyer", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
 	private Collection<Product> productBuyer;
-	
-	/*@JsonIgnore
-	@OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-	private Historial historial;*/
+
+	/*
+	 * @JsonIgnore
+	 * 
+	 * @OneToOne(mappedBy = "user", cascade = CascadeType.PERSIST, fetch =
+	 * FetchType.LAZY) private Historial historial;
+	 */
 
 	@JsonIgnoreProperties(value = "users", allowSetters = true)
 	@JoinColumn(name = "role_id")
@@ -72,7 +74,8 @@ public class User {
 	private Collection<Comment> comments;
 
 	public User(String firstName, String lastName, String userName, String password, String sex, String address,
-			Integer zipCode, String city, String country, Integer phoneNumber, String email, String avatar, Date date) {
+			Integer zipCode, String city, String country, Integer phoneNumber, String email, String avatar,
+			Calendar date) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -197,11 +200,11 @@ public class User {
 		this.avatar = avatar;
 	}
 
-	public Date getDate() {
+	public Calendar getDate() {
 		return date;
 	}
 
-	public void setDate(Date date) {
+	public void setDate(Calendar date) {
 		this.date = date;
 	}
 
@@ -244,7 +247,5 @@ public class User {
 	public void setProductBuyer(Collection<Product> productBuyer) {
 		this.productBuyer = productBuyer;
 	}
-
-	
 
 }
