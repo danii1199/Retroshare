@@ -14,7 +14,7 @@ const UserComponent = () => {
       console.log(miarray[i]);
       RetroshareService.remove(miarray[i]);
     }
-    window.location.reload(false);
+    window.location.reload();
   }
   const columns = [
     { dataField:"id", field: "id", headerName: "ID", width: 70 },

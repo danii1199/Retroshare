@@ -108,12 +108,14 @@ const UserProfile = () => {
       <Grid container spacing={2}>
         {products.map((product) => {
           console.log(product.userBuyer)
+          if(product.userBuyer!==null)
           if(product.userBuyer.id === user.id)
             return(
               <Grid key={product.id} item sm={6} md={3}>
                 <CardInfo product={product} />
               </Grid>
             )
+            
           return(<></>)
         })}
       </Grid>
