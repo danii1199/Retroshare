@@ -55,6 +55,11 @@ const CardProduct = ({ product }) => {
         <Typography field="price" gutterBottom variant="h5" component="h2">
           {product.price} <EuroSymbolIcon />
         </Typography>
+        {product.userBuyer!==null&&
+        <Typography align="right" field="price" gutterBottom variant="h5" component="h2">
+          Finalizado
+        </Typography>
+}
       </CardActions>
     </Card>
   );

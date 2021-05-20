@@ -38,6 +38,7 @@ const UserProfile = () => {
   const user = OneUser(window.location.pathname.split("/")[2]);
   const { products } = useContext(ProductsContext);
   const fechaReg = user.date;
+  //const fecha=fechaReg.substring(8,10)+"-"+fechaReg.substring(5,7)+"-"+fechaReg.substring(0,4);
   console.log(user);
 
   return (
@@ -63,13 +64,10 @@ const UserProfile = () => {
                 Email: {user.email}
               </Typography>
               <Typography className={classes.texto}>
-                Registrado en: {fechaReg}
-              </Typography>
-              <Typography className={classes.texto}>
-                Phone Number: {user.phoneNumber}
-              </Typography>
-              <Typography className={classes.texto}>
                 City: {user.city}
+              </Typography>
+              <Typography className={classes.texto}>
+                Registrado en: {fechaReg}
               </Typography>
             </Grid>
           </Grid>

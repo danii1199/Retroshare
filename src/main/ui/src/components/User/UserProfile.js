@@ -39,6 +39,7 @@ const UserProfile = () => {
   const currentUser = AuthService.getCurrentUser();
   const user = OneUser(currentUser.id);
   const { products } = useContext(ProductsContext);
+  const fechaReg = user.date;
   return (
     <Container>
       <Grid>
@@ -56,24 +57,18 @@ const UserProfile = () => {
             <Typography variant="h5" className={classes.texto}>
               UserName: {user.userName}
             </Typography>
-            <Typography className={classes.texto}>
-              First Name: {user.firstName}
-            </Typography>
-            <Typography className={classes.texto}>
-              Last Name: {user.lastName}
-            </Typography>
             <Grid container>
-              <Typography className={classes.texto}>
+            <Typography className={classes.texto}>
+              Name: {user.firstName} {user.lastName}
+            </Typography>
+            <Typography className={classes.texto}>
                 Email: {user.email}
               </Typography>
               <Typography className={classes.texto}>
-                Last Name: {currentUser.name}
+                City: {user.city}
               </Typography>
               <Typography className={classes.texto}>
-                Phone Number: {currentUser.phoneNumer}
-              </Typography>
-              <Typography className={classes.texto}>
-                City: {currentUser.city}
+                Registrado en: {fechaReg}
               </Typography>
             </Grid>
           </Grid>
@@ -91,14 +86,14 @@ const UserProfile = () => {
       </Grid>
       <Grid container spacing={2}>
         {products.map((product) => {
+          
           if(product.userOwner.id === user.id)
-            return(
+          return(
               <Grid key={product.id} item sm={6} md={3}>
                 <CardInfo product={product} />
               </Grid>
             )
-          return(<></>)
-        })}
+          })}
       </Grid>
       <Grid item>
         <Typography variant="h4" className={classes.titulo}>

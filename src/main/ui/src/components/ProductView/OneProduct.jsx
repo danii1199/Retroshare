@@ -37,9 +37,10 @@ const OneProduct = ({ product }) => {
           </Card>
         </Grid>
         <Grid item xs={6} className="text">
-          <Typography variant="h2">{product.name}</Typography>
+          <Typography style={{marginTop:"10px"}}variant="h2">{product.name}</Typography>
           <Typography variant="h6">{product.description}</Typography>
           <Typography variant="h3">Price: {product.price}€</Typography>
+          <Typography style={{marginTop:"170px",marginLeft:"10px"}} variant="h5" >Sell by: {product?.userOwner?.userName}</Typography>
         </Grid>
         <Grid item xs={12} className="action-part">
           {!isInCart(product) && (

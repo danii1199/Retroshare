@@ -43,7 +43,7 @@ const Products = () => {
   const consoles = GameConsoleAPI();
   const vinyls = VinylAPI();
   const recordPlayers = RecordPlayerAPI();
-  var con=0;
+  var con=[];
   console.log(products);
 
   return (
@@ -83,6 +83,7 @@ const Products = () => {
             {products
               .slice(products.length - 4, products.length)
               .map((product) => {
+                if(product.userBuyer===null)
                 if (product.userOwner.id !== user?.id)
                   return (
                     <Grid key={product.id} item sm={6} md={3}>
@@ -93,11 +94,11 @@ const Products = () => {
               })}
           </Grid>
           <Grid container spacing={2}>
-            {games.slice(games.length - 4, games.length).map((product) => {  
+            {games.slice(games.length - 4, games.length).map((product) => {
+              if(product.userBuyer===null)
               if (product.userOwner.id !== user?.id)
-              con++;
-              console.log(con);
-              if(con===1)
+              if(con.length===0){
+                con.push(product.id)
               return (
                 
                 <Grid container>
@@ -106,14 +107,15 @@ const Products = () => {
                 </Typography>
               </Grid>
               );
-                
+              }
               return <></>;
               
-            },con=0)}
+            },con=[])}
               
           </Grid>
           <Grid container spacing={2}>
             {games.slice(games.length - 4, games.length).map((product) => {  
+              if(product.userBuyer===null)
               if (product.userOwner.id !== user?.id)
               return (
                 
@@ -126,13 +128,10 @@ const Products = () => {
           </Grid>
           <Grid container spacing={2}>
             {consoles.slice(consoles.length - 4, consoles.length).map((product) => {
+              if(product.userBuyer===null)
               if (product.userOwner.id !== user?.id)
-             
-              con++;
-              
-              
-              console.log(con);
-              if(con===1)
+              if(con.length===0){
+                con.push(product.id)
               return (
                 
                 <Grid container>
@@ -141,15 +140,16 @@ const Products = () => {
                 </Typography>
               </Grid>
               );
-              
+              }
               return <></>;
               
-            },con=0)}
+            },con=[])}
           </Grid>
           <Grid container spacing={2}>
             {consoles
               .slice(consoles.length - 4, consoles.length)
               .map((product) => {
+                if(product.userBuyer===null)
                 if (product.userOwner.id !== user?.id)
                 return (
                   <Grid key={consoles.id} item sm={6} md={3}>
@@ -161,10 +161,10 @@ const Products = () => {
           </Grid>
           <Grid container spacing={2}>
             {vinyls.slice(vinyls.length - 4, vinyls.length).map((product) => {
+              if(product.userBuyer===null)
               if (product.userOwner.id !== user?.id)
-              con++;
-              
-              if(con===1)
+              if(con.length===0){
+                con.push(product.id)
               return (
                 
                 <Grid container>
@@ -173,13 +173,15 @@ const Products = () => {
                 </Typography>
               </Grid>
               );
-             
               
+              }  
               return <></>;
-            },con=0)}
+            
+            },con=[])}
           </Grid>
           <Grid container spacing={2}>
             {vinyls.slice(vinyls.length - 4, vinyls.length).map((product) => {
+              if(product.userBuyer===null)
                if (product.userOwner.id !== user?.id)
               return (
                 <Grid key={vinyls.id} item sm={6} md={3}>
@@ -191,37 +193,34 @@ const Products = () => {
           </Grid>
           <Grid container spacing={2}>
             {recordPlayers.slice(recordPlayers.length - 4, recordPlayers.length).map((product) => {
+              if(product.userBuyer===null)
               if (product.userOwner.id !== user?.id)
-              con++;
-              console.log(con);
-              if(con===1)
+              if(con.length===0){
+                con.push(product.id)
               return (
                 
                 <Grid container>
                 <Typography variant="h3" className={classes.tittleH3}>
-                 Record Players
+                  Record Players
                 </Typography>
               </Grid>
               );
-              
+              }
               
               return <></>;
-            },con=0)}
-            
+            },con=[])}
           </Grid>
-          {recordPlayers.length > 0 && <Grid item></Grid>}
           <Grid container spacing={2}>
-            {recordPlayers
-              .slice(recordPlayers.length - 4, recordPlayers.length)
-              .map((product) => {
-                if (product.userOwner.id !== user?.id)
-                return (
-                  <Grid key={recordPlayers.id} item sm={6} md={3}>
-                    <CardProduct product={product} />
-                  </Grid>
-                );
-                return <></>;
-              })}
+            {recordPlayers.slice(recordPlayers.length - 4, recordPlayers.length).map((product) => {
+              if(product.userBuyer===null)
+               if (product.userOwner.id !== user?.id)
+              return (
+                <Grid key={recordPlayers.id} item sm={6} md={3}>
+                  <CardProduct product={product} />
+                </Grid>
+              );
+              return <></>;
+            })}
           </Grid>
         </Grid>
       </Container>

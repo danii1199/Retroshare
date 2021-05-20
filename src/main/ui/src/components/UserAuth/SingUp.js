@@ -130,6 +130,36 @@ export default function SignUp() {
                 autoComplete="lname"
               />
             </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="uname"
+                name="userName"
+                variant="outlined"
+                fullWidth
+                id="userName"
+                label="User Name"
+                autoFocus
+                inputRef={register({
+                  required: { value: true, message: "Valor requerido" },
+                })}
+              />
+              <div color="black">{errors?.userName?.message}</div>
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="city"
+                name="city"
+                variant="outlined"
+                fullWidth
+                id="city"
+                label="City"
+                autoFocus
+                inputRef={register({
+                  required: { value: true, message: "Valor requerido" },
+                })}
+              />
+              <div color="black">{errors?.city?.message}</div>
+            </Grid>
             <Grid item xs={12}>
               <TextField
                 variant="outlined"
