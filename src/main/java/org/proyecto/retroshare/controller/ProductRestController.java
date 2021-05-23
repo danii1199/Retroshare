@@ -77,4 +77,29 @@ public class ProductRestController {
 		return new ResponseEntity<Product>(obj, HttpStatus.OK);
 
 	}
+	
+	@PostMapping(value = "/pr-chat/{userSendId}/{userReceiveId}")
+	public ResponseEntity<Product> update(@PathVariable Long id, @PathVariable Long userSendId,@PathVariable Long userReceiveId,
+			@RequestBody Product product) {
+
+		Product productUpdate = productRepository.findById(id)
+				.orElseThrow(() -> new ResourceNotFoundException("No existe el producto " + id));
+
+		User userSend = userRepository.getOne(userSendId);
+
+		productUpdate.setUserSend(userSend);
+		userSend.getProductSend().add(productUpdate);
+		
+		User userReceive = userRepository.getOne(userReceiveId);
+
+		productUpdate.setUserReceive(userReceive);
+		userReceive.getProductReceive().add(productUpdate);
+		
+		productUpdate.setMessage(product.getMessage());
+
+		Product obj = productRepository.save(productUpdate);
+
+		return new ResponseEntity<Product>(obj, HttpStatus.OK);
+
+	}
 }
