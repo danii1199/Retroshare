@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import {
     ContactMail,
-    Info,
+    LocalShipping,
     Payment,
 } from '@material-ui/icons';
 
@@ -23,7 +23,7 @@ const style = makeStyles(theme => ({
     },
     active: {
         background: theme.palette.primary.main,
-        boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
+        boxShadow: '0 4px 10px 0 #A68B03',
     },
     completed: {
         background: theme.palette.primary.main
@@ -36,7 +36,7 @@ const StepperIcon = props => {
 
     const icons = {
         1: <ContactMail />,
-        2: <Info />,
+        2: <LocalShipping />,
         3: <Payment />,
         4: <Payment />,
     };

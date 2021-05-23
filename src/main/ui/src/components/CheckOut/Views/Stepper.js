@@ -51,7 +51,7 @@ const style = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ["Contact", "Information", "Payment"];
+  return ["Contacto", "Envio", "Pago"];
 }
 
 function StepContent({ step }, formContent) {

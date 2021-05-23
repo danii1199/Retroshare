@@ -72,7 +72,7 @@ const useStyles = makeStyles((theme) => ({
     color: "inherit",
   },
   background: {
-    background: "#121212",
+    background: theme.palette.primary,
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
@@ -335,7 +335,7 @@ const NavBar = () => {
                   "https://www.pikpng.com/pngl/b/59-590145_pokeball-8-bit-pixel-art-pokemon-clipart.png"
                 }
               />{" "}
-              RetroShare
+              
             </IconButton>
             <SearchBar />
             <div className={classes.sectionDesktop}>

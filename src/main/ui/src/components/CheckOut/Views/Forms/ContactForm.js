@@ -2,19 +2,19 @@ import { Grid, TextField, Typography } from "@material-ui/core";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { useEffect } from "react";
 import { useFormContext } from "react-hook-form";
-
 const ContactForm = ({ formContent }) => {
   const methods = useFormContext();
   const { reset, register } = methods;
+  
 
   useEffect(() => {
     reset({ ...formContent.one }, { errors: true });
-  }, [reset,formContent ]);
+  }, [reset, formContent]);
 
   return (
     <>
       <Grid item xs={12}>
-        <Typography variant="h6">Contact information</Typography>
+        <Typography variant="h6">Informacion de Contacto</Typography>
       </Grid>
       <Grid item xs={12} sm={4}>
         <TextField
@@ -22,6 +22,7 @@ const ContactForm = ({ formContent }) => {
           type="text"
           label="User Name*"
           name="userName"
+          defaultValue={formContent.userName}
         />
       </Grid>
       <Grid item xs={12} sm={4}>
