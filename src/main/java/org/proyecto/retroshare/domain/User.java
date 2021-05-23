@@ -53,7 +53,15 @@ public class User {
 	@JsonIgnore
 	@OneToMany(mappedBy = "userBuyer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Collection<Product> productBuyer;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "userOwner", cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+	private Collection<Product> productSend;
+	@JsonIgnore
+	@OneToMany(mappedBy = "userBuyer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Collection<Product> productReceive;
 
+	
 	/*
 	 * @JsonIgnore
 	 * 
@@ -248,5 +256,26 @@ public class User {
 	public void setProductBuyer(Collection<Product> productBuyer) {
 		this.productBuyer = productBuyer;
 	}
+
+	public Collection<Product> getProductSend() {
+		return productSend;
+	}
+
+	public void setProductSend(Collection<Product> productSend) {
+		this.productSend = productSend;
+	}
+
+	public Collection<Product> getProductReceive() {
+		return productReceive;
+	}
+
+	public void setProductReceive(Collection<Product> productReceive) {
+		this.productReceive = productReceive;
+	}
+
+
+	
+	
+	
 
 }

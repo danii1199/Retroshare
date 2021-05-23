@@ -26,6 +26,7 @@ public class Product {
 	private Long id;
 	private String description;
 	private String image;
+	private String message;
 	
 	@JsonIgnoreProperties(value = { "products", "hibernateLazyInitializer" }, allowSetters = true)
 	@JoinColumn(name = "userOwner_id")
@@ -36,6 +37,16 @@ public class Product {
 	@JoinColumn(name = "userBuyer_id")
 	@ManyToOne(cascade = CascadeType.PERSIST, optional = true)
 	private User userBuyer;
+	
+	@JsonIgnoreProperties(value = { "products", "hibernateLazyInitializer" }, allowSetters = true)
+	@JoinColumn(name = "userSend_id")
+	@ManyToOne(cascade = CascadeType.PERSIST, optional = true)
+	private User userSend;
+	
+	@JsonIgnoreProperties(value = { "products", "hibernateLazyInitializer" }, allowSetters = true)
+	@JoinColumn(name = "userReceive_id")
+	@ManyToOne(cascade = CascadeType.PERSIST, optional = true)
+	private User userReceive;
 	
 	/*@JsonIgnore
 	@OneToOne(mappedBy = "product", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
@@ -91,6 +102,14 @@ public class Product {
 
 	
 
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
 	public User getUserOwner() {
 		return userOwner;
 	}
@@ -129,6 +148,22 @@ public class Product {
 
 	public void setComments(Collection<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public User getUserSend() {
+		return userSend;
+	}
+
+	public void setUserSend(User userSend) {
+		this.userSend = userSend;
+	}
+
+	public User getUserReceive() {
+		return userReceive;
+	}
+
+	public void setUserReceive(User userReceive) {
+		this.userReceive = userReceive;
 	}
 
 	
