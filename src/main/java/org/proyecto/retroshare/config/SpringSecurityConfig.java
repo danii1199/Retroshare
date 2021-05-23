@@ -36,7 +36,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors();
 		http.csrf().disable().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.authorizeRequests()
-				.antMatchers("/retroshare/pr-buy/{id}/{userId}","/retroshare/h-save/{idUser}/{idProduct}",
+				.antMatchers("/retroshare/update/{idUser}","/retroshare/pr-buy/{id}/{userId}","/retroshare/h-save/{idUser}/{idProduct}",
 						"/retroshare/update/{id}", "/retroshare/pr-update/{id}/{idUser}", "/retroshare/pr-all",
 						"/retroshare/login", "/retroshare/save/2", "/retroshare/v-all", "/retroshare/g-all",
 						"/retroshare/gc-all", "/retroshare/rp-all", "/retroshare/pr/{id}",

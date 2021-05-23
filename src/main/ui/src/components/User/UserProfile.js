@@ -6,16 +6,15 @@ import CardInfo from "../CardProduct/CardInfo";
 import { useContext } from "react";
 import { ProductsContext } from "../../contexts/ProductsContext";
 
-
 const useStyles = makeStyles({
   avatar: {
-    marginTop:"20px",
+    marginTop: "20px",
     width: "160px",
     height: "160px",
     borderRadius: "80px",
   },
   texto: {
-    marginTop:"20px",
+    marginTop: "20px",
     paddingLeft: "30px",
   },
   titulo: {
@@ -43,9 +42,7 @@ const UserProfile = () => {
   return (
     <Container>
       <Grid>
-        <Grid
-          className={classes.infoUser}
-        >
+        <Grid className={classes.infoUser}>
           <Grid item>
             <img
               alt={user.avatar}
@@ -58,10 +55,10 @@ const UserProfile = () => {
               UserName: {user.userName}
             </Typography>
             <Grid container>
-            <Typography className={classes.texto}>
-              Name: {user.firstName} {user.lastName}
-            </Typography>
-            <Typography className={classes.texto}>
+              <Typography className={classes.texto}>
+                Name: {user.firstName} {user.lastName}
+              </Typography>
+              <Typography className={classes.texto}>
                 Email: {user.email}
               </Typography>
               <Typography className={classes.texto}>
@@ -86,14 +83,14 @@ const UserProfile = () => {
       </Grid>
       <Grid container spacing={2}>
         {products.map((product) => {
-          
-          if(product.userOwner.id === user.id)
-          return(
+          if (product.userOwner.id === user.id)
+            return (
               <Grid key={product.id} item sm={6} md={3}>
                 <CardInfo product={product} />
               </Grid>
-            )
-          })}
+            );
+          return(<></>)
+        })}
       </Grid>
       <Grid item>
         <Typography variant="h4" className={classes.titulo}>
@@ -102,16 +99,16 @@ const UserProfile = () => {
       </Grid>
       <Grid container spacing={2}>
         {products.map((product) => {
-          console.log(product.userBuyer)
-          if(product.userBuyer!==null)
-          if(product.userBuyer.id === user.id)
-            return(
-              <Grid key={product.id} item sm={6} md={3}>
-                <CardInfo product={product} />
-              </Grid>
-            )
-            
-          return(<></>)
+          console.log(product.userBuyer);
+          if (product.userBuyer !== null)
+            if (product.userBuyer.id === user.id)
+              return (
+                <Grid key={product.id} item sm={6} md={3}>
+                  <CardInfo product={product} />
+                </Grid>
+              );
+
+          return <></>;
         })}
       </Grid>
     </Container>

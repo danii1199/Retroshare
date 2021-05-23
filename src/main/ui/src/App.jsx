@@ -27,6 +27,7 @@ import { CartForm } from "./pages/cart/CartForm";
 import { CartFormResult } from "./pages/cart/CartFormResult";
 import { lazy, Suspense } from "react";
 import { Container } from "@material-ui/core";
+import Main from "./components/CheckOut/Views/Main";
 
 //const Products = lazy(() => import("./components/Products/Products"));
 //const NavBar = lazy(() => import("./components/NavBar"));
@@ -66,6 +67,7 @@ const App = () => {
         <NavBar />
         <Container>
           <Switch>
+            <Route exact path="/check" component={Main} />
             <Route exact path="/users" component={UserDataComponent} />
             <Route path="/login" exact component={SingIn} />
             <Route path="/singup" exact component={SingUp} />

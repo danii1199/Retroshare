@@ -83,8 +83,7 @@ const Products = () => {
             {products
               .slice(products.length - 4, products.length)
               .map((product) => {
-                if(product.userBuyer===null)
-                if (product.userOwner.id !== user?.id)
+                if (product.userBuyer && (product.userOwner.id !== user?.id && product.userBuyer.id !== user?.id))
                   return (
                     <Grid key={product.id} item sm={6} md={3}>
                       <CardProduct product={product} />

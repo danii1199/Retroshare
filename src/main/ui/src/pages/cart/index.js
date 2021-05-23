@@ -1,32 +1,46 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import CartProducts from "./CartProducts";
 import { CartContext } from "../../contexts/CartContext";
 import { formatNumber } from "../../helpers/utils";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import { Button, Container, Grid, Typography } from "@material-ui/core";
+import {
+  Button,
+  Container,
+  Dialog,
+  DialogContent,
+  Grid,
+  Typography,
+  DialogTitle,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import Main from "../../components/CheckOut/Views/Main";
 
 const useStyles = makeStyles({
   Button: {
-    margin:"5px",
+    margin: "5px",
     color: "purple",
     background: "yellow",
   },
   text: {
-    
     color: "#ffffff",
-    
   },
 });
 
 const Cart = () => {
   const styles = useStyles();
-  const { total, cartItems, itemCount, clearCart, checkout } = useContext(
-    CartContext
-  );
-  const history = useHistory();
+  const { total, cartItems, itemCount, clearCart, checkout } =
+    useContext(CartContext);
+
+  const [open, setOpen] = useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <Container title="Cart" description="This is the Cart page">
@@ -55,23 +69,29 @@ const Cart = () => {
             )}
           </Grid>
           {cartItems.length > 0 && (
-            <Grid container >
+            <Grid container>
               <Grid item xs={3} align="actions-content">
-
                 <Typography className={styles.text}>Total Items</Typography>
                 <Typography variant="h4">{itemCount}</Typography>
                 <Typography className={styles.text}>Total Payment</Typography>
                 <Typography variant="h3">{formatNumber(total)}</Typography>
                 <hr className="my-4" />
                 <Grid className="text-center">
-                  <Button
-                    className={styles.Button}
-                    onClick={() => {
-                      history.push(`/cartform`);
-                    }}
-                  >
+                  <Button className={styles.Button} onClick={handleClickOpen}>
                     CHECKOUT
                   </Button>
+                  <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="form-dialog-title"
+                  >
+                    <DialogTitle id="form-dialog-title">
+                      Pasarela de Pago
+                    </DialogTitle>
+                    <DialogContent>
+                      <Main />
+                    </DialogContent>
+                  </Dialog>
                   <Button className={styles.Button} onClick={clearCart}>
                     CLEAR
                   </Button>
