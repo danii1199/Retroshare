@@ -3,13 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import CardProduct from "../CardProduct/CardProduct";
 import { ProductsContext } from "../../contexts/ProductsContext";
 import { useContext, Suspense } from "react";
-
-import Caru1 from "../Carousel/Caru1";
 import PrincipalButtons from "../Buttons/PrincipalButtons";
-
-import AuthService from "../../Service/Auth/AuthService";
-import OneUser from "../../lib/OneUser";
-
 
 const useStyles = makeStyles((theme) => ({
   carousel: {
@@ -21,13 +15,8 @@ const useStyles = makeStyles((theme) => ({
     height: "auto",
     position: "absolute",
   },
-  h6: {
-    margin: "30px",
-    color: theme.palette.text.secondary,
-    backgroundColor: "white",
-    opacity:0.5,
-  },
   h3: {
+    margin: "30px",
     color: theme.palette.text.secondary,
   },
   product: {
@@ -35,32 +24,16 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Products = () => {
+const Products = (props) => {
   const { products } = useContext(ProductsContext);
-
-  const currentUser = AuthService.getCurrentUser();
-
-  if(currentUser!==null){var user= OneUser(currentUser.id);}
-
+  
+  const localizacion=(props.location.pathname).split("/");
+  
   const classes = useStyles();
-
+  const searchName=localizacion[(localizacion.length)-1];
 
   return (
     <Suspense fallback={<Grid>Loading...</Grid>}>
-      {currentUser!==null ?
-      (user.verificate === "false" ?
-      (<Grid>
-        <Typography variant="h6" className={classes.h6} align="center">
-           Por favor, verifica tu cuenta de correo
-        </Typography>
-      </Grid>):null
-      ):null
-  }
-      <Grid className={classes.carousel}>
-        <Container maxWidth="lg">
-          <Caru1 />
-        </Container>
-      </Grid>
       <Grid item>
         <PrincipalButtons />
       </Grid>
@@ -68,11 +41,12 @@ const Products = () => {
         <Grid container spacing={8}>
           <Grid container>
             <Typography variant="h3" className={classes.h3}>
-              Ultimas Subidas
+              Resultados de la busqueda "{searchName}"
             </Typography>
           </Grid>
           <Grid container spacing={2}>
             {products.map((product) => {
+                if(product.name===searchName)
               return (
                 <Grid item sm={6} md={3}>
                   <CardProduct product={product} />

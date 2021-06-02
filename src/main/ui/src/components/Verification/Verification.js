@@ -1,7 +1,7 @@
 import { Container, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-
-
+import { useEffect } from "react";
+import RetroshareService from "../../Service/RetroshareService"
 
 const useStyles = makeStyles((theme) => ({
   avatar: {
@@ -34,20 +34,23 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const NotFound = (props) => {
+const Verification = (props) => {
   const classes = useStyles();
 
+  const localizacion=(props.location.pathname).split("/");
+  const userName=localizacion[(localizacion.length)-1];
+
+  useEffect(() => {
+    RetroshareService.verification(userName);
+    console.log(RetroshareService.verification(userName));
+  });
   return (
     <Container>
-        <Typography variant="h1" className={classes.titulo} align="center">
-          404
-        </Typography>
-
         <Typography variant="h4" className={classes.titulo} align="center">
-          Page Not Found
+          Felicidades! Tu correo ha sido verificado con éxito.
         </Typography>
       </Container>
   );
 }
 
-export default NotFound;
+export default Verification;
