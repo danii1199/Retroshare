@@ -87,11 +87,11 @@ const OneProduct = ({ product }) => {
                 color="secondary"
                 onClick={() => addProduct(product)}
               >
-                <ShoppingCart /> Cart
+                {currentUser!==null &&<ShoppingCart />} Cart
               </Button>
             </>
           )}
-          {currentUser!==null && isInCart(product) && <CartButton className={classes.button} />}
+          {isInCart(product) && <CartButton className={classes.button} />}
         </Grid>
       </Grid>
     </Container>
