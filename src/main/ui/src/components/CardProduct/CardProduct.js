@@ -18,6 +18,9 @@ import { UserButton } from "../Buttons/PrincipalButtons";
 import AuthService from "../../Service/Auth/AuthService";
 
 const useStyles = makeStyles((theme) => ({
+  image: {
+    objectFit: "fill"
+  },
   button: {
     marginLeft: theme.spacing(3),
     boxShadow: "5px 6px 15px 1px #0D0D0D",
