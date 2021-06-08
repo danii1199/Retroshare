@@ -92,6 +92,7 @@ const CardProduct = ({ product }) => {
           <Typography
           className={classes.price}
           gutterBottom
+          align="right"
           variant="h5"
           component="h2"
         >
