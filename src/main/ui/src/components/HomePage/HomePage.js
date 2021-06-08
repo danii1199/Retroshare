@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     marginTop: "40vh",
     marginLeft: "40vh",
+    overflow: "hidden",
   },
 
   button: {
@@ -86,7 +87,6 @@ const HomePage = () => {
   }
 
   return (
-    <Grid container>
     <Grid container className={classes.foto}>
       <Grid className={classes.container}>
         <Grid container>
@@ -108,7 +108,6 @@ const HomePage = () => {
           )}
         </Grid>
       </Grid>
-    </Grid>
     </Grid>
   );
 };
