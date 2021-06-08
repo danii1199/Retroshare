@@ -46,7 +46,6 @@ const useStyles = makeStyles((theme) => ({
   },
   price: {
     marginTop: theme.spacing(1),
-    marginRight: theme.spacing(2),
   },
   status: {
     marginTop: theme.spacing(0),
@@ -91,16 +90,7 @@ const CardProduct = ({ product }) => {
           >
             {product.name}
           </Typography>
-          <Grid style={{display:"flex"}}>
-          <Typography
-          className={classes.price}
-          gutterBottom
-          variant="h5"
-          component="h2"
-        >
-          {product.price} <EuroSymbolIcon />
-        </Typography>
-
+          <Grid style={{display:"inline"}}>
           <Typography
             className={classes.status}
             align="right"
@@ -110,17 +100,24 @@ const CardProduct = ({ product }) => {
           >
             {product.productStatus?.status}
           </Typography>
-          
         </Grid>
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.actionsContent}>
         
-      <UserButton product={product} />
+      <Typography
+          className={classes.price}
+          gutterBottom
+          variant="h5"
+          component="h2"
+        >
+          {product.price} <EuroSymbolIcon />
+        </Typography>
         {currentUser!==null&& <ChatButton product={product}/>}
-
+        <UserButton product={product} />
         {!isInCart(product) && currentUser!==null&& <AddCartButton product={product}/>}
         {isInCart(product) && currentUser!==null&& <CartButton />}
+        
         
       </CardActions>
     </Card>
