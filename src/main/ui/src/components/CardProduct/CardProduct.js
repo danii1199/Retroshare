@@ -100,12 +100,7 @@ const CardProduct = ({ product }) => {
           >
             {product.productStatus?.status}
           </Typography>
-        </Grid>
-        </CardContent>
-      </CardActionArea>
-      <CardActions className={classes.actionsContent}>
-        
-      <Typography
+          <Typography
           className={classes.price}
           gutterBottom
           variant="h5"
@@ -113,7 +108,11 @@ const CardProduct = ({ product }) => {
         >
           {product.price} <EuroSymbolIcon />
         </Typography>
-        {currentUser!==null&& <ChatButton product={product}/>}
+        </Grid>
+        </CardContent>
+      </CardActionArea>
+      <CardActions className={classes.actionsContent}>
+        {currentUser!==null? <ChatButton product={product}/>:<ChatButton disabled product={product}/>}
         <UserButton product={product} />
         {!isInCart(product) && currentUser!==null&& <AddCartButton product={product}/>}
         {isInCart(product) && currentUser!==null&& <CartButton />}
