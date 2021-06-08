@@ -91,7 +91,7 @@ const CardProduct = ({ product }) => {
           >
             {product.name}
           </Typography>
-          <Grid style={{display:"inline"}}>
+          <Grid style={{display:"flex"}}>
           <Typography
             className={classes.status}
             align="right"
