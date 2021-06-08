@@ -86,6 +86,7 @@ const HomePage = () => {
   }
 
   return (
+    <Grid container>
     <Grid container className={classes.foto}>
       <Grid className={classes.container}>
         <Grid container>
@@ -107,6 +108,7 @@ const HomePage = () => {
           )}
         </Grid>
       </Grid>
+    </Grid>
     </Grid>
   );
 };

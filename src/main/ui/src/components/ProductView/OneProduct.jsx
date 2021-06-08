@@ -15,7 +15,7 @@ import AuthService from "../../Service/Auth/AuthService";
 
 const useStyles = makeStyles((theme) => ({
   cardImage: {
-    height: "50%",
+    height: "340px",
   },
   productView: {
     margin: theme.spacing(5),
