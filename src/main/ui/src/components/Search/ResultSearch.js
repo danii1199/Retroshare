@@ -35,7 +35,6 @@ const Products = (props) => {
   
   const classes = useStyles();
   const searchName=localizacion[(localizacion.length)-1];
-  const currentUser = AuthService.getCurrentUser();
 
   return (
     <Suspense fallback={<Grid>Loading...</Grid>}>
