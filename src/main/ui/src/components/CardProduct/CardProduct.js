@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
     textOverflow: "ellipsis",
   },
   price: {
-    marginTop: theme.spacing(1),
+    marginTop: theme.spacing(3),
   },
   status: {
     marginTop: theme.spacing(0),
@@ -80,7 +80,6 @@ const CardProduct = ({ product }) => {
           title={product.name}
         />
         <CardContent className={classes.content}>
-        <Grid style={{display:"flex"}}>
           <Typography
             align="left"
             display="inline"
@@ -91,8 +90,7 @@ const CardProduct = ({ product }) => {
           >
             {product.name}
           </Typography>
-          <UserButton product={product} />
-          </Grid>
+          <Grid style={{display:"inline"}}>
           <Typography
             className={classes.status}
             align="right"
@@ -102,6 +100,7 @@ const CardProduct = ({ product }) => {
           >
             {product.productStatus?.status}
           </Typography>
+        </Grid>
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.actionsContent}>
@@ -115,6 +114,7 @@ const CardProduct = ({ product }) => {
           {product.price} <EuroSymbolIcon />
         </Typography>
         {currentUser!==null&& <ChatButton product={product}/>}
+        <UserButton product={product} />
         {!isInCart(product) && currentUser!==null&& <AddCartButton product={product}/>}
         {isInCart(product) && currentUser!==null&& <CartButton />}
         
