@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     width: "auto",
     height: "auto",
     position: "absolute",
+    objectFit: "cover",
   },
   h6: {
     color: theme.palette.text.secondary,
