@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(10),
   },
   buttons:{
-    textAlign:center
+    textAlign:"center"
   }
 }));
 

@@ -11,6 +11,7 @@ import { useContext } from "react";
 import { CartContext } from "../../contexts/CartContext";
 import { makeStyles } from "@material-ui/core/styles";
 import { CartButton } from "../Buttons/PrincipalButtons";
+import AuthService from "../../Service/Auth/AuthService";
 
 const useStyles = makeStyles((theme) => ({
   cardImage: {
