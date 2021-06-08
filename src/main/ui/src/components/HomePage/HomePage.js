@@ -27,8 +27,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundPosition: "top center",
     backgroundAttachment: "fixed",
     backgroundRepeat: "no-repeat",
-    height: "100vh",
-    width: "100vw",
+    height: "auto",
+    width: "auto",
   },
   wrapper: {
     margin: theme.spacing(1),

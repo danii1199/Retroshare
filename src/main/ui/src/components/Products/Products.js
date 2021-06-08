@@ -12,7 +12,7 @@ import OneUser from "../../lib/OneUser";
 
 const useStyles = makeStyles((theme) => ({
   carousel: {
-    width: "100vw",
+    width: "auto",
     alignItems: "center",
   },
   imagenes: {
