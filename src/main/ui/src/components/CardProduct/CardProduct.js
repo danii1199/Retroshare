@@ -69,6 +69,16 @@ const CardProduct = ({ product }) => {
 
   return (
     <Card className={classes.customCard}>
+      <CardActions className={classes.actionsContent}>
+        
+        {currentUser!==null&& <UserButton product={product} />}
+        
+        {currentUser!==null&& <ChatButton product={product}/>}
+
+        {!isInCart(product) && currentUser!==null&& <AddCartButton product={product}/>}
+        {isInCart(product) && currentUser!==null&& <CartButton />}
+        
+      </CardActions>
       <CardActionArea component={Link} to={`pr/${product.id}`}>
         <CardMedia
           component="img"
@@ -108,16 +118,7 @@ const CardProduct = ({ product }) => {
         </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions className={classes.actionsContent}>
-        
-        {currentUser!==null&& <UserButton product={product} />}
-        
-        {currentUser!==null&& <ChatButton product={product}/>}
-
-        {!isInCart(product) && currentUser!==null&& <AddCartButton product={product}/>}
-        {isInCart(product) && currentUser!==null&& <CartButton />}
-        
-      </CardActions>
+      
     </Card>
   );
 };
