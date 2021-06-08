@@ -53,7 +53,6 @@ const useStyles = makeStyles((theme) => ({
   },
   actionsContent: {
     padding: theme.spacing(1),
-    align:"right"
   },
   icon: {
     color: theme.palette.primary.light,
@@ -100,7 +99,7 @@ const CardProduct = ({ product }) => {
         >
           {product.price} <EuroSymbolIcon />
         </Typography>
-        
+
           <Typography
             className={classes.status}
             align="right"
