@@ -90,27 +90,17 @@ const CardProduct = ({ product }) => {
             {product.name}
           </Typography>
           <Typography
-          className={classes.price}
-          gutterBottom
-          align="right"
-          variant="h5"
-          component="h2"
-        >
-          {product.price} <EuroSymbolIcon />
-        </Typography>
-          <Typography
             className={classes.status}
             align="right"
             gutterBottom
             variant="h6"
             component="h2"
           >
-            {product.productStatus?.status}
+           {product.price} <EuroSymbolIcon />      {product.productStatus?.status}
           </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.actionsContent}>
-        
         {currentUser!==null&& <UserButton product={product} />}
         
         {currentUser!==null&& <ChatButton product={product}/>}
