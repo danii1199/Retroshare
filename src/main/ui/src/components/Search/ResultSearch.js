@@ -52,7 +52,7 @@ const Products = (props) => {
           <Grid container spacing={2}>
             {products.map((product) => {
               if(product.name.toLowerCase()===searchName.toLowerCase()) 
-              if(currentUser!==null&&product.userBuyer===null)
+              if(product.userBuyer===null)
               if(product.userOwner.email!==currentUser.name)
               return (
                 <Grid item sm={6} md={3}>

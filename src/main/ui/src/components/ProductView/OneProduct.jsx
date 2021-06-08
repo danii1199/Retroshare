@@ -40,6 +40,8 @@ const useStyles = makeStyles((theme) => ({
 const OneProduct = ({ product }) => {
   const { addProduct, cartItems } = useContext(CartContext);
   const classes = useStyles();
+  
+  const currentUser = AuthService.getCurrentUser();
 
   const isInCart = (product) => {
     return !!cartItems.find((item) => item.id === product.id);
@@ -88,7 +90,7 @@ const OneProduct = ({ product }) => {
               </Button>
             </>
           )}
-          {isInCart(product) && <CartButton className={classes.button} />}
+          {currentUser!==null && isInCart(product) && <CartButton className={classes.button} />}
         </Grid>
       </Grid>
     </Container>
