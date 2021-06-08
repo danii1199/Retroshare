@@ -90,6 +90,14 @@ const CardProduct = ({ product }) => {
             {product.name}
           </Typography>
           <Typography
+          className={classes.price}
+          gutterBottom
+          variant="h5"
+          component="h2"
+        >
+          {product.price} <EuroSymbolIcon />
+        </Typography>
+          <Typography
             className={classes.status}
             align="right"
             gutterBottom
@@ -101,14 +109,7 @@ const CardProduct = ({ product }) => {
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.actionsContent}>
-        <Typography
-          className={classes.price}
-          gutterBottom
-          variant="h5"
-          component="h2"
-        >
-          {product.price} <EuroSymbolIcon />
-        </Typography>
+        
         {currentUser!==null&& <UserButton product={product} />}
         
         {currentUser!==null&& <ChatButton product={product}/>}
