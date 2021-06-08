@@ -93,6 +93,15 @@ const CardProduct = ({ product }) => {
           </Typography>
           <Grid style={{display:"flex"}}>
           <Typography
+          className={classes.price}
+          gutterBottom
+          variant="h5"
+          component="h2"
+        >
+          {product.price} <EuroSymbolIcon />
+        </Typography>
+        
+          <Typography
             className={classes.status}
             align="right"
             gutterBottom
@@ -101,14 +110,7 @@ const CardProduct = ({ product }) => {
           >
             {product.productStatus?.status}
           </Typography>
-          <Typography
-          className={classes.price}
-          gutterBottom
-          variant="h5"
-          component="h2"
-        >
-          {product.price} <EuroSymbolIcon />
-        </Typography>
+          
         </Grid>
         </CardContent>
       </CardActionArea>
