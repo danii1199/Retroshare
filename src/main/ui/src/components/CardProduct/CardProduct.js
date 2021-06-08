@@ -112,8 +112,8 @@ const CardProduct = ({ product }) => {
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.actionsContent}>
-        {currentUser!==null? <ChatButton product={product}/>:<ChatButton disabled product={product}/>}
-        <UserButton product={product} />
+        {currentUser!==null&& <ChatButton product={product}/>}
+        {currentUser!==null&&<UserButton product={product} />}
         {!isInCart(product) && currentUser!==null&& <AddCartButton product={product}/>}
         {isInCart(product) && currentUser!==null&& <CartButton />}
         
