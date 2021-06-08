@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
   },
   actionsContent: {
     padding: theme.spacing(1),
+    align:"right"
   },
   icon: {
     color: theme.palette.primary.light,
@@ -113,7 +114,7 @@ const CardProduct = ({ product }) => {
       </CardActionArea>
       <CardActions className={classes.actionsContent}>
         
-      <UserButton align="right" product={product} />
+      <UserButton product={product} />
         {currentUser!==null&& <ChatButton product={product}/>}
 
         {!isInCart(product) && currentUser!==null&& <AddCartButton product={product}/>}
