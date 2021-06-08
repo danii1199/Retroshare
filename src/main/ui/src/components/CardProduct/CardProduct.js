@@ -113,7 +113,7 @@ const CardProduct = ({ product }) => {
       </CardActionArea>
       <CardActions className={classes.actionsContent}>
         
-        {currentUser!==null&& <UserButton product={product} />}
+        <UserButton product={product} />
         
         {currentUser!==null&& <ChatButton product={product}/>}
 

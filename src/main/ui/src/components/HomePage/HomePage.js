@@ -90,7 +90,7 @@ const HomePage = () => {
       <Grid className={classes.container}>
         <Grid container>
           <Typography variant="h4" className={classes.titulo}>
-            Empieza tú aventura
+            Empieza tu aventura
           </Typography>
         </Grid>
         <Grid className={classes.wrapper}>
