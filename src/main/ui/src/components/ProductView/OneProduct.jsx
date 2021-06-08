@@ -15,7 +15,7 @@ import AuthService from "../../Service/Auth/AuthService";
 
 const useStyles = makeStyles((theme) => ({
   cardImage: {
-    height: "500px",
+    height: "100%",
   },
   productView: {
     margin: theme.spacing(5),
@@ -78,7 +78,7 @@ const OneProduct = ({ product }) => {
         </Grid>
         <Grid item xs={12} className="action-part">
           
-          {!isInCart(product) && product.userBuyer===null&& (
+          {currentUser!==null && !isInCart(product) && product.userBuyer===null&& (
             <>
               <Button
                 className={classes.button}
@@ -87,7 +87,7 @@ const OneProduct = ({ product }) => {
                 color="secondary"
                 onClick={() => addProduct(product)}
               >
-                {currentUser!==null &&<ShoppingCart />} Cart
+                <ShoppingCart /> Cart
               </Button>
             </>
           )}
