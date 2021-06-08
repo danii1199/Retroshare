@@ -6,6 +6,7 @@ import {
   Typography,
   CardActionArea,
   fade,
+  Grid,
 } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import EuroSymbolIcon from "@material-ui/icons/EuroSymbol";
