@@ -23,6 +23,9 @@ const useStyles = makeStyles((theme) => ({
   product: {
     margin: theme.spacing(10),
   },
+  buttons:{
+    textAlign:"center"
+  }
 }));
 
 const Products = (props) => {
@@ -36,7 +39,7 @@ const Products = (props) => {
 
   return (
     <Suspense fallback={<Grid>Loading...</Grid>}>
-      <Grid item>
+      <Grid item  className={classes.buttons}>
         <PrincipalButtons />
       </Grid>
       <Container id="products">
