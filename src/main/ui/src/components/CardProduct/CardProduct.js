@@ -96,11 +96,20 @@ const CardProduct = ({ product }) => {
             variant="h6"
             component="h2"
           >
-           {product.price} <EuroSymbolIcon />      {product.productStatus?.status}
+            {product.productStatus?.status}
           </Typography>
+          <Typography
+          className={classes.price}
+          gutterBottom
+          variant="h5"
+          component="h2"
+        >
+          {product.price} <EuroSymbolIcon />
+        </Typography>
         </CardContent>
       </CardActionArea>
       <CardActions className={classes.actionsContent}>
+        
         {currentUser!==null&& <UserButton product={product} />}
         
         {currentUser!==null&& <ChatButton product={product}/>}
