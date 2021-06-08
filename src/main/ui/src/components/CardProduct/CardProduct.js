@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
   price: {
     marginTop: theme.spacing(1),
+    marginRight: theme.spacing(2),
   },
   status: {
     marginTop: theme.spacing(0),
