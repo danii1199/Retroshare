@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(10),
   },
   buttons:{
-    textAlign:"center"
+    textAlign:center
   }
 }));
 
@@ -35,6 +35,7 @@ const Products = (props) => {
   
   const classes = useStyles();
   const searchName=localizacion[(localizacion.length)-1];
+  const currentUser = AuthService.getCurrentUser();
 
   return (
     <Suspense fallback={<Grid>Loading...</Grid>}>
@@ -51,8 +52,14 @@ const Products = (props) => {
           <Grid container spacing={2}>
             {products.map((product) => {
               if(product.name.toLowerCase()===searchName.toLowerCase()) 
-              if(product.userBuyer===null)
+              if(currentUser!==null&&product.userBuyer===null)
               if(product.userOwner.email!==currentUser.name)
+              return (
+                <Grid item sm={6} md={3}>
+                  <CardProduct product={product} />
+                </Grid>
+              );
+              if(currentUser===null)
               return (
                 <Grid item sm={6} md={3}>
                   <CardProduct product={product} />
