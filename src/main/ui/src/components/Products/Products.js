@@ -84,7 +84,7 @@ const Products = () => {
                       </Grid>
                     );
 
-                if (currentUser === null)
+                if (currentUser === null && product.userBuyer === null)
                   return (
                     <Grid item sm={6} md={3}>
                       <CardProduct product={product} />
