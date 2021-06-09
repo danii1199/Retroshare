@@ -59,7 +59,8 @@ const Products = (props) => {
                   <CardProduct product={product} />
                 </Grid>
               );
-              if(currentUser===null)
+              if(product.name.toLowerCase()===searchName.toLowerCase()) 
+              if(currentUser===null&&product.userBuyer===null)
               return (
                 <Grid item sm={6} md={3}>
                   <CardProduct product={product} />
